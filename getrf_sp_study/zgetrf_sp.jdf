@@ -1,0 +1,55 @@
+GETRF_SP(k) [high_priority = on]
+// Execution space
+k = 0..(min(descA.mt,descA.nt))
+// Parallel partitioning
+:A(k, k)
+// Parameters
+RW T <- (k == 0)?A(k,k):C GEMM(k-1,k,k)
+     -> T TRSM_L(k, k+1..descA.mt-1)
+     -> T TRSM_U(k, k+1..descA.nt-1)
+     -> A(k, k)
+
+
+
+
+
+TRSM_L(k, m) [high_priority = on]
+// Execution space
+k = 0..(min(descA.mt,descA.nt)-1)
+m = k+1..descA.mt-1
+// Parallel partitioning
+: A(m, k)
+// Parameters
+READ    T <- T GETRF_SP(k)
+RW      C <- (k==0)?A(m,k):C GEMM(k-1,m,k)
+          -> A GEMM(k,m, k+1..descA.mt-1)
+          -> A(m,k)
+
+
+TRSM_U(k, n) [high_priority = on]
+// Execution space
+k = 0..(min(descA.mt,descA.nt)-1)
+n = k+1..descA.nt-1
+// Parallel partitioning
+: A(k, n)
+// Parameters
+READ    T <- T GETRF_SP(k)
+RW      C <- (k == 0)?A(k,n):C GEMM(k-1,k,n)
+          -> B GEMM(k, k+1..descA.nt-1, n)
+          -> A(k, n)
+
+GEMM(k, m, n)
+// Execution space
+k = 0..(min(descA.mt,descA.nt)-2)
+m = k+1..descA.mt-1
+n = k+1..descA.nt-1
+// Parallel partitioning
+: A(m, n)
+// Parameters
+READ  A <- C TRSM_L(k, m)
+READ  B <- C TRSM_U(k, n)
+RW    C <- (k==0)?A(m,n):C GEMM(k-1,m,n)
+        -> ((m==k+1)&&(n==k+1))?T GETRF_SP(k+1)
+        -> ((m>k+1)&&(n==k+1))?C TRSM_L(k+1,m)
+        -> ((m==k+1)&&(n>k+1))?C TRSM_U(k+1,n)
+        -> ((m>k+1)&&(n>k+1))?C GEMM(k+1,m,n)
