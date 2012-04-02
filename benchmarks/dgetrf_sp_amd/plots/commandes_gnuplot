@@ -1,0 +1,3 @@
+gnuplot> set xlabel "Matrix Size"
+gnuplot> set ylabel "GFlops/s"
+gnuplot> plot "./plot_dgetrf_sp_16" with lines title '16' lw 2,"./plot_dgetrf_sp_32" with lines title '32' lw 2,"./plot_dgetrf_sp_64" with lines title '64' lw 2,"./plot_dgetrf_sp_128" with lines title '128' lw 2,"./plot_dgetrf_sp_rec" with lines title 'recursive' lw 2, 7.2 with lines title 'Theoritical limit' lw 2, 9 with lines title ''
