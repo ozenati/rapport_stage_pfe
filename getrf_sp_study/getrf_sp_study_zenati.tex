@@ -111,7 +111,7 @@ which turn at 1900.209 MHz. The benchmarks concern the two precisions : double a
 \caption{sgetrf\_sp performance results on AMD architecture}
 \end{figure}
 
-\chapter{DaGuE}
+\chapter{DAGuE}
 
 Nowadays, the architectures of clusters are more and more heterogeneous and hybrid. Whether it be CPU or GPU, their number increase progressively.
 \begin{figure}[!h]
@@ -122,15 +122,17 @@ Nowadays, the architectures of clusters are more and more heterogeneous and hybr
 \end{figure}
 Cluster gained in performance but their use gain in complexity. In order to ease their operating, computer science engineer design software that introduce an abstraction to these architectures. These softwares are called \textbf{\textit{Runtimes}}. Their rules is to detect the architecture used and schedule tasks on it in the best way. Today, some runtimes are famous :
 \begin{itemize}
-\item StarPU: developed by INRIA in Bordeaux, FRANCE
-\item StarSS: developed by ?? Barcalona,SPAIN
-\item DaGuE: developed by ICL in Tennessee, USA
+\item StarPU: developed by Runtime (Inria) in Bordeaux, FRANCE
+\item StarSS: developed by BSC in Barcalona,SPAIN
+\item DAGuE: developed by ICL in Tennessee, USA
 \item Quark: developed by ICL in Tennessee, USA
+\item Cilk: developed by MIT in Massachusetts, USA
+\item TBB: developed by Intel.
 \end{itemize}
-In this study, I will focus on DaGuE. DAGuE is a Direct Acyclic Graph (DAG) scheduling engine, where the nodes of a DAG are sequential computation tasks and the edges are data communications. To design a parallel application with DaGuE, each task is implemented sequentially into a kernel with a DAGuE specific language. It is also required to specify the data dependence between each task.
+In this study, I will focus on DAGuE. DAGuE is a Direct Acyclic Graph (DAG) scheduling engine, where the nodes of a DAG are sequential computation tasks and the edges are data communications. To design a parallel application with DAGuE, each task is implemented sequentially into a kernel with a DAGuE specific language. It is also required to specify the data dependence between each task.
 
-\section{GETRF\_SP on DaGuE}
-In this section, an implementation of getrf\_sp on DaGue is presented as example. To implement a DAG of tasks, the language used on DaGuE is the JDF format. The JDF is a collection of functions definition where each one include :
+\section{GETRF\_SP on DAGuE}
+In this section, an implementation of getrf\_sp on DAGue is presented as example. To implement a DAG of tasks, the language used on DaGuE is the JDF format. The JDF is a collection of functions definition where each one include :
 \begin{itemize}
 \item definition space;
 \item task distribution;
@@ -151,7 +153,7 @@ The figure below show the jdf code of zgetrf\_sp (the fourth item is not showed)
 \end{minipage} \hfill
 \begin{minipage}[!h]{.5\linewidth}
 \includegraphics[width=\textwidth]{dag.png}
-\caption{DaGuE dgetrf\_sp on a matrix with size of 500 and a tile of 200}
+\caption{DAGuE dgetrf\_sp on a matrix with size of 500 and a tile of 200}
 \end{minipage}
 \end{figure}
 
@@ -187,7 +189,7 @@ More you reiterate this process, more you will obtain a better solution. The lim
 These mathematical formula can be summarized by the following algorithm :
 \begin{enumerate}
 \item Compute an initial solution $X_0$ from the linear system $AX=B$
-\item Compute the residue $R_n=B-AX_n$
+\item Compute the residual $R_n=B-AX_n$
 \item Resolve the linear system $AZ=R_n$
 \item $X_{n+1}=X_n+Z$
 \item If $\Vert{Z}\Vert/\Vert{X_{n+1}}\Vert<eps$ then STOP else goto 2
