@@ -1,4 +1,4 @@
-set xlabel "Matrix Size"
+set xlabel "Tile Size on a matrix of size=20000"
 set ylabel "GFlops"
 set key top
 set boxwidth 10
