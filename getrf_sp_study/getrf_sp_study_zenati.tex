@@ -257,10 +257,35 @@ The first approch consist in doing all the couples of communications. Thus, four
 \begin{center}
 \includegraphics[scale=1]{version0.png} 
 \end{center}
-\caption{Swapping operation between each couple}
+\caption{Swapping operation between with each tile}
 \end{figure}
 In this version the number total of tasks for the swapping is : $(MT-k-1)*4*(NT-k-1)$.
 And the number total of communications is : $(MT-k-1)*2*(NT-k-1)$.
 \subsubsection*{Version 1}
-The second approch 
+The second approch consist on :
+\begin{itemize}
+\item Each tile A(k,n) with n $\in k+1..NT$, it create a self copy. Then, it send it to all tiles A(k,n') where n' $\in n..n+P-1$ in order that all processors of same columns owns a copy of A(k,n).
+\item At the same, each processor put the line to swap of his own tiles of the same comlumn n in a buffer and send it to the processor who own A(k,n).
+\item Each tile A(k,n) with n $\in k+1..NT$ receive the buffer of each processor and update his tile.
+\item Each processor receive the copy of A(k,n) and upddate all his own tiles of the same column n.
+\end{itemize} 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{version1.png} 
+\end{center}
+\caption{Swapping operation between with each processor}
+\end{figure}
+In this version the number total of tasks for the swapping is : $((MT-k-1)*2+P)*(NT-k-1)$.
+And the number total of communications is : $P*2*(NT-k-1)$.
+\subsubsection*{Version 2}
+This version is very similar to last version, the only difference is that inspide of the processor who own A(k,n) communicate with all other processor, processors communicate in a sort of pipeline model communication. Each one communicate to his follower.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{version2.png} 
+\end{center}
+\caption{Swapping operation between with each processor}
+\end{figure}
+In this version the number total of tasks for the swapping is : $(MT-k-1)*2*(NT-k-1)$.
+And the number total of communications is : $P*2*(NT-k-1)$.
+
 \end{document}
