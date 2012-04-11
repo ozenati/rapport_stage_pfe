@@ -14,7 +14,7 @@
 \usepackage{multicol}
 
 \title{\Huge{\textbf{DRAFT}}\\
-\Huge{LU Decomposition with static pivoting strategy}}
+\Huge{LU Decomposition}}
 \author{Omar ZENATI}
 \date{\today}
          
@@ -41,7 +41,7 @@ GETF2(A)
 For k from 1 to min(A.m,A.n)
    Search for a pivot then do pivoting
    For i from k+1 to A.m
-      a(i,k) = a(i,k)/a(k,k)    /*scale operation*/
+      a(i,k) = a(i,k)/a(k,k)    /*scal operation*/
    For i from k+1 to A.m
          For j from k+1 to a.n
             a(i,j) = a(i,j)-a(i,k)*a(k,j)   /*ger operation*/
@@ -51,7 +51,7 @@ For k from 1 to min(A.m,A.n)
 The pivoting consist to research the maximum on the current column and after to swap its line with the current line. This operation is made to preserve the order of the matrix elements. However, it consume a lot of performance because it create a sort of barrier. An alternative solution is to define a criteria, and at each \texttt{k} of the loop, if the criteria is higher than \texttt{A(k,k)} then it remplace it. With this solution, the matrix resulted is not the exact solution, but it may be used as an entry for iterative methods. In the rest of the document, the function which apply the naive algorithm with static pivoting will be called \texttt{GET2F\_SP}.
 \subsection{The blocking version}
 In the naive algorithm, the performance may be optimized. In fact, because the operations are BLAS 1 level (scale) or BLAS 2 level (ger), there is a huge latency due to cache access. So, the idea is to make operations on blocks in place of lines and columns. This will make possible to use BLAS 3 level operations which are more efficient.\\
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{lu_decomposition_block.png} 
 \end{center}
@@ -66,12 +66,12 @@ GETRF_SP(A)
 For k from 1 to min(A.m/SB,A.n/SB)
    GETF2_SP(A(k,k))   /*LU Decomposition*/
    For i from k+1 to A.m/SB
-      TRSM_U(A(k,k),A(m,k))
+      Compute A(m,k)+=A(m,k)/A(k,k)		/*trsm operation*/
    For i from k+1 to A.m/SB
-      TRSM_L(A(k,k),A(k,n))
+      Compute A(k,n)+=A(k,n)/A(k,k)		/*trsm operation*/
    For i from k+1 to A.m/SN
       For j from k+1 to A.n/SB
-            GEMM(A(i,k),A(k,j),A(i,j))
+            Compute A(i,j)-=A(i,k)*A(k,j)		/*gemm operation*/
 =================================================================
 \end{verbatim}
 \subsection{The recursive version}
@@ -84,102 +84,39 @@ GETRF_SP_REC(A)
 if(A.m >0)
    if(A.n == 1)
       Pivoting to criteria if necessary
-      SCAL(A(0,0),A.column(0))
+      Compute A.column(0)/=A(0,0)
    else
       GETRF_SP_REC(A.leftHalf())
-      TRSM_U(A.upLeftQuarter,A.uprightQuarter)
-      GEMM(A.downLeftQuarter,A.uprightQuarter,A.downRightQuarter)
+      Compute A.uprightQuarter+=A.uprightQuarter/A.upLeftQuarter
+      Compute A.downRightQuarter-=A.downLeftQuarter*A.uprightQuarter
       GETRF_SP_REC(A.downRightQuarter())
 =================================================================
 \end{verbatim}
 
 
-\section{Performance results}
+\subsection{Performance results}
 The test of performance was made on an AMD Opteron(tm) Processor 6168
 which turn at 1900.209 MHz. The benchmarks concern the two precisions : double and simple. The results obtained are described in the two figure below.
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{exp_dgetrf_sp_amd.png} 
 \end{center}
 \caption{dgetrf\_sp performance results on AMD architecture}
 \end{figure}
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\textwidth]{exp_sgetrf_sp_amd.png} 
 \end{center}
 \caption{sgetrf\_sp performance results on AMD architecture}
 \end{figure}
 
-\chapter{DAGuE}
+\section{Iterative refinement}
+As said in previous section, the LU decomposition with static pivoting is most used to get an initial solution. Then, this is used iterative refinement. In this section, I explain the iterative method. But first, I present the way to define the criteria used in the GETRF\_SP.
 
-Nowadays, the architectures of clusters are more and more heterogeneous and hybrid. Whether it be CPU or GPU, their number increase progressively.
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=\textwidth]{increase.png} 
-\end{center}
-\caption{Evolution of some curve last 40 years}
-\end{figure}
-Cluster gained in performance but their use gain in complexity. In order to ease their operating, computer science engineer design software that introduce an abstraction to these architectures. These softwares are called \textbf{\textit{Runtimes}}. Their rules is to detect the architecture used and schedule tasks on it in the best way. Today, some runtimes are famous :
-\begin{itemize}
-\item StarPU: developed by Runtime (Inria) in Bordeaux, FRANCE
-\item StarSS: developed by BSC in Barcalona,SPAIN
-\item DAGuE: developed by ICL in Tennessee, USA
-\item Quark: developed by ICL in Tennessee, USA
-\item Cilk: developed by MIT in Massachusetts, USA
-\item TBB: developed by Intel.
-\end{itemize}
-In this study, I will focus on DAGuE. DAGuE is a Direct Acyclic Graph (DAG) scheduling engine, where the nodes of a DAG are sequential computation tasks and the edges are data communications. To design a parallel application with DAGuE, each task is implemented sequentially into a kernel with a DAGuE specific language. It is also required to specify the data dependence between each task.
-
-\section{GETRF\_SP on DAGuE}
-In this section, an implementation of getrf\_sp on DAGue is presented as example. To implement a DAG of tasks, the language used on DaGuE is the JDF format. The JDF is a collection of functions definition where each one include :
-\begin{itemize}
-\item definition space;
-\item task distribution;
-\item set of data dependencies;
-\item body to be executed (written in language C).
-\end{itemize}
-The figure below show the jdf code of zgetrf\_sp (the fourth item is not showed).
-\begin{figure}[!h]
-{\scriptsize\lstinputlisting[multicols=2,numbers=left,language=C]{zgetrf_sp.jdf}} 
-\caption{JDF representation of LU decomposition}
-\end{figure}
-
-\begin{figure}[!h]
-\begin{minipage}[!h]{.5\linewidth}
-\centering
-\includegraphics[width=\textwidth]{dag_getrf_sp.png}
-\caption{Data interaction between kernels}
-\end{minipage} \hfill
-\begin{minipage}[!h]{.5\linewidth}
-\includegraphics[width=\textwidth]{dag.png}
-\caption{DAGuE dgetrf\_sp on a matrix with size of 500 and a tile of 200}
-\end{minipage}
-\end{figure}
-
-\section{Performance results}
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=\textwidth]{dgetrf_dague_remus_tile.png} 
-\end{center}
-\caption{LU decomposition on shared memory}
-\end{figure}
-
-
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=\textwidth]{dgetrf_dague_remus.png} 
-\end{center}
-\caption{LU decomposition on shared memory}
-\end{figure}
-
-\chapter{Iterative refinement}
-As said in the introduction, the Lu decomposition with static pivoting is most used to get an initial solution. Then, this is used iterative refinement. In this chapter, I explain the iterative method. But first, I present the way to define the criteria used in the GETRF\_SP.
-
-\section{Definition of the criteria}
+\subsection{Definition of the criteria}
 The criteria is the value used to compare the current pivot. If the criteria is higher than the current pivot, then it replace it. The user can initialize this criteria by any value. But, the most general value which can preserve the matrix order is the norm of the matrix multiplied by the epsilon of current precision.
-\section{The iterative refinement}
+\subsection{The iterative refinement}
 The iterative refinement is a method to converge - after an series of loop - from a perturbed solution to a more accurate solution. So, from an initial inputs data $A$ and $B$, you try to resolve :
 \begin{center}
 $AX=B$
@@ -206,18 +143,124 @@ The equivalent algorithm in the syntax used in this document is :
 \begin{verbatim}
 GETRS_SP(A,B)
 =================================================================
-COPY(A,LU)
-GETRF_SP(LU)
-COPY(B,S)
-GETRS(LU,S)   /* (1) */
+COPY A in LU
+Factorize LU
+COPY B in S
+Solve LU*S=S    /* (1) */
 Do
-   COPY(B,R)   
-   GEMM(-A,S,R)   /* (2) */
-   GETRS(LU,R)   /* (3) */
-   AXPY(R,S)   /* (4) */
+   COPY B in R   
+   Compute R=R-AS   /* (2) */
+   Solve LU*R=R   /* (3) */
+   Compute S=S+R   /* (4) */
 While(||R||/||S||>eps)   /* (5) */
 B=S   /* Stock the result on B */
 =================================================================
 \end{verbatim}
 
+\chapter{DAGuE}
+
+Nowadays, the architectures of clusters are more and more heterogeneous and hybrid. Whether it be CPU or GPU, their number increase progressively.
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{increase.png} 
+\end{center}
+\caption{Evolution of some curve last 40 years}
+\end{figure}
+Cluster gained in performance but their use gain in complexity. In order to ease their operating, computer science engineer design software that introduce an abstraction to these architectures. These softwares are called \textbf{\textit{Runtimes}}. Their rules is to detect the architecture used and schedule tasks on it in the best way. Today, some runtimes are famous :
+\begin{itemize}
+\item StarPU: developed by Runtime (Inria) in Bordeaux, FRANCE
+\item StarSS: developed by BSC in Barcalona,SPAIN
+\item DAGuE: developed by ICL in Tennessee, USA
+\item Quark: developed by ICL in Tennessee, USA
+\item Cilk: developed by MIT in Massachusetts, USA
+\item TBB: developed by Intel.
+\end{itemize}
+In this study, I will focus on DAGuE. DAGuE is a Direct Acyclic Graph (DAG) scheduling Engine, where the nodes of a DAG are sequential computation tasks and the edges are data communications. To design a parallel application with DAGuE, each task is implemented sequentially into a kernel with a DAGuE specific language. It is also required to specify the data dependence between each task.
+
+\section{Description of DAGuE}
+\subsection{The JDF format}
+To implement a DAG of tasks, the language used on DaGuE is the JDF format. The JDF is a collection of functions definition where each one include :
+\begin{itemize}
+\item definition space;
+\item task distribution;
+\item set of data dependencies;
+\item body to be executed (written in language C).
+\end{itemize}
+The figure below show the jdf code of zgetrf\_sp (the fourth item is not showed).
+\begin{figure}[!ht]
+{\scriptsize\lstinputlisting[multicols=2,numbers=left,language=C]{zgetrf_sp.jdf}} 
+\caption{JDF representation of LU decomposition}
+\end{figure}
+\subsection{Data and nodes layouts}
+In DAGuE, the data are organized following layout defined by the user. Instead of stocking just elements of matrix by colomnes one after the other, it stockes block of matrix with the same way. 
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{data_layout.png} 
+\end{center}
+\caption{Lapack or Colum Major / Tile or Block}
+\end{figure}
+A block of matrix is called a tile. In distributed memory, each node stocke a set of tiles depending on the layout defined by the user. Most of time, the layout \textit{two dimensions block cyclic} is used. Let a $P$ and $Q$, each process of rank $r$ stocke all the tiles which their coordinates $i$ and $j$ on the matrix match the conditions $(j\%P)*(i\%Q)=r$ .
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=0.3\textwidth]{node_layout.png} 
+\end{center}
+\caption{Tiles distribution with two dimensions bloc cyclic}
+\end{figure}
+Therefore, the task distribution on the jdf is refering to a tile of the matrix, it means that the node which is on this tile who will execute the task. Moreover, when a communication is made beetwen two tasks which are executed by the same node, the cost of communication is null because of the data locality. Thus, the user must take care of this locality in order to obtain efficient programs.
+\section{GETRF\_SP on DAGuE}
+In this section, an implementation of getrf\_sp on DAGuE is presented as example. 
+
+\begin{figure}[!ht]
+\begin{minipage}[!ht]{.5\linewidth}
+\centering
+\includegraphics[width=\textwidth]{dag_getrf_sp.png}
+\caption{Data interaction between kernels}
+\end{minipage} \hfill
+\begin{minipage}[!ht]{.5\linewidth}
+\includegraphics[width=\textwidth]{dag.png}
+\caption{DAGuE dgetrf\_sp on a matrix with size of 500 and a tile of 200}
+\end{minipage}
+\end{figure}
+
+\subsection{Performance results}
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{dgetrf_dague_remus_tile.png} 
+\end{center}
+\caption{LU decomposition on shared memory}
+\end{figure}
+
+
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[width=\textwidth]{dgetrf_dague_remus.png} 
+\end{center}
+\caption{LU decomposition on shared memory}
+\end{figure}
+
+\section{LU decompotition with partial pivoting on DAGuE}
+After implementing the LU decomposition with static pivoting and its iterative refinement, the next step is to implement the LU decomposition with partial pivoting. This version will give directly a good decomposition to solve linear system. But, it is much more complicated to obtain good performances because of barrier included by the swapping operation. Thus, it is important to minimize the numers of communications and tasks.
+\subsection{The swapping operation}
+We consider that the panel is already factorized and the matrix is ready to begin the swapping. The panel broadcast the array of pivoting to all others tasks. Let study several way to do the swapping in order to optimize the number of tasks and communications.\\
+Let be A the matrix to factorize. A(i,j) means the tile of the matrix A with the cordinates (i,j). Let MT and NT the numer of tile in columns ands rows respectively.
+
+\subsubsection*{Version 0}
+The first approch consist in doing all the couples of communications. Thus, four tasks are needed for each couple of communication :
+\begin{itemize}
+\item Task 1 (executed in A(k,n)): Extract the line $L_i$ for the swap and send it to tile $t$ concerned.
+\item Task 2 (executed in A(k,n)): Receive $L_e$ and stock it in place of $L_i$.
+\item Task 3 (executed in A(t,n)): Extract the line $L_e$ and send it to the tile A(k,n).
+\item Task 4 (executed in A(t,n)): Receive $L_i$ and stock it in place of $L_e$.
+\end{itemize}
+\begin{figure}[!ht]
+\begin{center}
+\includegraphics[scale=1]{version0.png} 
+\end{center}
+\caption{Swapping operation between each couple}
+\end{figure}
+In this version the number total of tasks for the swapping is : $(MT-k-1)*4*(NT-k-1)$.
+And the number total of communications is : $(MT-k-1)*2*(NT-k-1)$.
+\subsubsection*{Version 1}
+The second approch 
 \end{document}
