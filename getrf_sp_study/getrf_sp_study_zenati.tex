@@ -99,14 +99,14 @@ The test of performance was made on an AMD Opteron(tm) Processor 6168
 which turn at 1900.209 MHz. The benchmarks concern the two precisions : double and simple. The results obtained are described in the two figure below.
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{exp_dgetrf_sp_amd.png} 
+\includegraphics[width=0.8\textwidth]{exp_dgetrf_sp_amd.png} 
 \end{center}
 \caption{dgetrf\_sp performance results on AMD architecture}
 \end{figure}
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{exp_sgetrf_sp_amd.png} 
+\includegraphics[width=0.8\textwidth]{exp_sgetrf_sp_amd.png} 
 \end{center}
 \caption{sgetrf\_sp performance results on AMD architecture}
 \end{figure}
@@ -226,7 +226,7 @@ In this section, an implementation of getrf\_sp on DAGuE is presented as example
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{dgetrf_dague_remus_tile.png} 
+\includegraphics[width=0.8\textwidth]{dgetrf_dague_remus_tile.png} 
 \end{center}
 \caption{LU decomposition on shared memory}
 \end{figure}
@@ -234,7 +234,7 @@ In this section, an implementation of getrf\_sp on DAGuE is presented as example
 
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\textwidth]{dgetrf_dague_remus.png} 
+\includegraphics[width=0.8\textwidth]{dgetrf_dague_remus.png} 
 \end{center}
 \caption{LU decomposition on shared memory}
 \end{figure}
@@ -287,5 +287,8 @@ This version is very similar to last version, the only difference is that inspid
 \end{figure}
 In this version the number total of tasks for the swapping is : $(MT-k-1)*2*(NT-k-1)$.
 And the number total of communications is : $P*2*(NT-k-1)$.
+
+\bibliographystyle{plain}
+\bibliography{biblio}
 
 \end{document}
