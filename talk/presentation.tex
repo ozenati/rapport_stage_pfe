@@ -19,22 +19,16 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\sujet{}
-%Oral Presentation of Parallel Architecture
-\def\projet{Efficient Address Mapping of Shared Cache for On-Chip Many-Core Architecture} 
+\def\projet{LU decomposition on DaGUE} 
 \def\etape{}
 \def\gA{Omar \textsc{Zenati}}
-\def\prof{Susan \textsc{Medina} \& Denis \textsc{Barthou}}
+
 
 
 %%%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%%%
- \title[Oral Presentation]{
+ \title[LU decomposition on DaGUE]{
         {\bfseries \projet\\} 
         {\bfseries \huge \sujet}
-}
-
-\institute[3A]{
-  {\normalsize \bfseries \sffamily Professor:} {\large \prof}~~~\\ 
-  
 }
 
 \author[Zenati]{
@@ -58,191 +52,11 @@
 }
 
 \section{Introduction}
-\begin{frame}
-\frametitle{Introduction}
-\framesubtitle{Moore's Law}
-Moore states: \textit{"Computer chips double in speed every 1.5 to 2 years period"}
-\pause
-\begin{exampleblock}{}
-\underline{Reason:}
-\begin{center}
-Use of smaller transistors
-\end{center}
-\end{exampleblock}{}
-\pause
-\underline{Problem:} Stopped by Heat Wall
-\pause
-\begin{exampleblock}{}
-\underline{Solution:}
-\begin{center}
-Increase of number of cores
-\end{center}
-\end{exampleblock}{}
-\pause
-\underline{Problem:} Stopped by Memory Wall
-\pause
-\begin{exampleblock}{}
-\underline{Solution:} 
-\begin{center}
-Optimise at all levels
-\end{center}
-\end{exampleblock}{}
-\end{frame}
 
-\begin{frame}
-\frametitle{Introduction}
-\framesubtitle{The cache}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{archi_multiprocessor.jpg}
-\end{figure}
-\begin{center}
-Access to the cache is faster than access memory !
-\end{center}
-\end{frame}
-
-
-
-\section{XORM Address Mapping Scheme}
-\begin{frame}
-\frametitle{Cache}
-\framesubtitle{Organisation}
-\begin{exampleblock}{}
-\begin{itemize}
-\item \underline{Cache Line:} Data bloc corresponding to a contiguous data bloc in memory.
-\item Cache lines are organized into sets of lines.
-\end{itemize}
-\end{exampleblock}{}
-Each part of a memory address shows how to find the equivalent bloc in the cache:
-\begin{exampleblock}{}
-\begin{itemize}
-\item Tag: Identification of the address
-\item Cache set: Number of the equivalent set
-\item Offset: Position in the cache line
-\end{itemize}
-\end{exampleblock}{}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{address_memory.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Cache}
-\framesubtitle{Problem}
-The conflict miss problem :
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{problem.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Conflict Miss}
-\framesubtitle{Some solution}
-To reduce conflict miss in cache :
-\begin{exampleblock}{}
-\begin{itemize}
-\item Skewed-associative cache
-\item Victim cache
-\item Column-associative cache
-\item Prime-indexed cache
-\item ...
-\end{itemize}
-\end{exampleblock}{}
-\pause
-The main shortcomings of these schemes are:
-\begin{exampleblock}{}
-\begin{itemize}
-\item Computing complexity 
-\item Implementing cost
-\end{itemize}
-\end{exampleblock}{}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{XORM scheme}
-\framesubtitle{Principle}
-\underline{Definition :}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{def.png}
-\end{figure}
-\pause
-\begin{figure}
-\includegraphics[width=0.5\textwidth]{xorm_scheme.png}
-\end{figure}
-\pause
-\begin{exampleblock}{}
-\begin{center}
-$ index = A_3 H_{m*m} \oplus A_2$\\
-$ interleave = A_4 H_{m*m} \oplus A_1$
-\end{center}
-\end{exampleblock}{}
-\end{frame}
-
-
-\section{Simulation and Result}
-\begin{frame}
-\frametitle{Simulation}
-\framesubtitle{Godson-T Simulator Architecture}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{godsont.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Simulation}
-\framesubtitle{Target algorithm}
-The simulation was applied with :
-\begin{exampleblock}{}
-\begin{itemize}
-\item Matrix multiplication
-\item FFT decomposition
-\item LU decomposition
-\item Pfind algorithm
-\end{itemize}
-\end{exampleblock}{}
-\end{frame}
-
-\begin{frame}
-\frametitle{Results}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{result1.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Results}
-\begin{figure}
-\includegraphics[width=0.8\textwidth]{result2.png}
-\end{figure}
-\end{frame}
-
-
-\section{Conclusion}
-\begin{frame}
-\frametitle{Conclusion}
-\underline{XORM scheme :}
-\begin{exampleblock}{}
-\begin{itemize}
-\item Less miss conflict
-\item Better performance
-\end{itemize}
-\end{exampleblock}{}
-\underline{Questions :}
-\begin{exampleblock}{}
-\begin{itemize}
-\item What about others architectures?
-\end{itemize}
-\end{exampleblock}{}
-\end{frame}
-
-
-\frame{
-\frametitle{Conclusion}
-\begin{exampleblock}{}
-\begin{center}
-\huge{Thank you for your attention}
-\end{center}
-\end{exampleblock}{}
-}
+\section{Static pivoting}
+\subsection{Iterative refinement}
+\section{Partial pivoting}
+\subsection{Panel factorization}
+\subsection{Update}
 
 \end{document}
