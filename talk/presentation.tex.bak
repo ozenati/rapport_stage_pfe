@@ -21,15 +21,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\sujet{}
-\def\projet{LU decomposition on DAGuE} 
+\def\projet{LU decomposition on DaGUE} 
 \def\etape{}
-\def\gA{Omar \textsc{Zenati}, MsC Candidate}
-\def\gB{Supervisors: M. Faverge, E. Agullo, G. Bosilca, P. Ramet}
+\def\gA{Omar \textsc{Zenati}}
 
 
 
 %%%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%%%
- \title[LU decomposition on DAGuE]{
+ \title[LU decomposition on DaGUE]{
         {\bfseries \projet\\} 
         {\bfseries \huge \sujet}
         {\small Friday Lunch Talk}
@@ -38,15 +37,10 @@
 
 \titlegraphic{
   \includegraphics[scale=0.5]{icl.png}
-  \hfill
-  \includegraphics[scale=0.3]{inria.png}
   }
 \date{May 25, 2012}
-
 \author[Zenati]{
   {\normalsize \bfseries \sffamily} {\large \gA}\\
-  \vspace{1cm}
-  {\normalsize \bfseries \sffamily} {\large \gB}\\
 }
 
 \begin{document}
@@ -61,7 +55,7 @@
 
 \AtBeginSection[]{
   \begin{frame}{Summary}
-  \tableofcontents[currentsection,subsectionstyle=shaded]
+  \tableofcontents[currentsection]
   \end{frame}
 }
 
@@ -75,7 +69,7 @@
 \begin{frame}{Introduction}
 \begin{itemize}
 \item The need of LU decomposition algorithm
-\item The evolution (linpack, lapack, scalapack, plasma, dplasma (mine))
+\item The evolution
 \end{itemize}
 \end{frame}
 
@@ -102,6 +96,8 @@
 
 \section{Partial Pivoting}
 
+\subsection{Panel Factorization}
+
 \begin{frame}{Partial pivoting algorithm}
 \begin{itemize}
 \item Display algorithm
@@ -109,7 +105,7 @@
 \end{itemize}
 \end{frame}
 
-\subsection{Panel Factorization}
+
 
 \begin{frame}{Panel Factorization}
 \framesubtitle{Comparative study}
@@ -215,8 +211,8 @@ $\Longrightarrow$ the two operations are executed in the same task of the swap
 Optimizations:
 \begin{itemize}
 \item Look for the maximum locally using thread parallelism
-\item Share the local result by using a binary tree
-\item Share the global result by using Bruck's algorithm
+\item Share the local result by using a binary three
+\item Share the global result by using the Brook's algorithm
 \item Use internal blocking
 \end{itemize}
 \end{column}
@@ -235,7 +231,7 @@ Optimizations:
 \item Look for the maximum locally using thread parallelism
 \transparent{0.4}
 \item Share the local result by using a binary three
-\item Share the global result by using Bruck's algorithm
+\item Share the global result by using the Brook's algorithm
 \item Use internal blocking
 \end{itemize}
 \end{column}
@@ -262,7 +258,7 @@ Optimizations:
 \item Look for the maximum locally using thread parallelism}
 \item Share the local result by using a binary three
 \transparent{0.4}
-\item Share the global result by using Bruck's algorithm
+\item Share the global result by using the Brook's algorithm
 \item Use internal blocking
 \end{itemize}
 \end{column}
@@ -289,7 +285,7 @@ Optimizations:
 {\transparent{0.4}
 \item Look for the maximum locally using thread parallelism
 \item Share the local result by using a binary three}
-\item Share the global result by using Bruck's algorithm
+\item Share the global result by using the Brook's algorithm
 \transparent{0.4}
 \item Use internal blocking
 \end{itemize}
@@ -317,7 +313,7 @@ Optimizations:
 {\transparent{0.4}
 \item Look for the maximum locally using thread parallelism
 \item Share the local result by using a binary three
-\item Share the global result by using Bruck's algorithm}
+\item Share the global result by using the Brook's algorithm}
 \item Use internal blocking
 \end{itemize}
 \end{column}
@@ -343,7 +339,7 @@ Optimizations:
 \item Implemented Version
 \begin{exampleblock}{}
 \begin{itemize}
-\item Total tasks : $(2 * MT + log(P)) * min(MB,NB)$
+\item Total tasks : $(2 * MT + log(P) * min(MB,NB)$
 \item Total global communications : $log(P) * min(MB,NB)$
 \end{itemize}
 \end{exampleblock}{}
@@ -352,92 +348,10 @@ Optimizations:
 
 
 \subsection{Update}
-
-\begin{frame}{Update matrix}
-\framesubtitle{Comparative study}
+\begin{frame}{}
 \begin{itemize}
-\item Natural Version
-\item Implemented Version
+\item Similar to the update: comparative between naive and implemented version
 \end{itemize}
-\end{frame}
-
-\begin{frame}{Update matrix}
-\framesubtitle{Natural version: Swap}
-\begin{columns}
-\begin{column}{.50\textwidth}
-\begin{center}
-\includegraphics[scale=0.5]{update_swap.png}
-\end{center}
-\end{column}
-\hfill
-\begin{column}{.50\textwidth}
-The main tile exchange swap lines with other concerned tile.
-\pause
-\begin{exampleblock}{}
-$\Longrightarrow$ Number of tasks : $2*NB$
-$\Longrightarrow$ Number of communications : $4*NB*NB$
-$\Longrightarrow$ Difficult to implement in DAGuE
-\end{exampleblock}{}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Update matrix}
-\framesubtitle{Comparative study}
-\begin{itemize}
-\item Natural Version
-\begin{exampleblock}{}
-\begin{itemize}
-\item Total tasks : $2 * NB * NT$
-\item Total global communications : $4 * NB * NB * NT$
-\end{itemize}
-\end{exampleblock}{}
-
-\item Implemented Version
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Update Matrix}
-\framesubtitle{Implemented version}
-\begin{columns}
-\begin{column}{.70\textwidth}
-Optimizations:
-\begin{itemize}
-\item Use of permutation instead of pivot index
-\item Parallelize the swap from and the swap into the main tile
-\item 
-\end{itemize}
-\end{column}
-\hfill
-\begin{column}{.30\textwidth}
-\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Panel Factorization}
-\framesubtitle{Implemented version}
-\begin{columns}
-\begin{column}{.70\textwidth}
-Optimizations:
-\begin{itemize}
-\item Look for the maximum locally using thread parallelism
-\transparent{0.4}
-\item Share the local result by using a binary three
-\item Share the global result by using Bruck's algorithm
-\item Use internal blocking
-\end{itemize}
-\end{column}
-\hfill
-\begin{column}{.30\textwidth}
-\begin{center}
-\includegraphics[scale=0.8]{panel_max_opt1.png}
-\end{center}
-\end{column}
-\end{columns}
-\pause
-\begin{exampleblock}{}
-$\Longrightarrow$ Number of tasks : $MT$
-\end{exampleblock}{}
 \end{frame}
 
 \subsection{Performances}
