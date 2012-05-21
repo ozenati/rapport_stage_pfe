@@ -374,8 +374,8 @@ Optimizations:
 The main tile exchange swap lines with other concerned tile.
 \pause
 \begin{exampleblock}{}
-$\Longrightarrow$ Number of tasks : $2*NB$
-$\Longrightarrow$ Number of communications : $4*NB*NB$
+$\Longrightarrow$ Number of tasks : $2*NB$\\
+$\Longrightarrow$ Number of communications : $4*NB*NB$\\
 $\Longrightarrow$ Difficult to implement in DAGuE
 \end{exampleblock}{}
 \end{column}
@@ -388,7 +388,7 @@ $\Longrightarrow$ Difficult to implement in DAGuE
 \item Natural Version
 \begin{exampleblock}{}
 \begin{itemize}
-\item Total tasks : $2 * NB * NT$
+\item Total tasks : $2 * NB * NT$\\
 \item Total global communications : $4 * NB * NB * NT$
 \end{itemize}
 \end{exampleblock}{}
@@ -400,16 +400,15 @@ $\Longrightarrow$ Difficult to implement in DAGuE
 \begin{frame}{Update Matrix}
 \framesubtitle{Implemented version}
 \begin{columns}
-\begin{column}{.70\textwidth}
+\begin{column}{.50\textwidth}
 Optimizations:
 \begin{itemize}
 \item Use of permutation instead of pivot index
 \item Parallelize the swap from and the swap into the main tile
-\item 
 \end{itemize}
 \end{column}
 \hfill
-\begin{column}{.30\textwidth}
+\begin{column}{.50\textwidth}
 \end{column}
 \end{columns}
 \end{frame}
