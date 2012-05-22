@@ -29,7 +29,7 @@
 
 
 %%%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%%%
- \title[LU decomposition on DAGuE]{
+ \title[LU Decompositions over DAGuE]{
         {\bfseries \projet\\} 
         {\bfseries \huge \sujet}
         {\small Friday Lunch Talk}
@@ -71,33 +71,49 @@
   \end{frame}
 }
 
-\section{LU Decomposition Algorithm}
+\section{LU Decomposition Algorithms}
 \begin{frame}{Introduction}
 \begin{itemize}
-\item The need of LU decomposition algorithm
 \item The evolution (linpack, lapack, scalapack, plasma, dplasma (mine))
+\item Different class of LU decomposition (static, incremental and dynamic)
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Introduction}
-\framesubtitle{The algorithm}
+\section{DAGuE Runtime System}
+\begin{frame}{DAGuE}
+DAGuE is a task flow where :
 \begin{itemize}
-\item Display algorithm
-\item Introduce the problem of accuracy
+\item nodes are tasks
+\item edges are dependancies
 \end{itemize}
-\end{frame}
-
-\section{Static Pivoting and Iterative Refinement}
-
-\begin{frame}{Static pivoting algorithm}
+\pause
+DAG expressed with functions of JDF format :
 \begin{itemize}
-\item Display algorithm
-\item Show the advantages and the limits
+\item definition space;
+\item task distribution;
+\item set of data dependencies;
+\item body to be executed (written in language C).
 \end{itemize}
 \end{frame}
 
+\section{Static Pivoting}
 
-\begin{frame}{Static pivoting performance}
+\begin{frame}{Static Pivoting}
+\framesubtitle{Motivation}
+\end{frame}
+
+\begin{frame}{Static Pivoting}
+\framesubtitle{DAG}
+\begin{center}
+\includegraphics[width=\textwidth]{dag_getrf_sp.png} 
+\end{center}
+\end{frame}
+
+\begin{frame}{Static Pivoting}
+\framesubtitle{Exemple}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{dag.png} 
+\end{center}
 \end{frame}
 
 \section{Partial Pivoting}
@@ -399,47 +415,26 @@ $\Longrightarrow$ Difficult to implement in DAGuE
 
 \begin{frame}{Update Matrix}
 \framesubtitle{Implemented version}
-\begin{columns}
-\begin{column}{.50\textwidth}
-Optimizations:
+Solutions:
 \begin{itemize}
 \item Use of permutation instead of pivot index
 \item Parallelize the swap from and the swap into the main tile
 \end{itemize}
-\end{column}
-\hfill
-\begin{column}{.50\textwidth}
-\end{column}
-\end{columns}
+\pause
+\begin{exampleblock}{}
+$\Longrightarrow$ Five kind of tasks : COPY, COLLECT, RECEIVE, SEND and PASTE.
+\end{exampleblock}{}
+
 \end{frame}
 
 \begin{frame}{Panel Factorization}
 \framesubtitle{Implemented version}
-\begin{columns}
-\begin{column}{.70\textwidth}
-Optimizations:
-\begin{itemize}
-\item Look for the maximum locally using thread parallelism
-\transparent{0.4}
-\item Share the local result by using a binary three
-\item Share the global result by using Bruck's algorithm
-\item Use internal blocking
-\end{itemize}
-\end{column}
-\hfill
-\begin{column}{.30\textwidth}
 \begin{center}
-\includegraphics[scale=0.8]{panel_max_opt1.png}
+\includegraphics[scale=0.7]{swap_opt.png}
 \end{center}
-\end{column}
-\end{columns}
-\pause
-\begin{exampleblock}{}
-$\Longrightarrow$ Number of tasks : $MT$
-\end{exampleblock}{}
 \end{frame}
 
-\subsection{Performances}
+\section{Performances}
 \begin{frame}{Performances of partial pivoting}
 \begin{itemize}
 \item Shared memory
