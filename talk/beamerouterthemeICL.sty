@@ -1,0 +1,397 @@
+% Copyright Hartwig Anzt <hartwig.anzt@kit.edu>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\ProvidesPackage{beamerouterthemeICL}
+\RequirePackage{graphicx}
+\RequirePackage{ICL-Logo}
+%\RequirePackage{UTK-Logo}
+
+\mode<presentation>
+
+\newlength{\ICL@margin}
+\setlength{\ICL@margin}{\paperwidth} % 3/254ths of the paperwidth
+\divide\ICL@margin by 254
+\multiply\ICL@margin by 3
+
+\newlength{\ICL@originalheadmargin}
+\setlength{\ICL@originalheadmargin}{\paperwidth} % 3/254ths of the paperwidth by default
+\divide\ICL@originalheadmargin by 254
+\multiply\ICL@originalheadmargin by 3
+
+\newlength{\ICL@headmargin}
+\setlength{\ICL@headmargin}{\ICL@originalheadmargin}
+
+\newlength{\ICL@headlinemargin}
+\setlength{\ICL@headlinemargin}{\paperwidth} % 5/254ths of the paperwidth by default
+\divide\ICL@headlinemargin by 254
+\multiply\ICL@headlinemargin by 5
+
+\newlength{\ICL@footmargin}
+\setlength{\ICL@footmargin}{\paperwidth} % 6/254ths of the paperwidth
+\divide\ICL@footmargin by 2540
+\multiply\ICL@footmargin by 40
+
+\newlength{\ICL@textmargin}
+\setlength{\ICL@textmargin}{\paperwidth} % 12/254ths of the paperwidth
+\divide\ICL@textmargin by 254
+\multiply\ICL@textmargin by 12
+
+\newlength{\ICL@paperwidth}
+\setlength{\ICL@paperwidth}{\paperwidth}
+\addtolength{\ICL@paperwidth}{-2\ICL@margin}
+
+\newlength{\ICL@framewidth}
+\setlength{\ICL@framewidth}{\paperwidth}
+\addtolength{\ICL@framewidth}{-2\ICL@margin}
+
+\newlength{\ICL@textwidth}
+\setlength{\ICL@textwidth}{\paperwidth}
+\addtolength{\ICL@textwidth}{-2\ICL@margin}
+\addtolength{\ICL@textwidth}{-2\ICL@textmargin}
+
+\newlength{\ICL@textheight}
+\setlength{\ICL@textheight}{\paperheight}
+\addtolength{\ICL@textheight}{-\ICL@headmargin}
+\addtolength{\ICL@textheight}{-\ICL@footmargin}
+
+\newlength{\ICL@bottomskip}
+\setlength{\ICL@bottomskip}{0.05\textheight}
+
+\newlength{\ICL@ICLlogoheight}
+\setlength{\ICL@ICLlogoheight}{\paperwidth} % 13/254ths of the paperwidth
+\divide\ICL@ICLlogoheight by 254
+\multiply\ICL@ICLlogoheight by 13
+
+\newlength{\ICL@FZKlogoheight}
+\setlength{\ICL@FZKlogoheight}{\paperwidth} % 11/253ths of the paperwidth
+\divide\ICL@FZKlogoheight by 253
+\multiply\ICL@FZKlogoheight by 11
+
+\newlength{\ICL@UKAlogoheight}
+\setlength{\ICL@UKAlogoheight}{\paperwidth} % 9/253ths of the paperwidth
+\divide\ICL@UKAlogoheight by 253
+\multiply\ICL@UKAlogoheight by 9
+
+\newlength{\ICL@rectangleheight}
+\setlength{\ICL@rectangleheight}{\paperwidth} % 15/253ths of the paperwidth
+\divide\ICL@rectangleheight by 253
+\multiply\ICL@rectangleheight by 15
+
+\newlength{\ICL@rectanglewidth}
+\setlength{\ICL@rectanglewidth}{\paperwidth} % 3/254ths of the paperwidth
+\divide\ICL@rectanglewidth by 254
+\multiply\ICL@rectanglewidth by 3
+
+\newlength{\ICL@cornerradius}
+\setlength{\ICL@cornerradius}{\paperwidth} % 2/254ths of the paperwidth
+\divide\ICL@cornerradius by 254
+\multiply\ICL@cornerradius by 2
+
+\newlength{\ICL@titleICLlogoheight}
+\setlength{\ICL@titleICLlogoheight}{\paperwidth} % 21/254ths of the paperwidth
+\divide\ICL@titleICLlogoheight by 254
+\multiply\ICL@titleICLlogoheight by 21
+
+\newlength{\ICL@titlelineposition}
+\setlength{\ICL@titlelineposition}{\paperwidth} % 882/2540ths of the paperwidth
+\divide\ICL@titlelineposition by 2540
+\multiply\ICL@titlelineposition by 882
+
+\newlength{\ICL@titlelineheight}
+\setlength{\ICL@titlelineheight}{\paperwidth} % 0.4/254ths of the paperwidth
+\divide\ICL@titlelineheight by 2540
+\multiply\ICL@titlelineheight by 4
+
+\newlength{\ICL@titlebarheight}
+\setlength{\ICL@titlebarheight}{\paperwidth} % 12.4/254ths of the paperwidth
+\divide\ICL@titlebarheight by 2540
+\multiply\ICL@titlebarheight by 124
+
+\newlength{\ICL@titlebarheightfooter}
+\setlength{\ICL@titlebarheightfooter}{\paperwidth} % 14.5/254ths of the paperwidth
+\divide\ICL@titlebarheightfooter by 2540
+\multiply\ICL@titlebarheightfooter by 145
+
+\newlength{\ICL@titlebarwidth}
+\setlength{\ICL@titlebarwidth}{\paperwidth} % 248/253ths of the paperwidth
+\divide\ICL@titlebarwidth by 254
+\multiply\ICL@titlebarwidth by 248
+
+\newlength{\ICL@titlebarcolorheight}
+\setlength{\ICL@titlebarcolorheight}{\paperwidth} % 19/253ths of the paperwidth
+\divide\ICL@titlebarcolorheight by 254
+\multiply\ICL@titlebarcolorheight by 2
+
+\newlength{\ICL@titlefooter}
+\setlength{\ICL@titlefooter}{\paperwidth} % 9/253ths of the paperwidth
+\divide\ICL@titlefooter by 254
+\multiply\ICL@titlefooter by 9
+
+\newlength{\ICL@titlefooterfontsmall}
+\setlength{\ICL@titlefooterfontsmall}{\paperwidth} % 3/253ths of the paperwidth
+\divide\ICL@titlefooterfontsmall by 254
+\multiply\ICL@titlefooterfontsmall by 3
+
+\newlength{\ICL@titlefooterfontlarge}
+\setlength{\ICL@titlefooterfontlarge}{\paperwidth} % 6/253ths of the paperwidth
+\divide\ICL@titlefooterfontlarge by 254
+\multiply\ICL@titlefooterfontlarge by 6
+
+\newlength{\ICL@titlegraphicheight}
+\setlength{\ICL@titlegraphicheight}{\paperwidth} % 738/2540ths of the paperwidth
+\divide\ICL@titlegraphicheight by 2540
+\multiply\ICL@titlegraphicheight by 738
+
+\newlength{\ICL@titlegraphicwidth}
+\setlength{\ICL@titlegraphicwidth}{\paperwidth}
+\addtolength{\ICL@titlegraphicwidth}{-2\ICL@margin}
+
+\newlength{\ICL@titletextbeginfooter}
+\setlength{\ICL@titletextbeginfooter}{\paperwidth} % 4.4/254ths of the paperwidth
+\divide\ICL@titletextbeginfooter by 2540
+\multiply\ICL@titletextbeginfooter by 66
+
+\newlength{\ICL@titletitlelinesep}
+\setlength{\ICL@titletitlelinesep}{\paperwidth} % 40/254ths of the paperwidth
+\divide\ICL@titletitlelinesep by 254
+\multiply\ICL@titletitlelinesep by 40
+
+% Height of title bottom line base line from lower edge of title picture
+\newlength{\ICL@titlebottom}
+\setlength{\ICL@titlebottom}{\paperwidth} % 130/254ths of the paperwidth
+\divide\ICL@titlebottom by 254
+\multiply\ICL@titlebottom by 117
+%\multiply\ICL@titlebottom by 132
+
+% distance between title bottom line base line and top edge of subtitle/author box
+\newlength{\ICL@titlesubtitlesep}
+\setlength{\ICL@titlesubtitlesep}{\paperwidth} % 6/254ths of the paperwidth
+\divide\ICL@titlesubtitlesep by 2540
+\multiply\ICL@titlesubtitlesep by 65
+
+% distance between title bottom line base line and institute line middle
+\newlength{\ICL@titleinstitutesep}
+\setlength{\ICL@titleinstitutesep}{\paperwidth} % 32/254ths of the paperwidth
+\divide\ICL@titleinstitutesep by 254
+\multiply\ICL@titleinstitutesep by 32
+
+% distance between logo and leftmargin
+\newlength{\ICL@logosepleft}
+\setlength{\ICL@logosepleft}{\paperwidth} % 8/254ths of the paperwidth
+\divide\ICL@logosepleft by 254
+\multiply\ICL@logosepleft by 8
+
+% distance between logo and top margin
+\newlength{\ICL@logoseptop}
+\setlength{\ICL@logoseptop}{\paperwidth} % 6.5/254ths of the paperwidth
+\divide\ICL@logoseptop by 254
+\multiply\ICL@logoseptop by 6
+
+
+\newcommand{\ICL@pagenumberlabel}{}
+\newcommand{\ICLsetpagenumberlabel}[1]{\renewcommand{\ICL@pagenumberlabel}{#1}}
+
+\newcommand{\ICL@pageoflabel}{/}
+\newcommand{\ICLsetpageoflabel}[1]{\renewcommand{\ICL@pageoflabel}{#1}}
+
+\newcommand{\ICL@headline}{}
+
+\newcommand{\ICL@navigation}{}
+
+\let\ICL@maketitle=\maketitle
+\renewcommand{\maketitle}{%
+  \setbeamertemplate{background canvas}[ICLTitle]
+  \setbeamertemplate{footline}[ICLTitle]
+  \ICL@maketitle
+  \setbeamertemplate{background canvas}[ICL]
+  \setbeamertemplate{footline}[ICL]
+}
+
+\DeclareOption{headline}{%
+  \typeout{beamerouterthemeICL: Using standard beamer headline.}%
+  \renewcommand{\ICL@headline}{%
+    \defbeamertemplate*{headline}{ICL}
+    {%
+      \ifnum\thesection>0%
+      \begin{beamercolorbox}{section in head/foot}%
+        \vskip2pt%
+        \hskip\ICL@margin\insertnavigation{\ICL@framewidth}%
+      \end{beamercolorbox}%
+      \fi%
+    }%
+  }%
+  \setlength{\ICL@headmargin}{\ICL@originalheadmargin}%
+  \addtolength{\ICL@headmargin}{\ICL@headlinemargin}%
+  \setlength{\ICL@textheight}{\paperheight}%
+  \addtolength{\ICL@textheight}{-\ICL@headmargin}%
+  \addtolength{\ICL@textheight}{-\ICL@footmargin}%
+}
+
+\DeclareOption{noHeadline}{%
+  \typeout{beamerouterthemeICL: Disabling headline.}%
+  \renewcommand{\ICL@headline}{}%
+  \setlength{\ICL@headmargin}{\ICL@originalheadmargin}%
+  \setlength{\ICL@textheight}{\paperheight}%
+  \addtolength{\ICL@textheight}{-\ICL@headmargin}%
+  \addtolength{\ICL@textheight}{-\ICL@footmargin}%
+}
+
+\defbeamertemplate*{ICL navigation symbols}{default}
+{%
+  \hbox{%
+    \hbox{\insertframenavigationsymbol}%
+    \hbox{\insertsectionnavigationsymbol}%
+    %\hbox{\insertdocnavigationsymbol}%
+    \hbox{\insertbackfindforwardnavigationsymbol}%
+  }%
+}
+
+\DeclareOption{navigation}{%
+  \typeout{beamerouterthemeICL: Using standard beamer navigation symbols.}%
+  \renewcommand{\ICL@navigation}{\usebeamertemplate***{ICL navigation symbols}}%
+}
+
+\DeclareOption{noNavigation}{%
+  \typeout{beamerouterthemeICL: Disabling navigation symbols.}%
+  \renewcommand{\ICL@navigation}{}%
+}
+
+\defbeamertemplate{background canvas}{ICLTitle}
+{%
+  \begin{pgfpicture}
+    % Background image, scaled properly
+    \pgftext[bottom, left, at={\pgfpointadd{\pgfpoint{\ICL@margin}{0pt}}{\pgfpoint{0pt}{\ICL@titlebarheightfooter}}}]{\includegraphics[width=\ICL@titlegraphicwidth]{title-background}}
+    
+
+    % Backdrop rectangle
+    \pgfsetcolor{ICL@darkgray}
+    \pgfpathrectangle{\pgfpoint{0pt}{0pt}}{\pgfpoint{\ICL@margin}{\paperheight}}
+    \pgfusepath{fill}
+    \pgfpathrectangle{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{\ICL@titlebarheightfooter}}
+    \pgfusepath{fill}
+    \pgfpathrectangle{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\paperheight}}
+    \pgfusepath{fill}
+    \pgfpathrectangle{\pgfpoint{0pt}{\paperheight}}{\pgfpoint{\paperwidth}{-\ICL@margin}}
+    \pgfusepath{fill}
+
+    % Round corner, bottom left
+    \pgfpathmoveto{\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@titlebarheightfooter}}{\pgfpoint{0pt}{\ICL@cornerradius}}}
+    \pgfpatharc{180}{270}{\ICL@cornerradius}
+    \pgfpathlineto{\pgfpoint{\ICL@margin}{\ICL@titlebarheightfooter}}
+    \pgfpathlineto{\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@titlebarheightfooter}}{\pgfpoint{0pt}{\ICL@cornerradius}}}
+    \pgfusepath{fill}
+
+    % Round corner, top right
+    \pgfpathmoveto{\pgfpointadd{\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\ICL@margin}}}{\pgfpoint{0pt}{-\ICL@cornerradius}}}
+    \pgfpatharc{0}{90}{\ICL@cornerradius}
+    \pgfpathlineto{\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\ICL@margin}}}
+    \pgfpathlineto{\pgfpointadd{\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\ICL@margin}}}{\pgfpoint{0pt}{-\ICL@cornerradius}}}
+    \pgfusepath{fill}
+
+
+    % Dump-ass footers
+    \pgftext[left, at={\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@margin}}{\pgfpoint{\ICL@logosepleft}{0.7\ICL@titlefooter}}}]{\textcolor{white}{\fontsize{\ICL@titlefooterfontsmall}{\ICL@titlefooterfontsmall}\selectfont{}Innovative and Computing Laboratory -- ICL}} %%% and National Large-scale Research Center of the Helmholtz Association}}
+    \pgftext[left, at={\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@margin}}{\pgfpoint{\ICL@logosepleft}{0.2\ICL@titlefooter}}}]{\textcolor{white}{\fontsize{\ICL@titlefooterfontsmall}{\ICL@titlefooterfontsmall}\selectfont{} \ \ \ \ University of Tennessee, Knoxville}}
+    \pgftext[right, at={\pgfpointadd{\pgfpoint{\paperwidth}{\ICL@titletextbeginfooter}}{\pgfpoint{-0.245\ICL@textmargin}{0pt}}}]{\textcolor{white}{\fontsize{\ICL@titlefooterfontlarge}{\ICL@titlefooterfontlarge}\selectfont{}http://icl.cs.utk.edu/}}
+
+
+  \end{pgfpicture}
+}
+
+\defbeamertemplate*{background canvas}{ICL}
+{%
+
+  \begin{pgfpicture}
+    \pgfsetcolor{ICL@darkgray}
+
+    % Backdrop rectangle
+    \pgfpathrectangle{\pgfpoint{0pt}{0pt}}{\pgfpoint{\ICL@margin}{\paperheight}}
+    \pgfusepath{fill}
+    \pgfpathrectangle{\pgfpoint{0pt}{0pt}}{\pgfpoint{\paperwidth}{3.62\ICL@footmargin}}
+    \pgfusepath{fill}
+    \pgfpathrectangle{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\paperheight}}
+    \pgfusepath{fill}
+    \pgfpathrectangle{\pgfpoint{0pt}{\paperheight}}{\pgfpoint{\paperwidth}{-\ICL@headmargin}}
+    \pgfusepath{fill}
+    
+        % Round corner, bottom left
+    \pgfpathmoveto{\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@titlebarheightfooter}}{\pgfpoint{0pt}{\ICL@cornerradius}}}
+    \pgfpatharc{180}{270}{\ICL@cornerradius}
+    \pgfpathlineto{\pgfpoint{\ICL@margin}{\ICL@titlebarheightfooter}}
+    \pgfpathlineto{\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@titlebarheightfooter}}{\pgfpoint{0pt}{\ICL@cornerradius}}}
+    \pgfusepath{fill}
+
+    % Round corner, bottom left
+    \pgfpathmoveto{\pgfpointadd{\pgfpoint{\ICL@margin}{\ICL@footmargin}}{\pgfpoint{0pt}{\ICL@cornerradius}}}
+    \pgfpatharc{180}{270}{\ICL@cornerradius}
+    \pgfpathlineto{\pgfpoint{\ICL@margin}{3.62\ICL@footmargin}}
+    \pgfpathlineto{\pgfpointadd{\pgfpoint{\ICL@margin}{3.62\ICL@footmargin}}{\pgfpoint{0pt}{\ICL@cornerradius}}}
+    \pgfusepath{fill}
+
+    % Round corner, top right
+    \pgfpathmoveto{\pgfpointadd{\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\ICL@headmargin}}}{\pgfpoint{0pt}{-\ICL@cornerradius}}}
+    \pgfpatharc{0}{90}{\ICL@cornerradius}
+    \pgfpathlineto{\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\ICL@headmargin}}}
+    \pgfpathlineto{\pgfpointadd{\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpoint{-\ICL@margin}{-\ICL@headmargin}}}{\pgfpoint{0pt}{-\ICL@cornerradius}}}
+    \pgfusepath{fill}
+
+    % ICL Logo, top right
+    \pgftext[top, right, at={\pgfpointadd{\pgfpoint{\paperwidth}{\paperheight}}{\pgfpointadd{\pgfpoint{-2.5\ICL@margin}{-\ICL@headmargin}}{\pgfpoint{0pt}{-0.25\ICL@rectangleheight}}}}]{\ICLLogo[\ICL@ICLlogoheight]{}}
+
+
+     \end{pgfpicture}
+}
+
+\defbeamertemplate*{frametitle}{ICL}
+{%
+  \nointerlineskip%
+  \vskip\ICL@headmargin%
+  \vskip\ICL@rectangleheight%
+  \begin{beamercolorbox}[wd=\ICL@textwidth, sep=0pt, ht=0pt, vmode]{frametitle}%
+    \strut%
+    \usebeamerfont*{frametitle}\usebeamercolor[black]{frametitle}\insertframetitle%
+  \end{beamercolorbox}%
+  \vskip-0.5ex%
+  \ifx\insertframesubtitle\@empty%
+  \else%
+  \begin{beamercolorbox}[wd=\ICL@textwidth, sep=0pt, vmode]{frametitle}%
+    \usebeamerfont*{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle%
+  \end{beamercolorbox}%
+  \fi%
+  \nointerlineskip%
+}
+
+\defbeamertemplate*{footline}{ICLTitle}
+{%
+  \leavevmode%
+}
+
+\defbeamertemplate*{footline}{ICL}
+{%
+  \hskip0\ICL@margin%
+  \begin{beamercolorbox}[wd=1.12\ICL@textwidth, sep=2.6\ICL@margin, vmode]{footline}
+	\rule{\ICL@margin}{0ex}
+   	\usebeamercolor[fg]{page number in head/foot}\ICL@pagenumberlabel{} \insertframenumber{}%\ICL@pageoflabel\inserttotalframenumber{}
+	\hspace{0.5cm}
+	\insertshortdate
+	\hfill
+	\insertshortauthor\, - \insertshorttitle{}
+	\hfill
+	\insertshortinstitute
+  \end{beamercolorbox}
+  %\vskip0.5\ICL@margin%
+}
+
+\defbeamertemplate*{sidebar right}{ICL}{}
+
+\setbeamersize{text margin left=\ICL@textmargin, text margin right=\ICL@textmargin}
+
+\ExecuteOptions{noHeadline,navigation}
+\ProcessOptions
+
+\ICL@headline
+
+\mode
+<all>

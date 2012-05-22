@@ -1,0 +1,41 @@
+% Copyright Hartwig Anzt <hartwig.anzt@kit.edu>
+%
+% beamerthemeICL.sty 
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\ProvidesPackage{beamerthemeICL}
+
+\mode<presentation>
+
+\DeclareOption{headline}{%
+  \PassOptionsToPackage{headline}{beamerouterthemeICL}
+}
+
+\DeclareOption{noHeadline}{%
+  \PassOptionsToPackage{noHeadline}{beamerouterthemeICL}
+}
+
+\DeclareOption{navigation}{%
+  \PassOptionsToPackage{navigation}{beamerouterthemeICL}
+}
+
+\DeclareOption{noNavigation}{%
+  \PassOptionsToPackage{noNavigation}{beamerouterthemeICL}
+}
+
+\ProcessOptions
+
+
+
+
+
+\usepackage{beamertextthemeICL}
+\usefonttheme{ICL}
+%\useinnertheme{ICL}
+\useoutertheme{ICL}
+\usecolortheme{ICL}
+
+\mode
+<all>

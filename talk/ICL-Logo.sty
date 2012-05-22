@@ -1,0 +1,19 @@
+% ICL-Logo.sty 
+% To scale the logo, specify the desired logo height as an optional
+% command line parameter.  The default height is 10mm.
+
+\ProvidesPackage{ICL-Logo}
+\RequirePackage{pgf}
+\RequirePackage{helvet}
+
+\makeatletter
+\newlength{\ICLLogoUnit}
+
+
+\newcommand{\ICLLogo}[1][10mm]{%
+\setlength{\ICLLogoUnit}{#1}%
+\divide\ICLLogoUnit by 130%
+\begin{pgfpicture}
+	\pgftext[bottom, left, at={0cm, 0cm}]{\includegraphics[width=2.2cm]{ICL-slide-logo}}
+\end{pgfpicture}}
+\makeatother
