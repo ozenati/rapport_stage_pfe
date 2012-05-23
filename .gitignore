@@ -15,3 +15,4 @@ talk/*.synctex.gz
 talk/*.toc
 graph.dot
 graph.png
+dia/*.eps

@@ -88,7 +88,7 @@
 \end{frame}
 
 
-\section{LU Decomposition Algorithms}
+\section[LU Algorithms]{LU Decomposition Algorithms}
 \begin{frame}{Introduction}
 \begin{itemize}
 \item The evolution (linpack, lapack, scalapack, plasma, dplasma (mine))
@@ -96,44 +96,14 @@
 \end{itemize}
 \end{frame}
 
-\section{DAGuE Runtime System}
-%\begin{frame}{DAGuE}
-%DAGuE is a task flow where :
-%\begin{itemize}
-%\item nodes are tasks
-%\item edges are dependancies
-%\end{itemize}
-%\pause
-%DAG expressed with functions of JDF format :
-%\begin{itemize}
-%\item definition space;
-%\item task distribution;
-%\item set of data dependencies;
-%\item body to be executed (written in language C).
-%\end{itemize}
-%\end{frame}
+\section[DAGuE]{DAGuE Runtime System}
+\input{dague.tex}
 
 \section{Static Pivoting}
+\input{static_pivoting.tex}
 
-\begin{frame}{Static Pivoting}
-\framesubtitle{Motivation}
-\end{frame}
 
-\begin{frame}{Static Pivoting}
-\framesubtitle{DAG}
-\begin{center}
-\includegraphics[width=\textwidth]{dag_getrf_sp.png} 
-\end{center}
-\end{frame}
-
-\begin{frame}{Static Pivoting}
-\framesubtitle{Exemple}
-\begin{center}
-\includegraphics[width=0.5\textwidth]{dag.png} 
-\end{center}
-\end{frame}
-
-\section{A generic update engine for dynamic pivoting}
+\section[Generic Update]{A generic update engine for dynamic pivoting}
 \input{update.tex}
 
 \section{Partial Pivoting}
@@ -149,7 +119,7 @@
 \end{frame}
 
 \section*{Conclusion}
-\begin{frame}{Conclusion and features}
+\begin{frame}{Conclusion and future work}
 \end{frame}
 
 \end{document}
