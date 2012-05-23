@@ -32,7 +32,7 @@ $\rightarrow$ Use of permutations instead of pivots indexes
 \transparent{0.4}
 \item Updating the main tile is more urgent\\
 $\rightarrow$ Parallelize the swap \textbf{from} and the swap \textbf{into} the tile U
-\item Minimizing the number of communication (not the volume)\\
+\item Limiting the number of communication (not the volume)\\
 $\rightarrow$ Gather communications of all rows over two buffers
 \end{itemize}
 \end{column}
@@ -56,7 +56,7 @@ $\rightarrow$ Use of permutations instead of pivots indexes}
 \item Updating the main tile is more urgent\\
 $\rightarrow$ Parallelize the swap \textbf{from} and the swap \textbf{into} the tile U
 \transparent{0.4}
-\item Minimizing the number of communication (not the volume)\\
+\item Limiting the number of communication (not the volume)\\
 $\rightarrow$ Gather communications of all rows over two buffers
 \end{itemize}
 \end{column}
@@ -70,19 +70,48 @@ $\rightarrow$ Gather communications of all rows over two buffers
 
 \begin{frame}{A generic update engine for dynamic pivoting}
 \framesubtitle{Solutions}
+\begin{columns}
+\begin{column}{.60\textwidth}
+Ideas:
+\begin{itemize}
+{\transparent{0.4}
+\item Avoiding useless swap to increase parallelism\\
+$\rightarrow$ Use of permutations instead of pivots indexes
+\item Updating the main tile is more urgent\\
+$\rightarrow$ Parallelize the swap \textbf{from} and the swap \textbf{into} the tile U}
+\item Limiting the number of communication (not the volume)\\
+$\rightarrow$ Gather communications of all rows over two buffers
+\end{itemize}
+\end{column}
+\begin{column}{.40\textwidth}
+\transparent{0.4}
+\begin{exampleblock}{}
+$\rightarrow$ Five kinds of tasks : COPY, COLLECT, RECEIVE, SEND and PASTE.
+\end{exampleblock}{}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{A generic update engine for dynamic pivoting}
+\framesubtitle{Solutions}
+\begin{columns}
+\begin{column}{.60\textwidth}
 Ideas:
 \begin{itemize}
 \item Avoiding useless swap to increase parallelism\\
 $\rightarrow$ Use of permutations instead of pivots indexes
 \item Updating the main tile is more urgent\\
 $\rightarrow$ Parallelize the swap \textbf{from} and the swap \textbf{into} the tile U
-\item Minimizing the number of communication (not the volume)\\
+\item Limiting the number of communication (not the volume)\\
 $\rightarrow$ Gather communications of all rows over two buffers
 \end{itemize}
-\pause
+\end{column}
+\begin{column}{.40\textwidth}
 \begin{exampleblock}{}
 $\rightarrow$ Five kinds of tasks : COPY, COLLECT, RECEIVE, SEND and PASTE.
 \end{exampleblock}{}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{A generic update engine for dynamic pivoting}
@@ -90,12 +119,12 @@ $\rightarrow$ Five kinds of tasks : COPY, COLLECT, RECEIVE, SEND and PASTE.
 \begin{columns}
 \begin{column}{.60\textwidth}
 \begin{itemize}
-\item COLLECT: Collecting the lines needed by the tile U into a buffer.
+\item COLLECT: Collecting the rows needed by the tile U into a buffer.
 \item SEND: Gather the buffers collected by COLLECT of each node.
 \item PASTE: Overwrite the tile U with the buffer.
 \transparent{0.4}
-\item RECEIVE
 \item COPY
+\item RECEIVE
 \end{itemize}
 \end{column}
 \hfill
@@ -137,10 +166,10 @@ $\rightarrow$ Five kinds of tasks : COPY, COLLECT, RECEIVE, SEND and PASTE.
 \begin{column}{.60\textwidth}
 \begin{itemize}
 \item COLLECT
-\item COPY
-\item RECEIVE
 \item SEND
 \item PASTE
+\item COPY
+\item RECEIVE
 \end{itemize}
 \end{column}
 \hfill
@@ -158,12 +187,4 @@ The red arrows prevent the \alert{\textbf{READ AFTER WRITE}}.
 \begin{center}
 \includegraphics[width=1\textwidth]{dgetrf_update_problem.png} 
 \end{center}
-\end{frame}
-
-\begin{frame}{A generic update engine for dynamic pivoting}
-\framesubtitle{Results}
-\begin{itemize}
-\item Small impact on the performance
-\item A generic update engine
-\end{itemize}
 \end{frame}

@@ -89,27 +89,7 @@
 
 
 \section[LU Algorithms]{LU Decomposition Algorithms}
-\begin{frame}{Introduction}
-\begin{itemize}
-\item The evolution (linpack, lapack, scalapack, plasma, dplasma)
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Introduction}
-\begin{itemize}
-\item Static algorithm:
-\begin{itemize}
-\item Without pivoting
-\item Static pivoting
-\item Incremental pivoting
-\end{itemize}
-\item Dynamic algorithm:
-\begin{itemize}
-\item Partial pivoting
-\item Total pivoting
-\end{itemize}
-\end{itemize}
-\end{frame}
+\input{intro.tex}
 
 \section[DAGuE]{DAGuE Runtime System}
 \input{dague.tex}
@@ -124,14 +104,8 @@
 \section{Partial Pivoting}
 \input{partial_pivoting.tex}
 
-\section{Performances}
-\begin{frame}{Performances of partial pivoting}
-\begin{itemize}
-\item Shared memory
-\item Problem scalability
-\item Strong scalability
-\end{itemize}
-\end{frame}
+\section{Performance}
+\input{perf.tex}
 
 \section*{Conclusion}
 \begin{frame}{Conclusion and future work}

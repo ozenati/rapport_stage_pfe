@@ -1,16 +1,13 @@
 \begin{frame}{Partial Pivoting}
-\framesubtitle{Panel Factorization}
+\framesubtitle{Heuristic Factorization}
+Several heuristic to factorize the panel:
 \begin{itemize}
-\item Several algorithms to factorize the panel:
+\item Partial pivoting
+\item Threshold pivoting
+\item Tournament pivoting
 \begin{itemize}
-\item LU decomposition
-\item Recursive LU decomposition
-\item Communication Avoiding LU
-\end{itemize}
-\item Several way to implement:
-\begin{itemize}
-\item threads + MPI
-\item Task flow
+\item Internal partial pivoting
+\item Panel rank revealing
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -22,23 +19,23 @@
 \includegraphics[scale=0.3]{panel_operation.pdf}
 \end{center}
 \pause
-\begin{exampleblock}{Problem for implementing with task flow}
+\begin{exampleblock}{Problem for implementing with task flow model is based on}
 \begin{itemize}
 \item Swap line is dynamically decided but the DAG is static
-\item Minimaze latency for the panel
+\item Minimize latency for the panel
 \end{itemize}
 \end{exampleblock}{}
 \end{frame}
 
 
 
-\begin{frame}{Panel Factorization}
+\begin{frame}{Partial Pivoting}
 \framesubtitle{Solutions}
 \begin{columns}
 \begin{column}{.60\textwidth}
 Solutions:
 \begin{itemize}
-\item Start for looking to the maximum localy then reduce locally the result
+\item Start looking for the maximum locally then reduce locally the result
 \transparent{0.4}
 \item Share the global result by using Bruck's algorithm
 \item Use internal blocking
@@ -51,14 +48,14 @@ Solutions:
 \end{columns}
 \end{frame}
 
-\begin{frame}{Panel Factorization}
+\begin{frame}{Partial Pivoting}
 \framesubtitle{Implemented version}
 \begin{columns}
 \begin{column}{.60\textwidth}
 Solutions:
 \begin{itemize}
 {\transparent{0.4}
-\item Start for looking to the maximum localy then reduce locally the result
+\item Start looking for the maximum locally then reduce locally the result
 }
 \item Share the global result by using Bruck's algorithm
 \transparent{0.4}
@@ -74,14 +71,15 @@ Solutions:
 \end{columns}
 \end{frame}
 
-\begin{frame}{Panel Factorization}
+\begin{frame}{Partial Pivoting}
 \framesubtitle{Implemented version}
 \begin{columns}
 \begin{column}{.50\textwidth}
 Optimizations:
 \begin{itemize}
 {\transparent{0.4}
-\item Start for looking to the maximum localy then reduce locally the result\item Share the global result by using Bruck's algorithm}
+\item Start looking for the maximum locally then reduce locally the result
+\item Share the global result by using Bruck's algorithm}
 \item Use internal blocking
 \end{itemize}
 \end{column}

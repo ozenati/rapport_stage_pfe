@@ -1,4 +1,4 @@
-set title "LU decomposition on 16 nodes of 8 cores "
+set title "Dancer: 16*8 cores, IB 20Gbs, Intel MKL "
 set xlabel "Matrix Size"
 set ylabel "GFlops"
 set key bottom
