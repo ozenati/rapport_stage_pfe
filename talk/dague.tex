@@ -1,13 +1,19 @@
 \begin{frame}{DAGuE}
 \framesubtitle{Quick presentation}
+\begin{center}
+\includegraphics[scale=0.5]{3layer.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{DAGuE}
+\framesubtitle{Quick presentation}
 DAGuE is a Direct Acyclic Graph scheduler Engine based on task flow model where :
 \begin{itemize}
 \item nodes are tasks
 \item edges are dependancies
 \end{itemize}
-Data distribution is made in 2D blocks cyclic :
 \begin{center}
-\includegraphics[scale=0.5]{scalapack.png}
+\includegraphics[scale=0.5]{trsm.pdf}
 \end{center}
 \end{frame}
 
@@ -16,7 +22,7 @@ Data distribution is made in 2D blocks cyclic :
 \begin{itemize}
 \item Independence between performances and computers
 \item Provide multicore parallelism
-\item Good reactivity for \textit{load in balance}
+\item Good reactivity for load imbalance
 \item Natural look ahead
 \end{itemize}
 \end{exampleblock}{}
