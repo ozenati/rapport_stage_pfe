@@ -1,4 +1,4 @@
-set title "Remus: 48 cores E5520, Intel MKL"
+set title "Remus: 48 cores , Intel MKL"
 set xlabel "Matrix Size"
 set ylabel "GFlops"
 set key bottom

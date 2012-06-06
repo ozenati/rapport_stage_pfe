@@ -1,0 +1,35 @@
+\begin{frame}{LU Decomposition Algorithms}
+\framesubtitle{Introduction}
+LU decomposition algorithm :
+\begin{itemize}
+\item Used to solve linear equation
+\item Used in Linpack Benchmark and HPL
+\item Implemented in most of mathematic library
+\end{itemize}
+\pause 
+\begin{exampleblock}{Why implementing a new LU decomposition ?}
+\begin{itemize}
+\item Trend to use Runtime
+\item Three layer architecture: Algorithm, Runtime and Hardware
+\end{itemize}
+$\rightarrow$ performant and portable code
+\end{exampleblock}{}
+\end{frame}
+
+\begin{frame}{LU Decomposition Algorithms}
+\framesubtitle{The Challenge}
+\begin{exampleblock}{DAGuE provide static DAG}
+The LU algorithm may be static:
+\begin{itemize}
+\item Without pivoting
+\item {\color{green}Criteria substitution}
+\item {\color{blue}Incremental pivoting}
+\end{itemize}
+Or dynamic:
+\begin{itemize}
+\item {\color{green}Partial pivoting}
+\end{itemize}
+\end{exampleblock}{}
+\pause
+\alert{How to programm dynamic application with static task flow ?}
+\end{frame}
