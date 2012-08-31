@@ -1,0 +1,13 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}
+\BOOKMARK [0][-]{chapter.2}{Background}{}
+\BOOKMARK [1][-]{section.2.1}{Runtimes}{chapter.2}
+\BOOKMARK [1][-]{section.2.2}{LU Decomposition Algorithm}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Task Flow LU Decomposition over Runtimes }{chapter.2}
+\BOOKMARK [1][-]{section.2.4}{Platform models }{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Panel Factorization with Partial Pivoting}{}
+\BOOKMARK [0][-]{chapter.4}{Update engine for dynamic pivoting}{}
+\BOOKMARK [0][-]{chapter.5}{Experimental}{}
+\BOOKMARK [1][-]{section.5.1}{Exploiting hierarchical platform with PTG}{chapter.5}
+\BOOKMARK [1][-]{section.5.2}{Exploiting heterogeneous platform with sequential task flow}{chapter.5}
+\BOOKMARK [0][-]{chapter.6}{Conclusion}{}
+\BOOKMARK [0][-]{section*.3}{Bibliography}{}

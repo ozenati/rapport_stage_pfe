@@ -1,0 +1,339 @@
+% Master report
+%
+% Dates : 
+%   - Submission :          01/09/2012
+%
+%
+%
+%\documentclass{llncs}
+%
+%\usepackage{graphicx}
+%\usepackage{url}
+%\usepackage{alltt}
+%\usepackage{latexsym}
+%%\usepackage{hyperref}
+%%\usepackage{pslatex}
+%%\usepackage{fullpage}
+%%\usepackage{wrapfig}
+%%\usepackage{floatfig}
+%%\usepackage{multirow}
+%\usepackage[usenames]{color}
+%\definecolor{violet}{rgb}{0.5,0,0.5}
+%\definecolor{gris25}{gray}{0.75}
+%\definecolor{rose}{rgb}{1,0,1}
+%\definecolor{bordeaux}{rgb}{0.6,0,0.2}
+%\definecolor{turquoise}{rgb}{0.2,1,1}
+%\definecolor{ciel}{rgb}{0.4,0.6,0.8}
+%\definecolor{mer}{rgb}{0,0,0.4}
+%\definecolor{orange}{rgb}{1,0.8,0}
+%\definecolor{vertfonce}{rgb}{0,0.4,0.2}
+%\definecolor{violetpastel}{rgb}{0.8,0.6,1}
+%
+%%\usepackage[ruled,vlined]{algorithm2e}
+%%\usepackage{algorithm}
+%%\usepackage{algpseudocode}
+%
+%\newtheorem{algor}{\noindent {\sc Algorithm }}
+%\newenvironment{algorithm}{\begin{algor} \sl }{ \end{algor} } 
+%\def\betab{\vspace{-0.10in}\begin{tabbing} 
+%xxxxx\=xxxx\=xxxx\=xxxx\=xxxx\=xxxx\=xxxx\=xxxx\=xxxx\= \kill} 
+%\def\entab{\end{tabbing}\vspace{-0.12in}}
+%
+%\usepackage{subfigure}
+%\usepackage{multicol}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+%\usepackage{stmaryrd}
+%\newcommand{\intervalle}[1]{{\llbracket {#1} \rrbracket}}
+
+%\newenvironment{remarque}
+%{\description \item[Remark:] \ \slshape}
+%{\enddescription}
+%
+%
+
+%
+%
+%\begin{document}
+%
+%%\pagestyle{headings} 
+%%\mainmatter              % start of the contributions
+%%
+%\title{Enabling Partial Pivoting in Task Flow LU Factorization}
+%%
+%%%\titlerunning{Head Title}  % abbreviated title (for running head)
+%%                                     also used for the TOC unless
+%%                                     \toctitle is used
+%%
+%\author{ Omar Zenati\inst{1,2} \and Aurelien Bouteiller\inst{1} \and Emmanuel Agullo\inst{2} \and George Bosilca\inst{1} \and Mathieu Faverge\inst{1} \and Pierre Ramet\inst{2} \and Jack Dongarra\inst{1}}
+%%% ~\footnote{This work is
+%%%     supported by the ANR projects SOLTICE and NUMASIS
+%%%     (http://solstice.gforge.inria.fr/ and
+%%%     http://numasis.gforge.inria.fr/)}}
+%%
+%%
+%%%%% modified list of authors for the TOC (add the affiliations)
+%%\tocauthor{ TocAuthors }
+%%
+%\institute{
+%  Innovative Computing Laboratory \\
+%  The University of Tennessee, 1122 Volunteer Blvd., 37996, Knoxville, TN \\
+%  \{bosilca,bouteill,dongarra,faverge\}@eecs.utk.edu
+%\and
+%  INRIA Bordeaux Sud-Ouest and LaBRI UMR 5800 \\
+%  Universit\'e Bordeaux 1, 33405 Talence Cedex, France \\
+%  \{ramet\}@labri.fr
+%}
+%
+%\maketitle 
+\documentclass[12pt]{report}
+\usepackage{etex} 
+\usepackage{lmodern}
+\usepackage[a4paper]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{moreverb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{pifont}
+\usepackage{geometry}
+\usepackage[pdftex]{graphicx}
+\usepackage{graphics}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[nottoc, notlof, notlot]{tocbibind}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\hypersetup{
+linkcolor= blue, 
+colorlinks=true,
+hyperindex=true,
+breaklinks=true,
+bookmarks=true,
+urlcolor= black
+}
+\usepackage{listings}
+\usepackage{latexsym}
+\usepackage{color}
+\usepackage{chngcntr}
+
+%\renewcommand{\contentsname}{Plan}
+
+\newtheorem{remarque}{Remarque}
+\newtheorem{exemple}{Exemple}
+
+\lstnewenvironment{code}[1][]{\lstset{
+	numbers=left,
+        numberstyle=\tiny,
+	tabsize=8,
+	language=matlab,
+        basicstyle=\scriptsize,
+        %upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0.5,0,0.5},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+	language=C,
+        title=#1,
+        frame=tlbr,
+        frameround=tfff
+}}{}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% page de garde%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+\hbox to \hsize{%
+\vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+\hbox to \hsize{%
+\rlap{\vtop{\raggedright #1}}%
+\hss
+\clap{\vtop{\centering #2}}%
+\hss
+\llap{\vtop{\raggedleft #3}}}}%
+\def\bas#1#2#3{%
+\hbox to \hsize{%
+\rlap{\vbox{\raggedright #1}}%
+\hss
+\clap{\vbox{\centering #2}}%
+\hss
+\llap{\vbox{\raggedleft #3}}}}%
+\def\maketitle{%
+\thispagestyle{empty}\vbox to \vsize{%
+\haut{}{}{}
+\vfill
+\vspace{2cm}
+\begin{flushleft}
+\usefont{OT1}{ptm}{m}{n}
+\huge \@title
+\end{flushleft}
+\par
+\hrule height 4pt
+\par
+\begin{flushright}
+\usefont{OT1}{phv}{m}{n}
+\Large \@author
+\par
+\end{flushright}
+\vspace{1cm}
+\vfill
+\vfill
+\bas{}{\@blurb}{}
+\begin{center}
+\@location \@date
+\end{center}
+}%
+\cleardoublepage
+}
+\def\date#1{\def\@date{#1}}
+\def\author#1{\def\@author{#1}}
+\def\title#1{\def\@title{#1}}
+\def\location#1{\def\@location{#1}}
+\def\blurb#1{\def\@blurb{#1}}
+\date{\today}
+\author{}
+\title{}
+\location{Bordeaux}\blurb{}
+\makeatother
+\title{\texttt{Enabling Partial Pivoting in Task Flow LU Factorization}}
+\author{Omar \textsc{Zenati}}
+\location{Bordeaux }
+\blurb{%
+ENSEIRB-MATMECA\\
+Computer Science Department\\
+\textbf{Internship Report}\\[1em]
+Tutors : Pierre \textsc{Ramet} \& George \textsc{Bosilca}\\
+%Tuteur universitaire : Myriam \textsc{Desainte-Catherine}
+}% 
+%%%%%%%%%%%%%%% fin page de garde%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders
+\hrule height 1ex \hfill \kern \z@}
+\def\@makechapterhead#1{%
+\vspace*{10\p@}%
+{\parindent \z@
+{\reset@font
+\usefont{OT1}{phv}{m}{n}
+\LARGE Chapter \thechapter\par\nobreak}%
+\par\nobreak
+\vspace*{30\p@}
+\interlinepenalty\@M
+\usefont{OT1}{ptm}{b}{n}
+{\raggedright \Huge \bfseries #1}%
+\par\nobreak
+\vskip 20\p@
+\hrule height 2pt
+\par\nobreak
+\vskip 45\p@
+}}
+\def\@makeschapterhead#1{%
+\vspace*{10\p@}%
+{\parindent \z@
+{\raggedleft \reset@font
+\scshape \vphantom{\@chapapp{} \thechapter}
+\par\nobreak}%
+\par\nobreak
+\vspace*{30\p@}
+\interlinepenalty\@M
+\usefont{OT1}{ptm}{b}{n}
+{\raggedright \Huge \bfseries #1}%
+\par\nobreak
+\par\nobreak
+\vskip 45\p@
+}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% fin titre%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\dague}[0]{\textsf{DAGuE}\xspace}
+
+
+\newcounter{taskflow_cnt}
+\setcounter{taskflow_cnt}{0}
+\newcounter{tmp_cnt}
+
+\newenvironment{taskflow}{%
+\renewcommand{\figurename}{Task flow}
+\renewcommand{\thefigure}{\arabic{figure}}
+%\counterwithout{taskflow_cnt}{chapter}
+
+\setcounter{tmp_cnt}{\value{figure}}
+\setcounter{figure}{\value{taskflow_cnt}}
+\begin{figure}
+}{%
+\end{figure}%
+\setcounter{figure}{\value{tmp_cnt}}
+\stepcounter{taskflow_cnt}
+}
+
+%\newcommand{\comment}[1]{{\color{red}\textit{#1}}}
+
+\begin{document}
+\begin{figure}
+\begin{minipage}[b]{0.30\linewidth}
+\centering \includegraphics[scale=0.4]{figures/enseirb_logo.jpeg}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.30\linewidth}
+\centering \includegraphics[scale=0.2]{figures/icl_logo.pdf}
+\end{minipage}\hfill
+\begin{minipage}[b]{0.30\linewidth}
+\centering \includegraphics[scale=0.4]{figures/inria_logo.jpeg}
+\end{minipage}
+\end{figure}
+
+\maketitle
+\newpage
+\null
+\newpage
+
+\abstract{
+  \input{abstract}
+}
+
+\tableofcontents
+%\listoffigures 
+%\newpage
+%\null
+\newpage
+
+%\keywords{
+%  HPC, task flow, Linear Algebra
+%}
+
+\chapter{Introduction}\label{intro}%~1 page
+\input{intro}
+
+\chapter{Background}\label{background}
+\input{background}
+
+\chapter{Panel Factorization with Partial Pivoting}\label{panel}
+\input{work}
+
+\chapter{Update engine for dynamic pivoting}\label{update}
+\input{work2}
+
+\chapter{Experimental}\label{experimental}
+\input{experimental}
+
+\chapter{Conclusion}\label{conclusion}
+~1 page
+\input{conclusion}
+
+\bibliographystyle{splncs}
+\bibliography{report}
+
+\end{document}
+

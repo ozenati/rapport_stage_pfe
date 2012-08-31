@@ -1,0 +1,83 @@
+% More heterogeneity calls for reactive programming model 
+
+Numerical simulation has become so pervasive that it is often considered
+as the fourth pillar of science. Indeed, this insatiable need of
+computing power has fuelled the production of ever more powerful, larger
+High Performance Computing (HPC) systems. In recent years, power
+consumption and thermal issues have stalled the decades old trend of
+performance boost from clock frequency increase. Consequently, modern
+designs, such as the Titan supercomputer currently being built at the
+Oak Ridge National Laboratory, have to resort to packaging heterogeneous
+core types (including GPU accelerators), in larger number and with
+increasingly intricate Non Uniform Memory Access (NUMA) hierarchies.
+These disruptive technological trends take a toll on productivity:
+heterogeneity and essentially unpredictable time for memory accesses concur
+to jitter and asynchrony, which are challenging established programming
+models designed around SPMD, homogeneous and regular computation.
+
+% dataflow is the answer, dague is the tool
+
+This \emph{jungle}\footnote{Herb Sutter, ``Welcome to the Jungle'',
+12-29-2011,
+\url{http://herbsutter.com/2011/12/29/welcome-to-the-jungle/}} of
+resources has called forth the emergence of novel programming languages
+and tools that enable a more adaptive reaction to unexpected contentions
+and delays, predominantly by expressing parallelism as a
+task flow ~\cite{springerlink:10.1007/978-3-642-19328-6_5,PBL08,FYD09,DAGuE:PARCO,ATNW11,charm}.
+In this execution model, the program is broken into elementary tasks and
+a Direct Acyclic Graph (DAG) represents the dependency flow imposed by
+data sharing between tasks. At runtime, this DAG can be scheduled with a
+dynamic task distribution according to on-the-spot resource
+introspection and work stealing in an architecture-aware fashion, so as
+to overlap communications, tolerate jitter, and benefit from performance
+portability by hiding the complexities inherent to heterogeneous
+hardware. Among task flow approaches, the \dague tool kit stands out by
+using a Parametrized Task Graph (PTG) representation~\cite{CJY04} of the
+DAG. This compact and symbolic representation is cornerstone to the
+scalability enjoyed by the \dague version of dense linear
+algebra routines~\cite{DAGuE:PARCO}, as it enables an independent,
+distributed runtime evaluation of the successor and predecessors of any
+task, at any moment, without the need for unfolding the entire DAG.
+
+% algebraic representation is static, GEPP is dynamic
+
+Many applications use the LU factorization algorithm to solve
+linear systems of equations. This popularity roots in two facets: the
+computational complexity of LU is half that of QR, yet its numerical
+accuracy is similarly excellent, thanks to a mechanism called partial
+pivoting. With partial pivoting, the best, most stable pivot for the LU
+reduction is selected in the entire column and lines are swapped
+accordingly to promote this pivot to the diagonal. The pivot
+selection cannot be pre-computed, therefore
+% its outcome for a particular iteration
+%depends on the current content of the matrix after previous updates have
+%been applied. Considering a taskflow task, the lines it depends on is
+%conditional on the pivot selection and according swapping, and cannot be
+%inferred before actual computation takes place: 
+the DAG representing LU with partial pivoting changes depending on the
+updated content of the matrix. Yet, the PTG representation used in
+\dague can be generated from a compile time analysis, and imposes a static
+structure to the DAG itself. The data-dependent nature of the DAG
+representing LU with partial pivoting is thereby difficult to capture in
+a PTG representation without increasing tremendously the number of tasks
+and edges to be considered at runtime, a significant source of overhead
+and memory waste. The main contribution of this paper is to introduce a
+variation of the LU algorithm with partial pivoting that can be
+expressed in a PTG representation efficiently.
+
+%, thereby enabling an evaluation of a stable,
+%numerically accurate version of the LU factorization in such a taskflow
+%system.
+
+% outlines
+
+The rest of this paper is organized as follows. Section~\ref{background}
+presents related work in the field of task flow scheduling and
+implementations of the LU algorithm. Then, sections ~\ref{panel} and ~\ref{update} further
+discuss the issues raised by partial pivoting in PTG task flow systems, and
+the solutions we propose to tackle these challenges.
+Section~\ref{experimental} presents an experimental evaluation of the
+resulting algorithm and compares it with both a legacy SPMD
+implementation of LU with partial pivoting and the less stable but less
+challenging LU with incremental pivoting in a similar task flow
+implementation, before we conclude.

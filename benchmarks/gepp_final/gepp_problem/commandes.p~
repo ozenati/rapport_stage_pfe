@@ -1,0 +1,13 @@
+set title "Dancer: 16*8 cores E5520, IB 20Gbs, Intel MKL"
+set xlabel "Matrix Size"
+set ylabel "GFlop/s"
+set key bottom
+set grid
+set xrange [0:50000]
+set yrange [0:1300]
+set terminal postscript eps enhanced color
+set output "only_gepp.eps"
+plot 1190.4 with lines title 'GEMM PEAK' lt 1 lw 2 lc rgb "black",\
+   "./dgetrf_fusion_4_4" with lines title '4*4' lt 1 lw 2 lc rgb "red",\
+	   "./dgetrf_fusion_2_8" with lines title '2*8' lt 1 lw 2 lc rgb "blue"
+

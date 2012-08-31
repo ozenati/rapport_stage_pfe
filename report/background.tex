@@ -1,0 +1,73 @@
+\section{Runtimes}
+The most popular method to implement parallel distributed memory programs consists of using messaging systems. There are several different types of these systems such as message-passing like Message Passing Interface (MPI)\cite{Message94}. To achieve good performance with MPI, the knowledge of the whole architecture used is often advised. Moreover, the portability of performance is not always ensured. There is another type of messaging systems which tries to resolve these problems: the active-message, Charm++ is based on \cite{KaleLVandK1993b}.
+
+In order to ease efficient use of supercomputers and to introduce an abstraction to computers architectures, the task flow model was used to implement other runtimes. In fact, task flows can be represented as a Direct Acyclic Graph (DAG) where vertices are tasks and edges are the dependencies between them. These runtimes schedule tasks on different nodes and move data according to tasks dependencies.
+We propose here to distinguish runtimes based on task flow model into two families: those run codes with implicit data dependencies and those run codes with explicit data dependencies.
+
+In order to ease the use of parallelism, while keeping the traditional way of programming, some runtimes runs on codes with implicit data dependencies. These runtimes need only a set of tasks and their data access modes (read, write or read-write). With this information, the runtime extract the data dependencies and then build the corresponding DAG of task flow. Implementing parallel application over these runtimes is very similar to sequential codes. Quark implement this model for shared memory machines and is used in the Parallel Linear Algebra for Scalable Multi-core Architectures (PLASMA) library \cite{1742-6596-180-1-012037}.
+StarSs is a collection of runtimes which can run on different types of architectures: CellSs for the Cell BE\cite{Bellens06}, SMPSs is for SMP architecture \cite{journals/concurrency/BadiaHLPQQ09}, and GPUSs for GPU \cite{Ayguade09}. In order to gather all types of architectures, StarPU is a unified runtime system that offers support for heterogeneous multicore architectures (GPGPUs, IBM Cell, ...). StarPU manage tasks execution through different architectures thanks to its data coherency protocol \cite{DoBiBo07,journals/concurrency/AugonnetTNW11}.
+
+
+On the other hand, there are some runtimes based on explicit data dependencies by using Parametrized Task Graph (PTG).
+Thanks to explicit data dependencies, these runtimes may benefit from efficient graph traversals. Moreover, PTG allow for compact representations of algorithms and induce a low overhead. Intel CnC is one of these runtimes dedicated - for the moment - to shared memory computers. \dague (Direct Acyclic Graph scheduler Engine) is also a runtime based on explicit data dependencies which can run on computers with shared and/or distributed memory.
+
+%In the rest of the paper, we focus on runtimes using explicit data dependencies. 
+To illustrate the benefits on hierarchical computers (\ref{platform}), we will use the \dague runtime system. We will also use StarPU for heterogeneous computers (\ref{platform}).
+
+\section{LU Decomposition Algorithm}\label{lu_algo}
+The LU decomposition algorithm is based on the Gauss elimination method and consists of factorizing a matrix into a product of a lower and an upper triangular matrix. In order to obtain a good accuracy, the swaps are - almost time - needed. There is a lot of heuristic to perform the swapping, the most used by the scientist community is the partial pivoting for its practical stability and accuracy \cite{Hig02}, it is also used in the LINPACK benchmark which is used to rank the TOP 500 super-computers.
+
+To illustrate an example of LU decomposition, we consider a $n*n$ square matrix. In order to benefit from efficient cache effects, state of the art dense linear algebra libraries implement a block version of the factorization. The matrix is split in $n_p$ block columns - so called panels - of $n_b$ columns ($n = n_p * n_b$). The (right looking) factorization of the matrix consists in a sequence of $n_p$ twofold operations. Indeed, at each step $p$ ($0 \leq p < n_p$) panel $p$ is factorized and the trailing sub-matrix is then updated. Figure \ref{fig:matrix} sows an example of matrix in the second step of the LU decomposition, the second panel is still being factorized, and after, the trailing sub-matrix will be updated.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/panel_matrix_bw.pdf}
+\caption{LU decomposition at step $p$ on panel-blocked matrix \label{fig:matrix}}
+\end{figure}
+
+ 
+At each step $p$, the panel factorization is performed on the $p$th panel. Such a panel factorization consists in a loop of $n_b$ iterations. At each iteration $i$ ($p*n_b \leq i < (p+1)*n_b$), a search for the maximum of the $i$th column is performed, then its row is swapped with the $i$th row.
+Then, a \textit{scal} operation is applied on the column $i$ and the trailing sub-panel is updated with an outer product - so called \textit{ger} according to the BLAS reference - (see Figure \ref{fig:panel}). The panel factorization produces an array of size $n_b$ containing the pivots selected, we note $ipiv$ this array. For each index $x$ of the array $ipiv$, the row $(p*n_b + x)$ will be swapped with the row $(ipiv[x])$.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/panel.pdf}
+\caption{Second iteration of panel factorization (after swap)\label{fig:panel}}
+\end{figure}
+
+Once the $p$th panel is factorized, the subsequent trailing sub-matrix is updated. This update depend on the panel factorization. It takes as entry the pivot information and then applies the permutations on the whole trailing sub-matrix. Once the swap have been performed on the trailing sub-matrix, the $n_b$ block row corresponding to the eliminated rows (block $U$ in Figure \ref{fig:matrix}) is updated with \textit{trsm} operation. This block is then multiplied with a part of the panel (block $L$) and the resulting matrix is subtracted from the matrix $A'$ (this operation is performed with a \textit{gemm}).
+
+\section{Task Flow LU Decomposition over Runtimes \label{task_flow_lu}}
+Algorithm must be written as a task flow model in order to be executed over runtime systems (particularly on \dague). In the case of dense linear algebra, the algorithms have been redesigned to cope with this model. They are expressed in terms of tasks operating on fine grain squares sub-matrices, also called tiles \cite{conf/para/ButtariDKLLT06,ChanEtAl07b}. Figure \ref{fig:tiled_matrix} shows a matrix partitioned into tiles. In \cite{Buttari09}, the authors proposed a new pivoting strategy based on \cite{Quintana-Orti:2009:ULF} more suitable tile algorithms and achieved high performance by limiting the number of synchronizations, called \emph{incremental pivoting}. However, this algorithm has been proven numerically unstable \cite{journals/siammax/GrigoriDX11}. In order to achieve better stability, we choose to adapt the partial pivoting algorithm to the task flow model.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/tiled_matrix.pdf}
+\caption{LU decomposition at step $p$ on tiled matrix \label{fig:tiled_matrix}}
+\end{figure}
+
+To illustrate the complexity of implementing the algorithm, we consider the pivot search. This search occurs at each column factorization and lies on the critical path of the decomposition. Partial pivoting requires to select the maximum of the elements below the diagonal of the column. Then elements lie on $(n-k)/n_b$ different tiles which may be potentially mapped on a huge number numbers of cores in order to ensure state-of-the-art loud balancing techniques. The search induces a synchronization at each column which may overwhelm all potential benefits of tile algorithms and deliver too many tasks to be processed by the runtime.
+
+Another issue - to show the complexity of implementing the partial pivoting over the task flow model - is the swapping operations of the update. In fact, after receiving the pivots array from the panel factorization, the upper tile has to send some rows to other tiles and receive back the substitute rows. If the swap is done rows by rows. The upper tile may exchange a row with another tile of the panel depending on the numerical values of the pivots. The task flow model can thus no longer be statically build in advance but has then to be dynamically composed. Figure \ref{fig:dynamic} represent a simplified task flow of the sending operation with an automaton. Each time the execution of an algorithm will depend on a value of a data, we will call this phenomenon a \emph{data dependency}. The algorithm which contain data dependencies will be called \emph{dynamic algorithm}. These algorithm may be represented by automatons or others conditional mathematical objects. Unfortunately, almost runtimes supports only static representation of task flow (DAG). Thus, the challenge is to represent a dynamic algorithm with a static representation covering the collection of possibilities. A solution may to create a DAG with a path where all concurrent tasks are sequential and move conditions of transitions to the kernel of the tasks. Figure \ref{fig:static} represent the same dynamic algorithm of Figure \ref{fig:dynamic} with a DAG, we can see that all the tasks are represented sequentially and that the conditions of the dependencies are integrated to the kernels. This transformation may increase tremendously the number of tasks and communications required to execute the algorithm. In the next sections we will present how we reduce the size of this static representation to perform the panel factorization and then update the trailing sub-matrix.
+
+\begin{figure}[!ht]
+\begin{minipage}[!ht]{.5\textwidth}
+\centering
+\includegraphics[height=3cm]{figures/dynamic.pdf}
+\caption{Dynamic representation of task flow\label{fig:dynamic}}
+\end{minipage} \hfill
+\begin{minipage}[!ht]{.5\textwidth}
+\centering
+\includegraphics[height=4cm]{figures/static.pdf}
+\caption{Static representation of task flow\label{fig:static}}
+\end{minipage}
+\end{figure}
+
+\section{Platform models \label{platform}}
+Fifteen years ago, a computer with only one single processor may be considered as computing platform and be included in the Top 500 ranking of super computers. Nowadays, computing platform have greatly evolved. Their architectures became more complex and varied. We propose here to distinguish them into four models.
+\begin{itemize}
+\item \textbf{Shared memory multi-cores architecture} is a computing platform consisting many cores and all have access to the same virtual memory.
+\item \textbf{Distributed memory architecture} is composed of at least two node. Each node has its own cores and its physical memory. Cores of different nodes cannot access to the virtual memory of each other, and thus, must communicate to share data.
+\item \textbf{Hierarchical architecture} is a distributed memory architecture where at least one node is a shared memory multi-cores architecture.
+\item \textbf{Heterogeneous architecture} is a distributed memory architecture where at least one node is a GPU.
+\end{itemize}
