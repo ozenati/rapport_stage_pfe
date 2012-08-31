@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  30 AUG 2012 17:01
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  31 AUG 2012 18:34
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -885,14 +885,14 @@ LaTeX Info: Redefining \pageref on input line 284.
 
 \AtBeginShipoutBox=\box35
 \c@lstlisting=\count138
- <figures/enseirb_logo.jpeg, id=55, 193.72375pt x 260.975pt>
+ <figures/enseirb_logo.jpeg, id=47, 193.72375pt x 260.975pt>
 File: figures/enseirb_logo.jpeg Graphic file (type jpg)
 
 <use figures/enseirb_logo.jpeg>
-<figures/icl_logo.pdf, id=56, 425.59pt x 275.429pt>
+<figures/icl_logo.pdf, id=48, 425.59pt x 275.429pt>
 File: figures/icl_logo.pdf Graphic file (type pdf)
  <use figures/icl_logo.pdf>
-<figures/inria_logo.jpeg, id=58, 341.275pt x 148.555pt>
+<figures/inria_logo.jpeg, id=50, 341.275pt x 148.555pt>
 File: figures/inria_logo.jpeg Graphic file (type jpg)
 
 <use figures/inria_logo.jpeg>
@@ -1004,60 +1004,69 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 ]) [4]
 Chapter 2.
-(./background.tex [5
+(./background.tex
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 3.
+ (/usr/share/texmf/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [5
 
 ]
-<figures/panel_matrix_bw.pdf, id=158, 667.49374pt x 437.635pt>
+
+LaTeX Warning: Reference `platform' on page 6 undefined on input line 23.
+
+
+LaTeX Warning: Reference `platform' on page 6 undefined on input line 23.
+
+[6] <figures/panel_matrix_bw.pdf, id=153, 667.49374pt x 437.635pt>
 File: figures/panel_matrix_bw.pdf Graphic file (type pdf)
 
-<use figures/panel_matrix_bw.pdf>
-<figures/panel.pdf, id=160, 1180.41pt x 857.2025pt>
+<use figures/panel_matrix_bw.pdf> [7 <./figures/panel_matrix_bw.pdf>]
+<figures/panel.pdf, id=167, 1180.41pt x 857.2025pt>
 File: figures/panel.pdf Graphic file (type pdf)
  <use figures/panel.pdf>
-[6] [7 <./figures/panel_matrix_bw.pdf> <./figures/panel.pdf>]
-<figures/tiled_matrix.pdf, id=189, 679.53876pt x 437.635pt>
+[8 <./figures/panel.pdf>]
+<figures/tiled_matrix.pdf, id=183, 679.53876pt x 437.635pt>
 File: figures/tiled_matrix.pdf Graphic file (type pdf)
 
-<use figures/tiled_matrix.pdf> [8 <./figures/tiled_matrix.pdf>]
-<figures/dynamic.pdf, id=206, 612.2875pt x 304.13625pt>
+<use figures/tiled_matrix.pdf> [9 <./figures/tiled_matrix.pdf>]
+<figures/dynamic.pdf, id=199, 612.2875pt x 304.13625pt>
 File: figures/dynamic.pdf Graphic file (type pdf)
 
 <use figures/dynamic.pdf>
-<figures/static.pdf, id=207, 177.66376pt x 384.43625pt>
+<figures/static.pdf, id=200, 177.66376pt x 384.43625pt>
 File: figures/static.pdf Graphic file (type pdf)
 
 <use figures/static.pdf>
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 54--64
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 90--100
 []$[]$  $[]$ 
  []
 
-[9 <./figures/dynamic.pdf> <./figures/static.pdf>]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 69.
-
-(/usr/share/texmf/tex/latex/lm/ts1lmr.fd
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [10]
+) [10] [11 <./figures/dynamic.pdf> <./figures/static.pdf>]
 Chapter 3.
 (./work.tex
 
-LaTeX Warning: Citation `reference/parallel/X11ab' on page 11 undefined on inpu
+LaTeX Warning: Citation `reference/parallel/X11ab' on page 12 undefined on inpu
 t line 2.
 
-<figures/natural_tf_bw.pdf, id=225, 1081.03876pt x 451.6875pt>
+<figures/natural_tf_bw.pdf, id=218, 1081.03876pt x 451.6875pt>
 File: figures/natural_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/natural_tf_bw.pdf> [11
+<use figures/natural_tf_bw.pdf> [12
 
  <./figures/natural_tf_bw.pdf>]
-<figures/distributed_tf_bw.pdf, id=236, 912.40875pt x 464.73625pt>
+<figures/distributed_tf_bw.pdf, id=228, 912.40875pt x 464.73625pt>
 File: figures/distributed_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/distributed_tf_bw.pdf> [12 <./figures/distributed_tf_bw.pdf>]
-<figures/hybrid_tf_bw.pdf, id=252, 1602.98875pt x 1650.165pt>
+<use figures/distributed_tf_bw.pdf>
+
+LaTeX Warning: Reference `platform' on page 13 undefined on input line 25.
+
+[13 <./figures/distributed_tf_bw.pdf>]
+<figures/hybrid_tf_bw.pdf, id=243, 1602.98875pt x 1650.165pt>
 File: figures/hybrid_tf_bw.pdf Graphic file (type pdf)
 
 <use figures/hybrid_tf_bw.pdf>
-<figures/panel_ib_bw.pdf, id=257, 607.26875pt x 816.04875pt>
+<figures/panel_ib_bw.pdf, id=248, 607.26875pt x 816.04875pt>
 File: figures/panel_ib_bw.pdf Graphic file (type pdf)
 
 <use figures/panel_ib_bw.pdf>pdfTeX warning (ext4): destination with the same i
@@ -1065,59 +1074,61 @@ dentifier (name{figure.3.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.41 ...ith internal blocking\label{fig:panel_ib}}
-                                                   [13 <./figures/hybrid_tf_bw.
-pdf>]) [14 <./figures/panel_ib_bw.pdf>]
+                                                   [14 <./figures/hybrid_tf_bw.
+pdf>]) [15 <./figures/panel_ib_bw.pdf>]
 Chapter 4.
-(./work2.tex <figures/pivots.pdf, id=273, 213.79875pt x 360.34625pt>
+(./work2.tex <figures/pivots.pdf, id=264, 213.79875pt x 360.34625pt>
 File: figures/pivots.pdf Graphic file (type pdf)
 
 <use figures/pivots.pdf>
-<figures/permutations.pdf, id=274, 158.5925pt x 360.34625pt>
+<figures/permutations.pdf, id=265, 158.5925pt x 360.34625pt>
 File: figures/permutations.pdf Graphic file (type pdf)
 
-<use figures/permutations.pdf> [15
+<use figures/permutations.pdf> [16
 
 ]
-<figures/distributed_update_tf_bw.pdf, id=285, 1386.17876pt x 633.36626pt>
+<figures/distributed_update_tf_bw.pdf, id=276, 1386.17876pt x 633.36626pt>
 File: figures/distributed_update_tf_bw.pdf Graphic file (type pdf)
 
 <use figures/distributed_update_tf_bw.pdf>
-<figures/update_tf_bw.pdf, id=287, 1982.40625pt x 1722.435pt>
+<figures/update_tf_bw.pdf, id=278, 1982.40625pt x 1722.435pt>
 File: figures/update_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/update_tf_bw.pdf>) [16 <./figures/pivots.pdf> <./figures/permutati
-ons.pdf>] [17 <./figures/distributed_update_tf_bw.pdf> <./figures/update_tf_bw.
+<use figures/update_tf_bw.pdf>) [17 <./figures/pivots.pdf> <./figures/permutati
+ons.pdf>] [18 <./figures/distributed_update_tf_bw.pdf> <./figures/update_tf_bw.
 pdf>]
 Chapter 5.
-(./experimental.tex
-<figures/partial_pivoting_problem.pdf, id=309, 361.35pt x 252.945pt>
-File: figures/partial_pivoting_problem.pdf Graphic file (type pdf)
+(./experimental.tex <figures/gepp.pdf, id=300, 361.35pt x 252.945pt>
+File: figures/gepp.pdf Graphic file (type pdf)
 
-<use figures/partial_pivoting_problem.pdf>) [18
+<use figures/gepp.pdf>) [19
 
-] [19 <./figures/partial_pivoting_problem.pdf>]
+] [20 <./figures/gepp.pdf>]
 Chapter 6.
-(./conclusion.tex) (./report.bbl [20
+(./conclusion.tex) (./report.bbl [21
 
-] [21
+] [22
 
-] [22]) [23] (./report.aux)
+] [23]) [24] (./report.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 9286 strings out of 495061
- 132109 string characters out of 1182621
- 199299 words of memory out of 3000000
- 12093 multiletter control sequences out of 15000+50000
- 71247 words of font info for 80 fonts, out of 3000000 for 9000
+ 9285 strings out of 495061
+ 131991 string characters out of 1182621
+ 199245 words of memory out of 3000000
+ 12092 multiletter control sequences out of 15000+50000
+ 71565 words of font info for 81 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,9n,38p,1910b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,9n,38p,1911b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/shar
-e/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
-m-ec.enc}{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}{/usr/share/texm
+ips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share
+/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm
+-ts1.enc}{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}{/usr/share/texm
 f/fonts/enc/dvips/lm/lm-rmtt.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12
 .pfb></usr/share/texmf/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb>
@@ -1129,9 +1140,9 @@ f/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy
 8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtt12.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic
 /uhvr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb>
-Output written on report.pdf (25 pages, 674742 bytes).
+Output written on report.pdf (26 pages, 682895 bytes).
 PDF statistics:
- 421 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 414 PDF objects out of 1000 (max. 8388607)
+ 75 named destinations out of 1000 (max. 500000)
+ 174 words of extra memory for PDF output out of 10000 (max. 10000000)
 
