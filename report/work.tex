@@ -1,5 +1,5 @@
 In order to reduce the important number of tasks and communications, optimisations had to be applied at all levels of the algorithm. For that, we present in this section the evolution of the algorithm from the first natural version to the most optimized. As said in the section \ref{lu_algo}, the panel factorisation is a loop of $n_b$ iterations. At each iteration $k$, several operations are executed on the panel.
-The first natural version is that the node which contain the diagonal node compare progressively its maximum with others tiles. Each time it find a greater maximum, it save it and use it for next comparisons. After this operation, the diagonal tile broadcast the initial diagonal row and the resulting maximum row to all others tile in order that the concerned tile apply the swap, and every tile apply the \emph{scal} and \emph{ger} operations (Level 1 BLAS) \cite{reference/parallel/X11ab}. Task flow \ref{fig:natural_task_flow} shows one iteration of the panel factorization on a panel of 6 tiles for distributed architecture.
+The first natural version is that the node which contain the diagonal node compare progressively its maximum with others tiles. Each time it find a better pivot, it saves it and uses it for next comparisons. After this operation, the diagonal tile broadcasts the initial diagonal row and the selected row owning the column maximum to all others tile in order that the concerned tile apply the swap, and every tile apply the \emph{scal} and \emph{ger} operations (Level 1 BLAS). Task flow \ref{fig:natural_task_flow} shows one iteration of the panel factorization on a panel of 6 tiles for distributed architecture.
 
 \begin{taskflow}[!ht]
 \centering
@@ -7,12 +7,13 @@ The first natural version is that the node which contain the diagonal node compa
 \caption{One iteration of panel factorization on distributed architecture \label{fig:natural_task_flow}}
 \end{taskflow}
 
-The first remark is that there is some communications which can be optimized. In fact, instead using an natural sequential comparison, it is possible to use a \emph{reduce} operation. It will allow to perform a faster election of the maximum row. Therefore, because the next operation to the comparison is a broadcast, we can merge the two operations into one single \textit{all\_reduce} operation.
+The first remark is that there is some communications which can be optimized. In fact, instead of using natural sequential comparison, it is possible to use a \emph{reduce} operation. It will allow to perform a faster election of the row consisting the maximum of the column. Therefore, because the broadcast is following the operation of comparison, we can merge the two operations into one single \textit{all\_reduce} operation.
+We can also merge tasks of extraction and tasks of panel update. For that, the \emph{extract\_max} of step $k$ and \emph{scal\_ger} of step $k-1$ tasks can be done in one single task.
 
-Concerning communications, runtimes handle point-to-point communications and can manage some collective communications as broadcast or group communications. But, to perform more complex communications operations (reduce, gather\dots), we have to express them as a task flow. For the \emph{all\_reduce} operation, the task flow needed is based on the task flow of the Bruck's algorithm \cite{BruckEtAl97}.
+Concerning communications, \dague and other runtimes handle point-to-point communications and can manage some collective communications as broadcast or group communications. But, to perform more complex communications operations (reduce, gather\dots), we have to express them as a task flow. 
+%This is due to the programme model. In fact, a point-to-point communications or a broadcast are just a set of arrows between nodes of the PTG. 
+This is due to the fact that a complex communication had to associate a function to communications which not expressible with PTG. For the \emph{all\_reduce} operation, the task flow needed is based on the task flow of the Bruck's algorithm \cite{BruckEtAl97}.
 In the natural version, we broadcast two rows (the initial diagonal row and the resulting maximum row). Thus, for the \emph{all\_reduce} operation, an array of two rows per node is needed, we will call it a workspace. The first one is filled at beginning by the diagonal tile with the initial diagonal row, and the second row is filled by all tiles with their maximum row. At each step of the \textit{all\_reduce} operation, task copy first row from the received workspace if it is not empty, and reduce the maximum row in the second row of their workspace. Thus, at the end of the \textit{all\_reduce} operation, all workspaces will be filled with the same values.
-
-The second remark is that some tasks can be merged. For that, the \emph{extract\_max} of step $k$ and \emph{scal\_ger} of step $k-1$ tasks can be done in one single task.
 The resulting task flow is presented in Task flow \ref{fig:distributed_task_flow}.
 
 \begin{taskflow}[!ht]
@@ -22,7 +23,7 @@ The resulting task flow is presented in Task flow \ref{fig:distributed_task_flow
 
 \end{taskflow}
 
-Nowadays, most distributed computers contain many cores at each node (see \ref{platform}). To balance well the computations among the processors, a two-dimensional block-cyclic distribution is used to spread the data over the nodes\cite{DGW:SHPCC92}.
+Nowadays, most distributed computers contain many cores at each node. To balance well the computations among the processors, a two-dimensional block-cyclic distribution is used to spread the data over the nodes\cite{DGW:SHPCC92}.
 If we consider the fact that each node can be multi-core, the task flow \ref{fig:distributed_task_flow} can still be optimized. For that, the idea is to reduce first locally the maximum on the node and then, apply the \emph{all\_reduce} operation between the nodes. The \emph{reduce} operation is performed with a binary tree. Task flow \ref{fig:hybrid_task_flow} shows one iteration of panel factorization for hierarchical architecture. As for task flow \ref{fig:distributed_task_flow}, a similar workspace is used for \emph{all\_reduce} communications with one difference. The workspace contains four rows: two for the diagonal row and two for the maximum row. In fact, at each step of the panel factorization, only one of the two row is used depending on the step parity. This configuration is necessary to protect from the \emph{read after write} effect on the workspace  which is shared between all tiles of the same node.
 
 \begin{taskflow}[!ht]
@@ -31,9 +32,9 @@ If we consider the fact that each node can be multi-core, the task flow \ref{fig
 \caption{One iteration of panel factorization on hierarchical architecture \label{fig:hybrid_task_flow}}
 \end{taskflow}
  
-Whether in distributed, shared or hierarchical, the task flow showed in Task flows \ref{fig:distributed_task_flow} and \ref{fig:distributed_task_flow} represent only one iteration of panel factorization. For the last iteration, an additional task is needed to finalize the panel factorization. In fact, this task perform the last \emph{scal} and \emph{ger} operations then release the dependencies to update the trailing sub-matrix.
+Whether in distributed, shared or hierarchical, the task flow showed in Task flows \ref{fig:natural_task_flow}, \ref{fig:distributed_task_flow} and \ref{fig:hybrid_task_flow} represent only one iteration of panel factorization. For the last iteration, an additional task is needed to finalize the panel factorization. In fact, this task perform the last \emph{scal} and \emph{ger} operations then release the dependencies to update the trailing sub-matrix.
 
-Beside optimizations in task flow, we apply some optimization on kernel executed by tasks. In case of the task \textit{scal+ger+search\_max}, we use the notion of internal blocking. This optimization is the same applied from linpack to lapack library \cite{Anderson:1990:LPL}. Thanks to the internal blocking, we can use more Level 3 BLAS which increase the performance obtained. In fact, at each step of the panel factorization, instead applying ger on the whole trailing sub-panel, we apply it only on a block. After each $ib$ iterations, $ib$ being the internal blocking parameter, the rest of the trailing sub-panel is updated by a \textit{trsm} and  a \textit{gemm} (Figure \ref{fig:panel_ib}).
+Beside optimizations in task flow, we apply some optimization on kernel executed by tasks. In case of the task \textit{scal+ger+search\_max}, we use the notion of internal blocking. This optimization is the same applied from linpack to lapack library \cite{Anderson:1990:LPL}. Thanks to the internal blocking, we can use more Level 3 BLAS which increase the performance obtained. In fact, at each step of the panel factorization, instead applying ger on the whole trailing sub-panel, we apply it only on a block. After each $ib$ iterations, $ib$ being the internal blocking parameter, the rest of the trailing sub-panel is updated by the level 3 BLAS operations \textit{trsm} and \textit{gemm} (Figure \ref{fig:panel_ib}).
 
 \begin{figure}[!ht]
 \centering

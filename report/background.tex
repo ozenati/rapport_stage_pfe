@@ -1,10 +1,4 @@
-Twenty years ago, a computer with only one single processor may be considered as computing platform and be included in the Top 500 ranking of super computers. Nowadays, computing platform have greatly evolved. Their architectures became more complex and varied. For this report, we propose here to distinguish them into four models.
-\begin{itemize}
-\item \textbf{Shared memory multi-cores architecture} is a computing platform consisting many cores and all have access to the same virtual memory.
-\item \textbf{Distributed memory architecture} is composed of at least two node. Each node has its own cores and its physical memory. Cores of different nodes cannot access to the virtual memory of each other, and thus, must communicate to share data.
-\item \textbf{Hierarchical architecture} is a distributed memory architecture where at least one node is a shared memory multi-cores architecture.
-\item \textbf{Heterogeneous architecture} is a distributed memory architecture where at least one node is a GPU.
-\end{itemize}
+Twenty years ago, a computer with only one single processor may be considered as computing platform and be included in the Top 500 ranking of super computers. Nowadays, computing platforms have greatly evolved. Their architectures became more complex and varied. For this report, we propose here to distinguish them into four models. First, the \textbf{shared memory multi-cores} architecture, it is a computing platform consisting many cores and all have access to the same virtual memory. The \textbf{distributed memory} architecture is composed of at least two node. Each node has its own cores and its physical memory. Cores of different nodes cannot access to the virtual memory of each other, and thus, must communicate to share data. Even if in a distributed memory architecture, a node can consists many cores,  we will use - in this paper - the denomination \textit{distributed memory architecture} only for nodes with one single core. In contrast to the \textbf{hierarchical architecture} which is a distributed memory architecture where at least one node is a shared memory multi-cores architecture. Moreover, the \textbf{heterogeneous architecture} is a distributed memory architecture where at least one node is a GPU.
 
 \section{Runtimes}
 The most popular method to implement parallel distributed memory programs consists of using messaging systems. There are several different types of these systems such as message-passing like Message Passing Interface (MPI)\cite{Message94}. To achieve good performance with MPI, the knowledge of the whole architecture used is often advised. Moreover, the portability of performance is not always ensured. There is another type of messaging systems which tries to resolve these problems: the active-message, Charm++ is based on \cite{KaleLVandK1993b}.
@@ -19,8 +13,8 @@ StarSs is a collection of runtimes which can run on different types of architect
 On the other hand, there are some runtimes based on explicit data dependencies by using Parametrized Task Graph (PTG).
 Thanks to explicit data dependencies, these runtimes may benefit from efficient graph traversals. Moreover, PTG allow for compact representations of algorithms and induce a low overhead. Intel CnC is one of these runtimes dedicated - for the moment - to shared memory computers. \dague (Direct Acyclic Graph scheduler Engine) is also a runtime based on explicit data dependencies which can run on computers with shared and/or distributed memory.
 
-%In the rest of the paper, we focus on runtimes using explicit data dependencies. 
-To illustrate the benefits on hierarchical computers (\ref{platform}), we will use the \dague runtime system. We will also use StarPU for heterogeneous computers (\ref{platform}).
+In the rest of the paper, we focus on runtimes using explicit data dependencies. To illustrate the benefits on hierarchical computers (\ref{platform}), we will use the \dague runtime system. 
+%We will also use StarPU for heterogeneous computers (\ref{platform}).
 
 \section{LU Decomposition Algorithm}\label{lu_algo}
 The LU decomposition algorithm is based on the Gauss elimination method and consists of factorizing a matrix into a product of a lower and an upper triangular matrix. In order to obtain a good accuracy, the swaps are - most of the time - needed. There is a lot of heuristic to perform the swapping, the most used by the scientist community is the partial pivoting for its practical stability and accuracy \cite{Hig02}, it is also used in the LINPACK benchmark which is used to rank the TOP 500 super-computers.
@@ -29,27 +23,24 @@ To illustrate an example of LU decomposition, we consider a $n*n$ square matrix.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/panel_matrix_bw.pdf}
+\includegraphics[width=0.9\textwidth]{figures/panel_matrix_bw.pdf}
 \caption{LU decomposition at step $p$ on panel-blocked matrix \label{fig:matrix}}
 \end{figure}
 
  
 At each step $p$, the panel factorization is performed on the $p_{th}$ panel. Such a panel factorization consists in a loop of $n_b$ iterations. At each iteration $i$ ($p*n_b \leq i < (p+1)*n_b$), a search for the maximum of the $i_{th}$ column is performed, then its row is swapped with the $i_{th}$ row.
-Then, a \textit{scal} operation is applied on the column $i$ and the trailing sub-panel is updated with an outer product - so called \textit{ger} according to the BLAS reference -. The panel factorization produces an array of size $n_b$ containing the pivots selected, we note $ipiv$ this array. For each index $x$ of the array $ipiv$, the row $(p*n_b + x)$ will be swapped with the row $(ipiv[x])$.
-
-Mathematically, the panel factorization can be expressed as follows :
-
-\begin{verbatim}
-=================================================================
-For k from 1 to nb
-   Search for a pivot, do pivoting then store index
-   For i from k+1 to A.n    /*scal operation*/
-      a(i,k) = a(i,k)/a(k,k)
-   For i from k+1 to nb   /*ger operation*/
-         For j from k+1 to a.n
-            a(i,j) = a(i,j)-a(i,k)*a(k,j)
-=================================================================
-\end{verbatim}
+Then, a BLAS \textit{scal} routine is applied on the column $i$. It consist to divide all the element of the column $i$ by the selected pivot (Figure \ref{fig:panel} show the different parts of the panel).
+After that, the trailing sub-panel is updated with an outer product - so called \textit{ger} according to the BLAS reference -. The panel factorization produces an array of size $n_b$ containing the pivots selected, we note $ipiv$ this array. For each index $x$ of the array $ipiv$, the row $(p*n_b + x)$ will be swapped with the row $(ipiv[x])$.
+Mathematically, the panel factorization can be expressed as follows:\\
+\begin{tabbing}
+For \= $k$ from $1$ to $nb$\\
+\> Search for a pivot, do pivoting then store index\\
+\> For \=$i$ from $k+1$ to $n$    /*scal operation*/\\
+\>\> $a_{i,k} = a_{i,k}/a_{k,k}$\\
+\> For \=$i$ from $k+1$ to $nb$   /*ger operation*/\\
+\>\> For \=$j$ from $k+1$ to $nb$\\
+\>\>\> $a_{i,j} = a_{i,j}-a_{i,k}*_{k,j}$\\
+\end{tabbing}
 
 \begin{figure}[!ht]
 \centering
@@ -57,28 +48,27 @@ For k from 1 to nb
 \caption{Second iteration of panel factorization (after swap)\label{fig:panel}}
 \end{figure}
 
-Once the $p_{th}$ panel is factorized, the subsequent trailing sub-matrix is updated. This update depend on the panel factorization. It takes as entry the pivot information and then applies the permutations on the whole trailing sub-matrix. Once the swap have been performed on the trailing sub-matrix, the $n_b$ block row corresponding to the eliminated rows (block $U$ in Figure \ref{fig:matrix}) is updated. For that, a copy of matrix $U$ is divided by the matrix $D$ and the result is added to matrix $U$ (\textit{trsm} operation in BLAS reference). This block is then multiplied with a part of the panel (block $L$) and the resulting matrix is subtracted from the matrix $A'$ (this operation is performed with a \textit{gemm}).
+Once the $p_{th}$ panel is factorized, the subsequent trailing sub-matrix is updated. This update depend on the panel factorization. It takes as entry the pivot information and then applies the permutations on the whole trailing sub-matrix. Once the swap have been performed on the trailing sub-matrix, the $n_b$ block row corresponding to the eliminated rows (block $U'$ in Figure \ref{fig:matrix}) is updated. For that, the following equation must be solved:
+\begin{center}
+$U'^{(k)} = U'^{(k+1)}*L$
+\end{center}
+Which is equivalent to:
+\begin{center}
+$U'^{(k+1)} = U'^{(k)} / L$
+\end{center}
+To solve this equation, we can use the BLAS routine \textit{trsm}. The block $U'$ obtained is then is then multiplied with the block $L'$ and the resulting matrix is subtracted from the matrix $A'$:
+\begin{center}
+$A'^{(k+1)} = A'^{(k)} - L'^{(k+1)}*U'^{(k+1)}$
+\end{center}
+This operation is performed with the BLAS routine \textit{gemm}.
 
-We can express the update operation as follows :
-
-\begin{verbatim}
-=================================================================
-Apply same pivot to A
-D  = Extract_D(A)
-U  = Extract_U(A)
-L  = Extract_L(A)
-A' = Extract_A'(A)
-Compute U  += U/D	   /*trsm operation*/
-Compute A' -= U*L	   /*gemm operation*/
-=================================================================
-\end{verbatim}
 
 \section{Task Flow LU Decomposition over Runtimes \label{task_flow_lu}}
 We consider the problem of writing the LU decomposition algorithm as a task flow model in order to be executed over runtime systems (particularly on \dague). In the case of dense linear algebra, the algorithms have been redesigned to cope with this model. They are expressed in terms of tasks operating on fine grain squares sub-matrices, also called tiles \cite{conf/para/ButtariDKLLT06,ChanEtAl07b}. Figure \ref{fig:tiled_matrix} shows a matrix partitioned into tiles. In \cite{Buttari09}, the authors proposed a new pivoting strategy called \emph{incremental pivoting} based on \cite{Quintana-Orti:2009:ULF} more suitable tile algorithms and achieved high performance by limiting the number of synchronizations. However, this algorithm has been proven numerically unstable \cite{journals/siammax/GrigoriDX11}. In order to achieve better stability, we choose to adapt the partial pivoting algorithm to the task flow model.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.8\textwidth]{figures/tiled_matrix.pdf}
+\includegraphics[width=0.9\textwidth]{figures/tiled_matrix.pdf}
 \caption{LU decomposition at step $p$ on tiled matrix \label{fig:tiled_matrix}}
 \end{figure}
 
