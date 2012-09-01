@@ -1,0 +1,5 @@
+LU decomposition with partial pivoting is a dynamic algorithm with its data dependencies in the swapping operation for the update. Despite this difficulty, we managed to implement a task flow LU decomposition with PTG and obtained hopeful performances.
+
+We try now to optimize the \dague runtime system to better manage the small communications messages, in order to take full advantage of all cores of nodes. We will be able to have one of the most efficient LU decomposition implementation. Beside its use for resolving system of linear equations, it will be possible to create a new benchmark to analyse computers performances.
+
+In parallel, we implemented another task flow LU decomposition on StarPU. In fact, StarPU runtime allow to implement dynamic algorithm  thanks to its task insertion system. We will be able to compare results to PTG in general and \dague particularly.
