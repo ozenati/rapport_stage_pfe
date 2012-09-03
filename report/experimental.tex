@@ -1,13 +1,21 @@
-In order to have an upper bound for the LU decomposition with partial pivoting, we also implemented an LU decomposition with static pivoting. It is similar to a partial pivoting but without swapping operation. It may be considered as a Cholesky's algorithm applied to the two sides of the matrix.
+For experiences, the architecture used is a hierarchical platform. It has 16 nodes interconnected with an Infini Band network. Each node includes  2 Intel(R) Xeon(R) E5220 quad core. Thus, the  total number of cores is 128.
+
+The software used are Linux as operating system, \dague as runtime system and the Intel Mkl library version 11.1 for Blas routines. We used the sequential version of BLAS.
+
+For the experience, we provide a \emph{gemm} peak performance of the patform. It is measured as the best performance obtained by a single core to compute a matrix multiplication using the \emph{gemm} BLAS routine. This measurement is then multiplied by the total number of cores used. It is considered as the practical peak performance of the platform. 
+
+However, the \emph{gemm} peak will never be reached by the LU decomposition algorithm. In order to have a better upper bound for the LU decomposition with partial pivoting, we also implemented an LU decomposition with static pivoting. It is similar to a partial pivoting but without swapping operation. It may be considered a Cholesky's algorithm applied to the two sides of the matrix.
+
+
+The partial pivoting implemented was run with only 7 cores by node for computation. The eighth core was completely dedicated to the communication. In fact, experiments show that is more efficient to allow one core to manage the huge number of small communications on the panel. Thus, in the figure \ref{fig:pp}, it is showed two \emph{gemm} peaks, one using 8 cores per node and the second using only 7 cores per node.
 
 \dague includes already an implementation of LU decomposition with incremental pivoting. Thus, we compare them with the performances obtained of partial pivoting.
 
-To complete the experiences, we also compare results with ScaLAPACK performances. For that, we used the netlib version.
+To complete the experiences, we also compare results with ScaLAPACK performances. For that, we used the Netlib\footnote{\url{http://www.netlib.org/}} version. ScaLAPACK was run by assigning one process MPI per core.
 
 %\section*{Exploiting hierarchical platform with PTG}
-For experiences, we used \dague as PTG runner. The architecture used is an hierarchical platform. It have 16 nodes interconnected with an Infini Band. Each node include  2 Intel(R) Xeon(R) E5220 which is a quad core. Thus, the  total number of cores is 128. Each core runs with a frequency of 2.27GHz. 
 
-We implemented Task flow \ref{fig:hybrid_task_flow} for panel factorization and Task flow \ref{fig:update_task_flow} for swapping operations in update. The softwares used are Linux as operating system, \dague as runtime system and the Intel Mkl library version 11.1 for Blas routines. We used the sequential version of BLAS in \dague but the ScaLAPACK tests ran with parallel BLAS routines (PBLAS).
+
 
 \begin{figure}
 \centering
@@ -15,12 +23,13 @@ We implemented Task flow \ref{fig:hybrid_task_flow} for panel factorization and 
 \caption{Performance of LU decomposition with PTG\label{fig:pp}} 
 \end{figure}
 
-For the experience, we provide a \emph{gemm} peak performance of the patform. It is measured as the best performance obtained by a single core to compute a matrix multiplication using the \emph{gemm} BLAS routine. This measurement is then multiplied by the total number of cores used. It is considered as the practical peak performance of the platform. In the figure \ref{fig:pp}, it is showed two \emph{gemm} peak, one using 8 core per node and the second using only 7 cores per node.
-The partial pivoting implemented was ran with only 7 cores by node for computation. The eighth core was completely dedicated to the communication. In fact, experiments show that is more efficient to allow one core to manage the huge number of small communications on the panel. 
+ 
+We implemented Task flow \ref{fig:hybrid_task_flow} for panel factorization and Task flow \ref{fig:update_task_flow} for swapping operations in update. 
+We used a 2D block cyclic distribution for matrix. The size of tile used was 200 for \dague and 120 for ScaLAPACK.
 
 The results obtained are encouraging  because our implementation outperform the ScaLAPACK implementation and reached 75\% of the GEMM peak.
-However, the incremental pivoting algorithm which enables more parallelism and less synchronization in the panel factorization allows us to reach better performance.
-The static pivoting implementation is given here as an upper bound that we hope to reach with our algorithm, but this algorithm can not be exploited on general cases due to its lack of stability. 
+However, the incremental pivoting algorithm which enables more parallelism and less synchronization in the panel factorization still provide better performance.
+The static pivoting implementation is given here as an upper bound that we hope to reach with our algorithm, but this algorithm cannot be exploited on general cases due to its lack of stability. 
 
 %\section{Exploiting heterogeneous platform with sequential task flow}
 
