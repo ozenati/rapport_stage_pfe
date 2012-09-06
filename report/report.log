@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  6 SEP 2012 16:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  6 SEP 2012 20:34
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -999,19 +999,19 @@ Chapter 3.
 (./background.tex [8
 
 ] [9] [10]
-<figures/panel_matrix_bw.pdf, id=176, 667.49374pt x 437.635pt>
+<figures/panel_matrix_bw.pdf, id=176, 676.5275pt x 437.635pt>
 File: figures/panel_matrix_bw.pdf Graphic file (type pdf)
 
 <use figures/panel_matrix_bw.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 64--68
+Underfull \hbox (badness 10000) in paragraph at lines 66--70
 
  []
 
-[11 <./figures/panel_matrix_bw.pdf>]
-<figures/panel.pdf, id=187, 897.3525pt x 885.3075pt>
+[11] <figures/panel.pdf, id=186, 897.3525pt x 885.3075pt>
 File: figures/panel.pdf Graphic file (type pdf)
- <use figures/panel.pdf>
-[12] <figures/tiled_matrix.pdf, id=200, 679.53876pt x 437.635pt>
+
+<use figures/panel.pdf> [12 <./figures/panel_matrix_bw.pdf>]
+<figures/tiled_matrix.pdf, id=200, 679.53876pt x 437.635pt>
 File: figures/tiled_matrix.pdf Graphic file (type pdf)
 
 <use figures/tiled_matrix.pdf> [13 <./figures/panel.pdf>] [14 <./figures/tiled_
@@ -1023,7 +1023,7 @@ File: figures/dynamic.pdf Graphic file (type pdf)
 File: figures/static.pdf Graphic file (type pdf)
 
 <use figures/static.pdf>
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 113--123
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 115--125
 []$[]$  $[]$ 
  []
 
@@ -1085,11 +1085,7 @@ File: figures/gepp.pdf Graphic file (type pdf)
 
 ] [26
 
-] [27]) [28] (./report.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+] [27]) [28] (./report.aux) ) 
 Here is how much of TeX's memory you used:
  9264 strings out of 495061
  131272 string characters out of 1182621
@@ -1098,22 +1094,22 @@ Here is how much of TeX's memory you used:
  76869 words of font info for 81 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,9n,38p,1912b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-texlive/fonts/enc/dvi
-ps/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}</usr/share/tex
-mf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmc
-sc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/typ
-e1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/sh
-are/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public
-/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-tt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf-t
-exlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/type
-1/urw/times/utmb8a.pfb>
-Output written on report.pdf (28 pages, 701119 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
+}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc
+/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/
+texmf-texlive/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
+lm-rmtt.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
+f/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
+i12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/
+public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/sha
+re/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
+t12.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sha
+re/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb>
+Output written on report.pdf (28 pages, 704240 bytes).
 PDF statistics:
  435 PDF objects out of 1000 (max. 8388607)
  87 named destinations out of 1000 (max. 500000)
