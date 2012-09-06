@@ -17,9 +17,42 @@ In the rest of the report, we focus on runtimes using explicit data dependencies
 %We will also use StarPU for heterogeneous computers (\ref{platform}).
 
 \section{LU Decomposition Algorithm}\label{lu_algo}
-The LU decomposition algorithm is based on the Gauss elimination method and consists of factorizing a matrix into a product of a lower and an upper triangular matrix. In order to obtain a good accuracy, the swaps are - most of the time - needed. There is a lot of heuristic to perform the swapping, the most used by the scientist community is the partial pivoting for its practical stability and accuracy \cite{Hig02}, it is also used in the LINPACK benchmark that is used to rank the TOP 500 super-computers.
+\subsection*{Presentation of the algorithm}
+In order to solve square systems of linear equations $Ax=b$, computers use the LU decomposition algorithm. It consists of factorizing a square $n*n$ matrix $A$  into a product of matrix $LU$, where $L$ is a lower triangular matrix with the identity diagonal and $U$ is an upper triangular matrix. For that, we relies on the fact that at each step of the Gauss elimination method, there is a matrix $L^{(k)}$ such as:
+\begin{center}
+$A^{(k+1)} = L^{(k)}A^{(k)}$
+\end{center}
+The matrix $U=A^{(n)}$ is an upper triangular as:
+\begin{center}
+$U=L^{(n)}L^{(n-1)}\dots L^{(2)}L^{(1)}A$ , and so\\
+$A=L^{(1)-1}L^{(2)-1}\dots L^{(n-1)-1}L^{(n)-1}U=LU$
+\end{center}
+The LU decomposition algorithm has the advantage that the elements of $L$ and $U$ may replace elements of $A$ in memory, the unity diagonal of $L$ is not stored.
 
-To illustrate an example of LU decomposition, we consider a $n*n$ square matrix. In order to benefit from efficient cache effects, state of the art dense linear algebra libraries implement a block version of the factorization. The matrix is split in $n_p$ block columns - so called panels - of $n_b$ columns ($n = n_p * n_b$). The factorization of the matrix consists in a sequence of $n_p$ twofold operations. Indeed, at each step $p$ ($0 \leq p < n_p$), panel $p$ is factorized and the trailing sub-matrix is then updated. Figure \ref{fig:matrix} shows an example of matrix in the second step of the LU decomposition, the second panel is still being factorized, and after, the trailing sub-matrix will be updated.
+At each step $k$ of the decomposition - $1\leq k\leq n$ - the algorithm execute the following operations:
+\begin{center}
+\begin{tabular}{lll}
+$l_{i,k} = 0$ & $i = 1,\dots , k-1$ & (*)\\
+$l_{k,k} = 1$ & & (*)\\
+$l_{i,k} = a_{i,k}^{(k)}/a_{k,k}^{(k)}$ & $i = k+1,\dots , n$ & (1)\\
+$a_{i,j}^{(k+1)}=a_{i,j}^{(k)}$ & $i=1,\dots,k$ \& $j=1,\dots,n$ & (*)\\
+$a_{i,j}^{(k+1)}=0$ & $i=k+1,\dots,n$ \& $j=1,\dots,k$ & (*)\\
+$a_{i,j}^{(k+1)}=a_{i,j}^{(k)}-l_{i,k}a_{k,j}^{(k)}$ & $i=k+1,\dots,n$ \& $j=k+1,\dots,n$ & (2)\\
+\end{tabular}
+\end{center}
+In practice, the operations followed by an (*) are not actually made because of the identity between the storage of $A^{(k)}$ and $L$. The operation (1) is a scalar product. In the rest of the report, we will call it a \emph{scal} operation according to the BLAS reference. The operation (2) is an outer product, as in the BLAS reference, we will call it \emph{ger}.
+
+After the factorization, the solve of the system of linear equation $Ax=b$ amounts to solve the two triangular systems $Ly=b$ and $Ux=y$ with \emph{forward and backward substitution}. These operations can be made with a \emph{trsm} with the BLAS routines.
+
+The algorithm presented is known as an LU decomposition \emph{with static pivoting} or \emph{without pivoting}. It is the natural algorithm to perform an efficient LU decomposition. However, the $LU$ computed enable only solving linear systems where $A$ is a diagonally dominant matrix. For general matrices, the result of solve is not always accurate. This is due to the fact that computers use fixed-precision, and at each scalar division, a small error is introduced in the numerical values of the matrix. Most of the time, this solution is used as entry for iterative methods (iterative refinement, Krylov subspaces \dots).
+
+In order to obtain a good accuracy, the pivoting is - most of the time - needed. There is a lot of heuristic to perform the pivoting, the most used by the scientist community is the \emph{partial pivoting} for its practical stability and accuracy \cite{Hig02}, it is also used in the LINPACK benchmark that is used to rank the TOP 500 super-computers.
+
+The solve of the system of linear equation $Ax=b$ amounts to solve $PAx=Pb$ where $p$ is a permutation matrix and it is computed at the factorization. In fact, at each step $k$ of the matrix factorization, a research for the maximum is performed on the $k^{th}$ column from the $k^{th}$ element. Then, the row of the selected pivot is swapped with the $k^{th}$ row.
+
+\subsection*{Blocked panel version}
+
+In order to benefit from efficient cache effects, state of the art dense linear algebra libraries implement a block version of the factorization. The matrix is split in $n_p$ block columns - so called panels - of $n_b$ columns ($n = n_p * n_b$). The factorization of the matrix consists in a sequence of $n_p$ twofold operations. Indeed, at each step $p$ ($0 \leq p < n_p$), panel $p$ is factorized and the trailing sub-matrix is then updated. Figure \ref{fig:matrix} shows an example of matrix in the second step of the LU decomposition, the second panel is still being factorized, and after, the trailing sub-matrix will be updated.
 
 \begin{figure}[!ht]
 \centering
