@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  6 SEP 2012 20:34
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  7 SEP 2012 21:03
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -778,6 +778,12 @@ Package color Info: Driver file: pdftex.def on input line 130.
 (/usr/share/texmf-texlive/tex/latex/chngcntr/chngcntr.sty
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
 )
+(/usr/share/texmf-texlive/tex/latex/stmaryrd/stmaryrd.sty
+Package: stmaryrd 1994/03/03 St Mary's Road symbol package
+\symstmry=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
+(Font)                  U/stmry/m/n --> U/stmry/b/n on input line 89.
+)
 \c@remarque=\count128
 \c@exemple=\count129
 \c@taskflow_cnt=\count130
@@ -785,29 +791,29 @@ Package: chngcntr 2009/09/02 v1.0a change counter resetting
  (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 284.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 284.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 285.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 285.
 
 
 (/usr/share/texmf-texlive/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 284.
-LaTeX Font Info:    ... okay on input line 284.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 284.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 285.
+LaTeX Font Info:    ... okay on input line 285.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 285.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -866,7 +872,7 @@ driver: pdftex
 \MPnumerator=\count136
 \everyMPtoPDFconversion=\toks31
 ) ABD: EveryShipout initializing macros
-Package hyperref Info: Link coloring ON on input line 284.
+Package hyperref Info: Link coloring ON on input line 285.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -876,8 +882,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count137
 )
-LaTeX Info: Redefining \ref on input line 284.
-LaTeX Info: Redefining \pageref on input line 284.
+LaTeX Info: Redefining \ref on input line 285.
+LaTeX Info: Redefining \pageref on input line 285.
  (./report.out)
 (./report.out)
 \@outlinefile=\write4
@@ -896,22 +902,22 @@ File: figures/icl_logo.pdf Graphic file (type pdf)
 File: figures/inria_logo.jpeg Graphic file (type jpg)
 
 <use figures/inria_logo.jpeg>
-Overfull \hbox (11.0302pt too wide) in paragraph at lines 293--294
+Overfull \hbox (11.0302pt too wide) in paragraph at lines 294--295
  [][] 
  []
 
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 297.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 298.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 297
+LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 298
 .
 
 (/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
 File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+phv on input line 297.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 298.
 
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1phv.fd
@@ -923,8 +929,10 @@ g> <./figures/icl_logo.pdf> <./figures/inria_logo.jpeg>] [2
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 306.
- (./report.toc
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 307.
+ (./thanks.tex) [3
+
+] (./report.toc
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 4.
 
 (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
@@ -965,11 +973,14 @@ LaTeX Font Info:    Try loading font information for U+lasy on input line 4.
 
 (/usr/share/texmf-texlive/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-))
+)
+LaTeX Font Info:    Try loading font information for U+stmry on input line 4.
+
+(/usr/share/texmf-texlive/tex/latex/stmaryrd/Ustmry.fd))
 \tf@toc=\write5
 \openout5 = `report.toc'.
 
- [3
+ [4
 
 ]
 Chapter 1.
@@ -988,62 +999,73 @@ LaTeX Font Info:    Try loading font information for T1+lmss on input line 34.
 
 (/usr/share/texmf/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [4
+) [5
 
-]) [5]
+]) [6]
 Chapter 2.
-(./context.tex [6
+(./context.tex [7
 
-]) [7]
+]) [8]
 Chapter 3.
-(./background.tex [8
+(./background.tex [9
 
-] [9] [10]
-<figures/panel_matrix_bw.pdf, id=176, 676.5275pt x 437.635pt>
+] [10] [11]
+<figures/panel_matrix_bw.pdf, id=182, 676.5275pt x 437.635pt>
 File: figures/panel_matrix_bw.pdf Graphic file (type pdf)
 
 <use figures/panel_matrix_bw.pdf>
-Underfull \hbox (badness 10000) in paragraph at lines 66--70
+Underfull \hbox (badness 10000) in paragraph at lines 68--72
 
  []
 
-[11] <figures/panel.pdf, id=186, 897.3525pt x 885.3075pt>
+[12] <figures/panel.pdf, id=192, 897.3525pt x 885.3075pt>
 File: figures/panel.pdf Graphic file (type pdf)
 
-<use figures/panel.pdf> [12 <./figures/panel_matrix_bw.pdf>]
-<figures/tiled_matrix.pdf, id=200, 679.53876pt x 437.635pt>
+<use figures/panel.pdf> [13 <./figures/panel_matrix_bw.pdf>] [14 <./figures/pan
+el.pdf>] <figures/tiled_matrix.pdf, id=210, 679.53876pt x 437.635pt>
 File: figures/tiled_matrix.pdf Graphic file (type pdf)
 
-<use figures/tiled_matrix.pdf> [13 <./figures/panel.pdf>] [14 <./figures/tiled_
-matrix.pdf>] <figures/dynamic.pdf, id=224, 612.2875pt x 304.13625pt>
+<use figures/tiled_matrix.pdf> [15 <./figures/tiled_matrix.pdf>]
+<figures/automate.pdf, id=223, 1450.41875pt x 593.21625pt>
+File: figures/automate.pdf Graphic file (type pdf)
+
+<use figures/automate.pdf>
+
+pdfTeX warning: pdflatex (file ./figures/dag_getrf.pdf): PDF inclusion: found P
+DF version <1.5>, but at most version <1.4> allowed
+<figures/dag_getrf.pdf, id=226, 625.33624pt x 658.46pt>
+File: figures/dag_getrf.pdf Graphic file (type pdf)
+
+<use figures/dag_getrf.pdf> [16 <./figures/automate.pdf>] [17 <./figures/dag_ge
+trf.pdf>] <figures/dynamic.pdf, id=258, 612.2875pt x 304.13625pt>
 File: figures/dynamic.pdf Graphic file (type pdf)
 
 <use figures/dynamic.pdf>
-<figures/static.pdf, id=225, 177.66376pt x 384.43625pt>
+<figures/static.pdf, id=259, 177.66376pt x 384.43625pt>
 File: figures/static.pdf Graphic file (type pdf)
 
 <use figures/static.pdf>
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 115--125
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 148--158
 []$[]$  $[]$ 
  []
 
-) [15 <./figures/dynamic.pdf> <./figures/static.pdf>]
+) [18 <./figures/dynamic.pdf> <./figures/static.pdf>]
 Chapter 4.
-(./work.tex <figures/natural_tf_bw.pdf, id=237, 1081.03876pt x 451.6875pt>
+(./work.tex <figures/natural_tf_bw.pdf, id=271, 1081.03876pt x 451.6875pt>
 File: figures/natural_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/natural_tf_bw.pdf> [16
+<use figures/natural_tf_bw.pdf> [19
 
  <./figures/natural_tf_bw.pdf>]
-<figures/distributed_tf_bw.pdf, id=247, 912.40875pt x 464.73625pt>
+<figures/distributed_tf_bw.pdf, id=282, 912.40875pt x 464.73625pt>
 File: figures/distributed_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/distributed_tf_bw.pdf> [17 <./figures/distributed_tf_bw.pdf>]
-<figures/hybrid_tf_bw.pdf, id=260, 1602.98875pt x 1650.165pt>
+<use figures/distributed_tf_bw.pdf> [20 <./figures/distributed_tf_bw.pdf>]
+<figures/hybrid_tf_bw.pdf, id=294, 1602.98875pt x 1650.165pt>
 File: figures/hybrid_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/hybrid_tf_bw.pdf> [18 <./figures/hybrid_tf_bw.pdf>]
-<figures/panel_ib_bw.pdf, id=274, 607.26875pt x 816.04875pt>
+<use figures/hybrid_tf_bw.pdf> [21 <./figures/hybrid_tf_bw.pdf>]
+<figures/panel_ib_bw.pdf, id=308, 607.26875pt x 816.04875pt>
 File: figures/panel_ib_bw.pdf Graphic file (type pdf)
 
 <use figures/panel_ib_bw.pdf>pdfTeX warning (ext4): destination with the same i
@@ -1051,67 +1073,69 @@ dentifier (name{figure.4.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.42 ...ith internal blocking\label{fig:panel_ib}}
-                                                  ) [19 <./figures/panel_ib_bw.
+                                                  ) [22 <./figures/panel_ib_bw.
 pdf>]
 Chapter 5.
-(./work2.tex <figures/pivots.pdf, id=284, 213.79875pt x 360.34625pt>
+(./work2.tex [23
+
+] <figures/pivots.pdf, id=323, 213.79875pt x 360.34625pt>
 File: figures/pivots.pdf Graphic file (type pdf)
 
 <use figures/pivots.pdf>
-<figures/permutations.pdf, id=285, 158.5925pt x 360.34625pt>
+<figures/permutations.pdf, id=324, 158.5925pt x 360.34625pt>
 File: figures/permutations.pdf Graphic file (type pdf)
 
-<use figures/permutations.pdf> [20
-
-]
-<figures/distributed_update_tf_bw.pdf, id=295, 1386.17876pt x 633.36626pt>
+<use figures/permutations.pdf> [24 <./figures/pivots.pdf> <./figures/permutatio
+ns.pdf>]
+<figures/distributed_update_tf_bw.pdf, id=338, 1386.17876pt x 633.36626pt>
 File: figures/distributed_update_tf_bw.pdf Graphic file (type pdf)
 
 <use figures/distributed_update_tf_bw.pdf>
-<figures/update_tf_bw.pdf, id=297, 1982.40625pt x 1722.435pt>
+<figures/update_tf_bw.pdf, id=340, 1982.40625pt x 1722.435pt>
 File: figures/update_tf_bw.pdf Graphic file (type pdf)
 
-<use figures/update_tf_bw.pdf>) [21 <./figures/pivots.pdf> <./figures/permutati
-ons.pdf>] [22 <./figures/distributed_update_tf_bw.pdf> <./figures/update_tf_bw.
-pdf>]
+<use figures/update_tf_bw.pdf>) [25] [26 <./figures/distributed_update_tf_bw.pd
+f> <./figures/update_tf_bw.pdf>]
 Chapter 6.
-(./experimental.tex <figures/gepp.pdf, id=319, 361.35pt x 252.945pt>
+(./experimental.tex [27
+
+] <figures/gepp.pdf, id=364, 361.35pt x 252.945pt>
 File: figures/gepp.pdf Graphic file (type pdf)
 
-<use figures/gepp.pdf> [23
+<use figures/gepp.pdf>) [28 <./figures/gepp.pdf>] (./conclusion.tex)
+(./report.bbl [29
 
-]) [24 <./figures/gepp.pdf>] (./conclusion.tex)
-(./report.bbl [25
+] [30
 
-] [26
-
-] [27]) [28] (./report.aux) ) 
+] [31]) [32] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 9264 strings out of 495061
- 131272 string characters out of 1182621
- 201271 words of memory out of 3000000
- 12063 multiletter control sequences out of 15000+50000
- 76869 words of font info for 81 fonts, out of 3000000 for 9000
+ 9440 strings out of 495061
+ 133454 string characters out of 1182621
+ 201831 words of memory out of 3000000
+ 12215 multiletter control sequences out of 15000+50000
+ 78093 words of font info for 87 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,9n,38p,1912b,435s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc
-}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc
-/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/
-texmf-texlive/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/
-lm-rmtt.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf/fonts/type1/public/lm/lmm
-i12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb>
-</usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/texmf/fonts/type1/public/
-lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fonts/type1/public/lm/lmt
-t12.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/sha
-re/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb>
-Output written on report.pdf (28 pages, 704240 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc
+}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc
+/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/sh
+are/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf-texlive/fonts/enc/dvip
+s/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rmtt.enc}</usr/share/texm
+f/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmcs
+c10.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/typ
+e1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/
+lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmss12.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+sy8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/fo
+nts/type1/public/lm/lmtt12.pfb></usr/share/texmf-texlive/fonts/type1/hoekwater/
+stmaryrd/stmary10.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a
+.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb>
+Output written on report.pdf (32 pages, 769283 bytes).
 PDF statistics:
- 435 PDF objects out of 1000 (max. 8388607)
- 87 named destinations out of 1000 (max. 500000)
- 166 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 483 PDF objects out of 1000 (max. 8388607)
+ 94 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
 
