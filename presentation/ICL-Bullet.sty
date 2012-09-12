@@ -1,0 +1,36 @@
+% ICL-Bullet.sty 
+
+% To scale the logo, specify the desired logo height as an optional
+% command line parameter.  The default height is 10mm.
+
+\ProvidesPackage{ICL-Bullet}
+\RequirePackage{pgf}
+\RequirePackage{helvet}
+
+\makeatletter
+\newlength{\ICLBulletUnit}
+\newlength{\ICLBulletCornerRadius}
+
+\definecolor{ICLBulletOrange}{rgb}{0.96863,0.58039,0.11373}
+
+
+
+\newcommand{\ICLBullet}[1][10mm]{%
+\setlength{\ICLBulletUnit}{#1}%
+\divide\ICLBulletUnit by 100%
+\setlength{\ICLBulletCornerRadius}{\ICLBulletUnit}%
+\multiply\ICLBulletCornerRadius 20%
+\begin{pgfpicture}
+  % Bullet ist gruen
+  \pgfsetcolor{ICLBulletOrange}
+
+  \pgfpathmoveto{\pgfpoint{100\ICLBulletUnit}{000\ICLBulletUnit}}
+  \pgfpathlineto{\pgfpointadd{\pgfpoint{100\ICLBulletUnit}{-\ICLBulletCornerRadius}}{\pgfpoint{000\ICLBulletUnit}{100\ICLBulletUnit}}}
+  \pgfpatharc{000}{090}{\ICLBulletCornerRadius}
+  \pgfpathlineto{\pgfpoint{000\ICLBulletUnit}{100\ICLBulletUnit}}
+  \pgfpathlineto{\pgfpoint{000\ICLBulletUnit}{\ICLBulletCornerRadius}}
+  \pgfpatharc{180}{270}{\ICLBulletCornerRadius}
+  \pgfpathclose
+  \pgfusepath{fill}
+\end{pgfpicture}}
+\makeatother

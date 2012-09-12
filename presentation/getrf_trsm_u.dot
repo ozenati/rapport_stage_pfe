@@ -1,0 +1,37 @@
+digraph G {
+GETRF_3_0 [shape="polygon",style=filled,fillcolor="#66c2a5",fontcolor="black",label="GETRF(0)",tooltip="GETRF0"];
+GETRF_3_0 -> TRSM_L_3_0_1 [label="D=>L" color="#000000" style="solid"]
+GETRF_3_0 -> TRSM_L_3_0_2 [label="D=>L" color="#000000" style="solid"]
+GETRF_3_0 -> TRSM_U_3_0_1 [label="D=>U" color="#000000" style="solid"]
+GETRF_3_0 -> TRSM_U_3_0_2 [label="D=>U" color="#000000" style="solid"]
+TRSM_U_3_0_2 [shape="polygon",style=filled,fillcolor="#fc8d62",fontcolor="black",label="TRSM_U(0, 2)",tooltip="TRSM_U3"];
+TRSM_U_3_0_2 -> GEMM_3_0_1_2 [label="" color="#FFFFFF" style="solid"]
+TRSM_U_3_0_2 -> GEMM_3_0_2_2 [label="" color="#FFFFFF" style="solid"]
+TRSM_L_3_0_1 [shape="polygon",style=filled,fillcolor="#8da0cb",fontcolor="black",label="TRSM_L(1, 0)",tooltip="TRSM_L0"];
+TRSM_L_3_0_1 -> GEMM_3_0_1_1 [label="" color="#FFFFFF" style="solid"]
+TRSM_L_3_0_1 -> GEMM_3_0_1_2 [label="" color="#FFFFFF" style="solid"]
+TRSM_U_3_0_1 [shape="polygon",style=filled,fillcolor="#fc8d62",fontcolor="black",label="TRSM_U(0, 1)",tooltip="TRSM_U0"];
+TRSM_U_3_0_1 -> GEMM_3_0_1_1 [label="" color="#FFFFFF" style="solid"]
+TRSM_U_3_0_1 -> GEMM_3_0_2_1 [label="" color="#FFFFFF" style="solid"]
+TRSM_L_3_0_2 [shape="polygon",style=filled,fillcolor="#8da0cb",fontcolor="black",label="TRSM_L(2, 0)",tooltip="TRSM_L3"];
+TRSM_L_3_0_2 -> GEMM_3_0_2_1 [label="" color="#FFFFFF" style="solid"]
+TRSM_L_3_0_2 -> GEMM_3_0_2_2 [label="" color="#FFFFFF" style="solid"]
+GEMM_3_0_1_2 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GEMM(0, 1, 2)",tooltip="GEMM4"];
+GEMM_3_0_1_2 -> TRSM_U_3_1_2 [label="" color="#FFFFFF" style="solid"]
+GEMM_3_0_2_1 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GEMM(0, 2, 1)",tooltip="GEMM2"];
+GEMM_3_0_1_1 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GEMM(0, 1, 1)",tooltip="GEMM0"];
+GEMM_3_0_2_1 -> TRSM_L_3_1_2 [label="" color="#FFFFFF" style="solid"]
+GEMM_3_0_1_1 -> GETRF_3_1 [label="" color="#FFFFFF" style="solid"]
+GEMM_3_0_2_2 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GEMM(0, 2, 2)",tooltip="GEMM6"];
+GEMM_3_0_2_2 -> GEMM_3_1_2_2 [label="" color="#FFFFFF" style="solid"]
+GETRF_3_1 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GETRF(1)",tooltip="GETRF1"];
+GETRF_3_1 -> TRSM_L_3_1_2 [label="" color="#FFFFFF" style="solid"]
+GETRF_3_1 -> TRSM_U_3_1_2 [label="" color="#FFFFFF" style="solid"]
+TRSM_U_3_1_2 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="TRSM_U(1, 2)",tooltip="TRSM_U1"];
+TRSM_U_3_1_2 -> GEMM_3_1_2_2 [label="" color="#FFFFFF" style="solid"]
+TRSM_L_3_1_2 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="TRSM_L(2, 1)",tooltip="TRSM_L1"];
+TRSM_L_3_1_2 -> GEMM_3_1_2_2 [label="" color="#FFFFFF" style="solid"]
+GEMM_3_1_2_2 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GEMM(1, 2, 2)",tooltip="GEMM1"];
+GEMM_3_1_2_2 -> GETRF_3_2 [label="" color="#FFFFFF" style="solid"]
+GETRF_3_2 [shape="polygon",style=invisible,fillcolor="#FFFFFF",fontcolor="white",label="GETRF(2)",tooltip="GETRF2"];
+}

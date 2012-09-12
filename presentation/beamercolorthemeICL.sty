@@ -1,0 +1,61 @@
+% Copyright <hartwig.anzt@kit.edu>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\ProvidesPackage{beamercolorthemeICL}
+
+\usepackage{beamercolorthemeorchid}
+
+\mode<presentation>
+
+
+\definecolor{ICL@orange}{rgb}{0.96863,0.58039,0.11373}     % use structure theme to change
+\definecolor{ICL@gray}{rgb}{0.84,0.84,0.84}     % use structure theme to change
+\definecolor{ICL@darkgray}{rgb}{0.25098,0.25098,0.25098} % use structure theme to change
+
+\setbeamercolor{normal text}{fg=black,bg=white}
+
+\setbeamercolor{structure}{fg=ICL@darkgray}
+\setbeamercolor*{local structure}{parent=structure, fg=ICL@darkgray}
+
+
+\setbeamercolor{palette primary}{fg=ICL@darkgray,bg=ICL@lightorange}
+\setbeamercolor{palette secondary}{fg=ICL@darkgray,bg=ICL@lightorange}
+\setbeamercolor{palette tertiary}{fg=ICL@darkgray,bg=ICL@lightorange}
+\setbeamercolor{palette quaternary}{fg=ICL@darkgray,bg=ICL@lightorange}
+
+\setbeamercolor{palette sidebar secondary}{use=normal text,fg=white}
+\setbeamercolor{palette sidebar tertiary}{use=normal text,fg=white}
+
+\setbeamercolor*{section in head/foot}{fg=white,bg=ICL@darkgray}
+\setbeamercolor*{section in sidebar}{fg=white,bg=ICL@darkgray}
+
+\setbeamercolor*{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor*{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor*{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+
+\setbeamercolor*{author in head/foot}{parent=palette sidebar tertiary}
+\setbeamercolor*{author in sidebar}{use=palette sidebar tertiary,fg=palette sidebar tertiary.fg}
+
+\setbeamercolor*{title}{fg=black}
+\setbeamercolor*{title in head/foot}{parent=palette sidebar tertiary}
+\setbeamercolor*{title in sidebar}{use=palette sidebar tertiary,fg=palette sidebar tertiary.fg}
+
+\setbeamercolor*{frametitle}{fg=black}
+
+\setbeamercolor*{date in head/foot}{parent=palette sidebar tertiary}
+\setbeamercolor*{date in sidebar}{use=palette sidebar tertiary,fg=palette sidebar tertiary.fg}
+
+\setbeamercolor*{page number in head/foot}{parent=palette sidebar tertiary}
+\setbeamercolor*{date in sidebar}{use=palette sidebar tertiary,fg=palette sidebar tertiary.fg}
+
+\setbeamercolor*{navigation symbols}{use=palette sidebar tertiary,fg=palette sidebar tertiary.fg!75!white}
+\setbeamercolor*{navigation symbols dimmed}{use=palette sidebar tertiary,fg=palette sidebar tertiary.fg!50!white}
+
+\setbeamercolor*{ICL navigation symbols}{parent=navigation symbols}
+\setbeamercolor*{ICL navigation symbols dimmed}{parent=navigation symbols dimmed}
+
+\mode
+<ALL>
