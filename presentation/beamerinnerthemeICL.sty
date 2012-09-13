@@ -1,0 +1,77 @@
+% Copyright Hartwig Anzt <hartwig.anzt@kit.edu>
+%
+% This program can be redistributed and/or modified under the terms
+% of the GNU Public License, version 2.
+
+\ProvidesPackage{beamerinnerthemeICL}
+\RequirePackage{ICL-Bullet}
+
+\usepackage{beamerinnerthemerounded}
+
+\mode<presentation>
+
+
+
+\defbeamertemplate*{title page}{ICL}[1][]
+{
+
+
+
+  \begin{pgfpicture}
+  
+  
+ 
+
+    \pgftext[bottom, left,%
+      at={%
+        \pgfpoint{-2\ICL@margin}{1.12\ICL@titlebottom}%
+      }]{%
+      \parbox{\paperwidth}{%
+        \textcolor{black}{\usebeamerfont{title}
+      \inserttitle}}}
+
+    \pgftext[top, left, %
+       at={%
+         \pgfpointadd{%
+           \pgfpoint{-\ICL@margin}{1.14\ICL@titlebottom}}{%
+           \pgfpoint{0pt}{-\ICL@titlesubtitlesep}}%
+    }]{%
+     \parbox{\paperwidth}{%
+      \textcolor{black}{
+       \ifx\insertsubtitle\@empty%
+       \else%
+        \usebeamerfont{subtitle}\insertsubtitle\\[1.7ex]
+       \fi%
+       \usebeamerfont{author}\insertauthor\\%[1ex]
+       \ifx\insertdate\@empty%
+       \else%
+         %\hspace{0.5ex}\raisebox{-0.3ex}{\rule{0.7pt}{2ex}}\hspace{0.5ex}\insertdate%
+	      % \location\hspace{0.3ex} \textbullet{}\hspace{0.3ex} \insertdate%
+	  \insertdate
+       \fi%
+      }%
+     }%
+    }
+
+    \pgftext[left,%
+      at={%
+         \pgfpointadd{%
+           \pgfpoint{-\ICL@margin}{\ICL@titlebottom}}{%
+           \pgfpoint{0pt}{-1.05\ICL@titleinstitutesep}}%
+    }]{%
+     \parbox{\paperwidth}{%
+      \textcolor{white}{\usebeamerfont{institute}\insertinstitute}%
+     }%
+    }
+  \end{pgfpicture}
+}
+
+\defbeamertemplate*{itemize item}{ICL}{\raise0.1ex\hbox{\ICLBullet[1.2ex]}}
+\defbeamertemplate*{itemize subitem}{ICL}{\raise0.2ex\hbox{\ICLBullet[1.0ex]}}
+\defbeamertemplate*{itemize subsubitem}{ICL}{\raise0.3ex\hbox{\ICLBullet[0.8ex]}}
+
+\setbeamertemplate{items}[ICL]
+\setbeamertemplate{sections/subsections in toc}[circle]
+
+\mode
+<all>

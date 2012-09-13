@@ -1,0 +1,147 @@
+\documentclass{beamer}
+\mode<presentation>
+{
+  \usetheme[headline]{ICL}
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+%\setbeamertemplate{headline}[default]
+%\setbeamercovered{transparent}
+%\setbeamertemplate{footline}[default]
+%\setbeamertemplate{headline}[split]
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}
+\usepackage[english]{babel}
+\usepackage{color}  
+\usepackage{pifont}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{pgf}
+\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+\usepackage{xspace}
+\usepackage{transparent}
+
+%%%%%%%%%definition des variables%%%%%%%%%%%%%%%
+%\usepackage[latin1]{inputenc}
+%\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+%\usepackage{lmodern}
+%\usepackage{listings} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\sujet{}
+\def\projet{Enabling Partial Pivoting in Task Flow LU Factorization} 
+\def\etape{}
+\def\gA{Omar \textsc{Zenati}}
+\def\gB{Supervisors: G. Bosilca, P. Ramet}
+
+\definecolor{borange}{RGB}{248,170,78}
+
+%%%%%%%%%%%%%%%% Header %%%%%%%%%%%%%%%%
+ \title[Enabling Partial Pivoting in Task Flow LU Factorization]{
+        {\bfseries \projet\\} 
+        {\bfseries \huge \sujet}
+        {\small Master Defense}
+}
+
+
+\titlegraphic{
+  \includegraphics[scale=0.5]{icl.png}
+  \hfill
+  \includegraphics[scale=0.3]{inria.png}
+  }
+\date{September 13, 2012}
+
+\author[Zenati]{
+  {\normalsize \bfseries \sffamily} {\large \gA}\\
+  \vspace{1cm}
+  {\normalsize \bfseries \sffamily} {\large \gB}\\
+}
+
+
+\AtBeginSection[]{
+  \begin{frame}{Summary}
+  \tableofcontents[currentsection,subsectionstyle=shaded]
+  \end{frame}
+}
+
+\AtBeginSubsection[]{
+  \begin{frame}{Summary}
+  \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\begin{document}
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Three months at the \textit{Innovative Computer Laboratory}
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.6\textwidth]{icl-claxton.jpg}
+\end{center}
+\begin{itemize}
+\item Three months at the \textit{Inria Bordeaux Sud-Ouest}
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.5\textwidth]{bandeau-home-bordeaux.jpg}
+\end{center}
+\end{frame}
+
+\begin{frame}{Summary}
+\tableofcontents
+\end{frame}
+
+\section[Context]{Context and Motivations}
+\input{context.tex}
+
+\section[Without Pivoting]{LU Decomposition Without Pivoting ($A=LU$)}
+\input{lu_algo.tex}
+
+\section[Partial Pivoting]{LU Decomposition with Partial Pivoting ($PA=LU$)}
+\input{gepp.tex}
+
+\section{Performance}
+\begin{frame}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{gepp}
+\end{center}
+\end{frame}
+
+\section*{Conclusion}
+\begin{frame}{Conclusion and future work}
+Conclusion :
+\begin{itemize}
+\item Implemented static pivoting ($A=LU$) on DAGuE and StarPU
+\item Implemented partial pivoting ($PA=LU$) on DAGuE and StarPU
+\item Exhibited the feasibility of partial pivoting on task flow model
+\item Obtained encouraging performances with partial pivoting over DAGuE
+\item Performances of partial pivoting over StarPU still not exploitable
+\end{itemize}
+Future work :
+\begin{itemize}
+\item Integrate GPU pivoting operations to DAGuE and StarPU
+\item Try other startegies of panel factorizations on several methods
+\item Build a new benchmark based on the DAGuE partial pivoting
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\huge{Thank you !}
+\end{center}
+\end{frame}
+
+\input{annexe.tex}
+
+\end{document}

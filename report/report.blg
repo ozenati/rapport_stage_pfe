@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: report.aux
+The style file: splncs.bst
+Database file #1: report.bib
+Warning--I'm ignoring Message94's extra "note" field
+--line 24 of file report.bib
+Warning--I didn't find a database entry for "charm"
+Warning--I didn't find a database entry for "reference/parallel/X11ab"
+You've used 23 entries,
+            2087 wiz_defined-function locations,
+            666 strings with 9263 characters,
+and the built_in function-call counts, 7962 in all, are:
+= -- 782
+> -- 351
+< -- 21
++ -- 124
+- -- 101
+* -- 604
+:= -- 1084
+add.period$ -- 35
+call.type$ -- 23
+change.case$ -- 22
+chr.to.int$ -- 0
+cite$ -- 23
+duplicate$ -- 411
+empty$ -- 715
+format.name$ -- 101
+if$ -- 1932
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 23
+newline$ -- 120
+num.names$ -- 29
+pop$ -- 74
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 276
+stack$ -- 0
+substring$ -- 469
+swap$ -- 224
+text.length$ -- 21
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 69
+width$ -- 25
+write$ -- 279
+(There were 3 warnings)

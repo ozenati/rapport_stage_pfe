@@ -1,0 +1,158 @@
+Twenty years ago, a computer with only one single processor may be considered a computing platform and be included in the Top 500\footnote{\url{http://www.top500.org/}}  ranking of super computers. Nowadays, computing platforms have greatly evolved. Their architectures became more complex and varied. For this report, we propose here to distinguish them into four models. First, the \textbf{shared memory multi-cores} architectures, they are computing platforms including many cores which all have access to the same virtual memory. The \textbf{distributed memory} architectures are composed of at least two nodes. Each node has its own cores and its physical memory. Cores of different nodes cannot access to the virtual memory of other nodes, and thus, must communicate to share data. Even if in distributed memory architectures, a node can have many cores,  we will use - in this report - the denomination \textit{distributed memory} architectures only for nodes with one single core. In contrast to the \textbf{hierarchical} architectures which are distributed memory architectures where at least one node is a shared memory multi-cores architecture. More recently, accelerator as GPU can be integrated to platform. The distributed memory architectures where at least one node includes an accelerator will be called \textbf{heterogeneous} architectures.
+
+\section{Runtimes}
+The most popular method to implement parallel distributed memory programs consists of using messaging systems. There are several different types of these systems such as message-passing like Message Passing Interface (MPI)\cite{Message94}. To achieve good performance with MPI, the knowledge of the whole architecture used is often advised. Moreover, the portability of performance is not always ensured. There is another type of messaging systems which tries to resolve these problems: the active-message, Charm++ is based on \cite{KaleLVandK1993b}.
+
+In order to ease efficient use of supercomputers and to introduce an abstraction to computer's architectures, the task flow model was used to implement other runtimes. In fact, task flows can be represented as a Direct Acyclic Graph (DAG) where vertices are tasks and edges are the dependencies between them. These runtimes schedule tasks on different nodes and move data according to tasks dependencies.
+We propose here to distinguish runtimes based on task flow model into two families: those that run codes with implicit data dependencies and those that run codes with explicit data dependencies.
+
+In order to ease the use of parallelism, while keeping the traditional way of programming, some runtimes run on codes with implicit data dependencies. These runtimes need only a set of tasks and their data access modes (read, write or read-write). With this information, the runtime extract the data dependencies and then build the corresponding DAG of task flow. Implementing parallel application over these runtimes is very similar to sequential codes. Quark implement this model for shared memory machines and is used in the Parallel Linear Algebra for Scalable Multi-core Architectures (PLASMA) library \cite{1742-6596-180-1-012037}.
+StarSs is a collection of runtimes which can run on different types of architectures: CellSs for the Cell BE\cite{Bellens06}, SMPSs is for SMP architectures \cite{journals/concurrency/BadiaHLPQQ09}, and GPUSs for GPU \cite{Ayguade09}. In order to gather all types of architectures, StarPU is a unified runtime system that offers support for heterogeneous multicore architectures (GPGPUs, IBM Cell, ...). StarPU manage tasks execution through different architectures thanks to its data coherency protocol \cite{DoBiBo07,journals/concurrency/AugonnetTNW11}.
+
+
+On the other hand, there are some runtimes based on explicit data dependencies by using Parametrized Task Graph (PTG).
+Thanks to explicit data dependencies, these runtimes may benefit from efficient graph traversals. Moreover, PTG allows for compact representations of algorithms and induce a low overhead. Intel CnC is one of these runtimes dedicated - for the moment - to shared memory computers. \dague (Direct Acyclic Graph scheduler Engine) is also a runtime based on explicit data dependencies which can run on computers with shared and/or distributed memory.
+
+In the rest of the report, we focus on runtimes using explicit data dependencies. To illustrate the benefits on hierarchical computers, we will use the \dague runtime system. 
+%We will also use StarPU for heterogeneous computers (\ref{platform}).
+
+\section{LU Decomposition Algorithm}\label{lu_algo}
+\subsection*{Presentation of the algorithm \label{algo_lu}}
+In order to solve square systems of linear equations $Ax=b$, computers can use the LU decomposition algorithm. It consists of factorizing a square $n*n$ matrix $A$  into a matrix product $A=LU$, where $L$ is a lower triangular matrix with the identity diagonal and $U$ is an upper triangular matrix. For that, we rely on the fact that at each step of the Gauss elimination method, there is a matrix $L^{(k)}$ such as:
+\begin{center}
+$A^{(k+1)} = L^{(k)}A^{(k)}$
+\end{center}
+The matrix $U=A^{(n)}$ is upper triangular as:
+\begin{center}
+$U=L^{(n)}L^{(n-1)}\dots L^{(2)}L^{(1)}A$ , and so\\
+$A=L^{(1)-1}L^{(2)-1}\dots L^{(n-1)-1}L^{(n)-1}U=LU$
+\end{center}
+The LU decomposition algorithm has the advantage that the elements of $L$ and $U$ may replace elements of $A$ in memory. Note that the unity diagonal of $L$ is not stored.
+
+At each step $k \in  \llbracket 1,n \rrbracket$ of the decomposition, the algorithm execute the following operations:
+\begin{center}
+\begin{tabular}{lll}
+$l_{i,k} = 0$ & $i = 1,\dots , k-1$ & (*)\\
+$l_{k,k} = 1$ & & (*)\\
+$l_{i,k} = a_{i,k}^{(k)}/a_{k,k}^{(k)}$ & $i = k+1,\dots , n$ & (1)\\
+$a_{i,j}^{(k+1)}=a_{i,j}^{(k)}$ & $i=1,\dots,k$ \& $j=1,\dots,n$ & (*)\\
+$a_{i,j}^{(k+1)}=0$ & $i=k+1,\dots,n$ \& $j=1,\dots,k$ & (*)\\
+$a_{i,j}^{(k+1)}=a_{i,j}^{(k)}-l_{i,k}a_{k,j}^{(k)}$ & $i=k+1,\dots,n$ \& $j=k+1,\dots,n$ & (2)\\
+\end{tabular}
+\end{center}
+In practice, the operations followed by an (*) are not actually made because of the identity between the storage of $A^{(k)}$ and $L$. The operation (1) is a \emph{scal}ar product. In the rest of the report, we will call it a \emph{scal} operation according to the BLAS reference. The operation (2) is an outer product, as in the BLAS reference, we will call it \emph{ge}neral \emph{r}ank  operation (\emph{ger}).
+
+After the factorization, the solve of the system of linear equation $Ax=b$ is equivalent to to solve the two triangular systems $Ly=b$ and then $Ux=y$ with \emph{forward and backward substitution}. These operations can be made with a \emph{tr}iangular \emph{s}olve step applied to a \emph{m}atrix (\emph{trsm})with the BLAS routines.
+
+The algorithm presented is known as an LU decomposition \emph{without pivoting}. It is the simplest algorithm to perform an LU decomposition. However, this LU decomposition only enables one to solve linear systems for certain matrices such as diagonally dominant matrix. For general matrices, the obtained solution is not always accurate. This is due firstly to the fact that it is possible to find an element $a_{k,k}^{(k)} = 0$ and so the \emph{scal} operation becomes impossible. Secondly, if $a_{k,k}^{(k)}$ is just enough close to zero, the scalar division will introduce a small error in the numerical values of the matrix due to the fixed precision used by computers. In such cases, the obtained solution may be refined by applying iterative methods (such as iterative refinement, Krylov subspace methods \dots).
+
+In order to obtain a good accuracy - without requiring to post-process the solution - pivoting techniques may be employed. The solve of the system of linear equation $Ax=b$ amounts to solve $PAx=Pb$ where $P$ is a permutation matrix and it is computed at the factorization.
+
+There is a lot of heuristic to perform the pivoting, the most used by the scientific community is the \emph{partial pivoting} for its practical stability and accuracy \cite{Hig02}, it is also used in the LINPACK benchmark that is used to rank the TOP 500 super-computers.
+
+The characteristic of the LU decomposition with partial pivoting is that, at each step $k$ of the matrix factorization, a research for the maximal absolute value is performed on elements of the $k^{th}$ column from the $k^{th}$ element. The element which is selected will be called in the rest of the report: the better pivot or the maximum. Then, the row of the selected pivot is swapped with the $k^{th}$ row.
+
+An other strategies of pivoting is - for example - the \emph{full pivoting} which amounts to research the better pivot not only in the column, but in the row also. Thus, the solution computed is more accurate. However, this algorithm generate more synchronisation and double the complexity of the pivoting operation. The partial pivoting rarely reach its critical case where the best pivot of the column is not large enough to avoid mathematical issue. The partial pivoting is then more commonly used.
+
+\subsection*{Blocked panel version}
+
+In order to benefit from efficient cache effects, state of the art dense linear algebra libraries implement a block version of the factorization. The matrix is split in $n_p$ block columns - so called panels - of $n_b$ columns ($n = n_p * n_b$). The factorization of the matrix consists in a sequence of $n_p$ twofold operations. Indeed, at each step $p$ ($0 \leq p < n_p$), panel $p$ is factorized and the trailing sub-matrix is then updated. Figure \ref{fig:matrix} shows an example of matrix in the second step ($p=1$) of the LU decomposition, the second panel is still being factorized, and after, the trailing sub-matrix will be updated.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/panel_matrix_bw.pdf}
+\caption{LU decomposition at step $p$ on panel-blocked matrix \label{fig:matrix}}
+\end{figure}
+
+ 
+At each step $p$, the panel factorization is performed on the $p^{th}$ panel. Such a panel factorization consists in a loop of $n_b$ iterations. At each iteration $i$ ($p*n_b \leq i < (p+1)*n_b$), a search for the maximum of the $i^{th}$ column is performed, then its row is swapped with the $i^{th}$ row.
+Then, a BLAS \textit{scal} routine is applied on the column $i$. It consists to divide all the element of the column $i$ by the selected pivot (Figure \ref{fig:panel} show the different parts of the panel).
+After that, the trailing sub-panel is updated with an outer product (\textit{ger}). The panel factorization produces an array of size $n_b$ containing the pivots selected, we note $ipiv$ this array. For each index $x$ of the array $ipiv$, the row $(p*n_b + x)$ will be swapped with the row $(ipiv[x])$.
+Mathematically, the panel factorization can be expressed as follows:\\
+\begin{tabbing}
+For \= $k$ from $1$ to $nb$\\
+\> Search for a pivot, do pivoting and store index\\
+\> For \=$i$ from $k+1$ to $n$    /*scal operation*/\\
+\>\> $a_{i,k} = a_{i,k}/a_{k,k}$\\
+\> For \=$i$ from $k+1$ to $nb$   /*ger operation*/\\
+\>\> For \=$j$ from $k+1$ to $nb$\\
+\>\>\> $a_{i,j} = a_{i,j}-a_{i,k}*_{k,j}$\\
+\end{tabbing}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/panel.pdf}
+\caption{Second iteration of panel factorization (after swap)\label{fig:panel}}
+\end{figure}
+
+Once the $p^{th}$ panel is factorized, the subsequent trailing sub-matrix is updated. This update depends on the result of the corresponding panel factorization. It takes as entry the pivot information and then applies the permutations on the whole trailing sub-matrix. Once the swaps have been performed on the trailing sub-matrix, the $n_b$ block row corresponding to the eliminated rows (block $U'$ in Figure \ref{fig:matrix}) is updated. For that, the following equation must be solved:
+\begin{center}
+$U'^{(k)} = L*U'^{(k+1)}$
+\end{center}
+Which is equivalent to:
+\begin{center}
+$U'^{(k+1)} = L^{-1}*U'^{(k)}$
+\end{center}
+To solve this equation, we can use the BLAS routine \textit{trsm}. The block $U'$ obtained is then multiplied with the block $L'$ and the resulting matrix is subtracted from the matrix $A'$:
+\begin{center}
+$A'^{(k+1)} = A'^{(k)} - L'^{(k+1)}*U'^{(k+1)}$
+\end{center}
+This operation is performed with the BLAS routine for matrix multiplication \textit{gemm} (\emph{ge}neral \emph{m}atrix \emph{m}atrix operation).
+
+
+\section{Task Flow LU Decomposition over Runtimes \label{task_flow_lu}}
+We consider the problem of writing the LU decomposition algorithm as a task flow model in order to be executed over runtime systems (particularly on \dague). In the case of dense linear algebra, the algorithms have been redesigned to cope with this model. They are expressed in terms of tasks operating on fine grain squares sub-matrices, also called tiles \cite{conf/para/ButtariDKLLT06,ChanEtAl07b}. Figure \ref{fig:tiled_matrix} shows a matrix partitioned into tiles. 
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/tiled_matrix.pdf}
+\caption{LU decomposition at step $p$ on tiled matrix \label{fig:tiled_matrix}}
+\end{figure}
+
+In case of LU decomposition without pivoting, the tile algorithm is very similar to the blocked panel algorithm of LU decomposition without pivoting. In fact, the panel factorization is split into two tasks: one operating on the diagonal tile (see Figure \ref{fig:tiled_matrix}) and the second performing on the other tiles of the panel. The first one will execute the natural LU decomposition without pivoting algorithm (presented in first part of \ref{algo_lu}), we will call it  \textbf{GETRF} according to \emph{getrf} routine (\emph{ge}neral  \emph{tr}iangular \emph{f}actorization) of Lapack which is a mathematical library build ont the BLAS routines to solve - for example - linear algebra or eigenvalues problems. The second operation has to solve the equation:
+\begin{center}
+$L'^{(k)} = L'^{(k+1)} * U$\\
+$\Updownarrow$\\
+$L'^{(k+1)} = L'^{(k)} * U^{-1}$
+\end{center}
+This can be solved with \emph{trsm} operation. Thus, the task operating this solve will be called \textbf{TRSM\_L}.
+
+As for the blocked panel algorithm, the update is a twofold operation: \emph{trsm} for tiles owning the eliminated rows and \emph{gemm} for the other tiles of the trailing sub-matrix. We will call them respectively \textbf{TRSM\_U} and \textbf{GEMM}.
+
+All these tasks interact by exchanging data. These interactions can be represented by an automate. Figure \ref{fig:automate} shows the automate of tasks interactions of the tile LU algorithm, we can see that the task \textbf{GETRF} takes the diagonal tile as entry to factorize it. If it is the first iteration $k=0$, it takes it directly from the memory, otherwise it takes it from the output $A'$ of the \textbf{GEMM} task of the previous iteration. The resulting tile of the task \textbf{GETRF} - which is two matrix $L$ and $U$ - is respectivly sent to the tasks \textbf{TRSM\_L} and \textbf{TRSM\_U}.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/automate.pdf}
+\caption{Automate of tasks interactions of tile LU decomposition algorithm \label{fig:automate}}
+\end{figure}
+
+The execution of the automate of interactions provides a DAG of task flow. Figure \ref{fig:dag_dgetrf} shows the DAG obtained after unrolling the automate of Figure \ref{fig:automate} on a matrix of three tiles.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/dag_getrf.pdf}
+\caption{DAG of the task flow LU decomposition algorithm  on a matrix of 3 tiles \label{fig:dag_dgetrf}}
+\end{figure}
+
+As for the blocked panel algorithms, the LU decomposition without pivoting is numerically unstable. In \cite{Buttari09}, the authors proposed a new pivoting strategy called \emph{incremental pivoting} based on \cite{Quintana-Orti:2009:ULF} more suitable to tile algorithms and achieved high performance by limiting the number of synchronizations and enabling more parallelism. The algorithm applies a partial pivoting only on the diagonal tile, then it factorizes sequentially every other tiles of the panel and if a better pivot is found during this decomposition, the upper triangular matrix of the diagonal tile is accordingly updated. The update of the trailing sub-matrix is also done sequentially by using its own routines which are less efficient than \emph{gemm} operations.
+
+
+However, this algorithm has been proven numerically unstable \cite{journals/siammax/GrigoriDX11}. In order to achieve better stability, we choose to adapt the partial pivoting algorithm to the task flow model.
+
+To illustrate the complexity of implementing the algorithm, we consider the pivot research. This research occurs at each column factorization and lies on the critical path of the decomposition. Partial pivoting requires to select the maximum of the elements below the diagonal in the column. Then, elements lie on $(n-k)/n_b$ different tiles which may be potentially mapped on a huge number of cores in order to ensure state of the art load balancing techniques. The research induces a synchronization at each column which may overwhelm all potential benefits of tile algorithms and deliver too many tasks to be processed by the runtime.
+
+Another issue with the implementation of the partial pivoting algorithm over the task flow model, is the swapping operation of the update. In fact, after receiving the pivots array from the panel factorization, the upper tile has to send the selected rows to other tiles and receive back the substitute ones. If the swap is done rows by rows, the upper tile may exchange a row with another tile of the panel depending on the numerical values of the pivots. The task flow model can thus no longer be statically build in advance but has then to be dynamically composed. Figure \ref{fig:dynamic} represent a simplified task flow of the sending operation with an automaton. Each time the execution of an algorithm will depend on a value of a data, we will call this phenomenon a \emph{data dependency}. The algorithm which contains data dependencies will be called \emph{dynamic algorithm}. These algorithm may be represented by automatons or others conditional mathematical objects. Unfortunately, almost runtimes supports only static representation of task flow (DAG). Thus, the challenge is to represent a dynamic algorithm with a static representation covering the collection of possibilities. A solution is to create a DAG with a path where all concurrent tasks are sequential and move conditions of transitions to the kernel of the tasks. Figure \ref{fig:static} represent the same dynamic algorithm of Figure \ref{fig:dynamic} with a DAG, we can see that all the tasks are represented sequentially and that the conditions of the dependencies are integrated to the kernels. This transformation may increase tremendously the number of tasks and communications required to execute the algorithm. In the next sections we will present how we reduce the size of this static representation to perform the panel factorization and then update the trailing sub-matrix.
+
+\begin{figure}[!ht]
+\begin{minipage}[!ht]{.5\textwidth}
+\centering
+\includegraphics[height=3cm]{figures/dynamic.pdf}
+\caption{Dynamic representation of task flow\label{fig:dynamic}}
+\end{minipage} \hfill
+\begin{minipage}[!ht]{.5\textwidth}
+\centering
+\includegraphics[height=4cm]{figures/static.pdf}
+\caption{Static representation of task flow\label{fig:static}}
+\end{minipage}
+\end{figure}

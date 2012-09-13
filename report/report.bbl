@@ -1,0 +1,162 @@
+\begin{thebibliography}{10}
+
+\bibitem{springerlink:10.1007/978-3-642-19328-6_5}
+Sterling, T.:
+\newblock {HPC} in phase change: Towards a new execution model.
+\newblock In: HPCCS -- {VECPAR} 2010. Volume 6449 of LNCS.
+\newblock Springer (2011)  31--31
+
+\bibitem{PBL08}
+Perez, J., Badia, R., Labarta, J.:
+\newblock A dependency-aware task-based programming environment for multi-core
+  architectures.
+\newblock In: Cluster Computing, 2008 IEEE International Conference on. (2008)
+  142 --151
+
+\bibitem{FYD09}
+Song, F., YarKhan, A., Dongarra, J.J.:
+\newblock Dynamic task scheduling for linear algebra algorithms on
+  distributed-memory multicore systems.
+\newblock In: {SC} '09: Proceedings of the Conference on High Performance
+  Computing Networking, Storage and Analysis, ACM (2009)  1--11
+
+\bibitem{DAGuE:PARCO}
+Bosilca, G., Bouteiller, A., Danalis, A., Herault, T., Lemarinier, P.,
+  Dongarra, J.:
+\newblock {DAGuE}: A generic distributed {DAG} engine for high performance
+  computing.
+\newblock Parallel Computing \textbf{38}(1–2) (2012)  37 -- 51
+
+\bibitem{ATNW11}
+Augonnet, C., Thibault, S., Namyst, R., Wacrenier, P.A.:
+\newblock {StarPU}: a unified platform for task scheduling on heterogeneous
+  multicore architectures.
+\newblock Concurrency and Computation: Practice and Experience \textbf{23}(2)
+  (2011)  187--198
+
+\bibitem{CJY04}
+Cosnard, M., Jeannot, E., Yang, T.:
+\newblock Compact dag representation and its symbolic scheduling.
+\newblock Journal of Parallel and Distributed Computing \textbf{64}(8) (2004)
+  921--935
+
+\bibitem{Message94}
+{Message Passing Interface Forum}:
+\newblock {MPI}: {A} message-passing interface standard.
+\newblock To appear in the International Journal of Supercomputing Applications
+  \textbf{8}(3/4) (1994) Computer Science Department Technical Report CS-94-230
+  may'94.
+
+\bibitem{KaleLVandK1993b}
+Kale, L.V., Krishnan, S.:
+\newblock {CHARM}++ : {A} portable concurrent object-oriented system based on
+  {C}++.
+\newblock In Paepcke, A., ed.: Proceedings of the Conference on Object Oriented
+  Programming Systems, Languages and Applications (OOPSLA), ACM Press
+  (September 1993)  91--108
+
+\bibitem{1742-6596-180-1-012037}
+Agullo, E., Demmel, J., Dongarra, J., Hadri, B., Kurzak, J., Langou, J.,
+  Ltaief, H., Luszczek, P., Tomov, S.:
+\newblock Numerical linear algebra on emerging architectures: The plasma and
+  magma projects.
+\newblock Journal of Physics: Conference Series \textbf{180}(1) (2009)  012037
+
+\bibitem{Bellens06}
+Bellens, P., Perez, J.M., Badia, R.M., Labarta, J.:
+\newblock Cellss: {A} programming model for the cell {BE} architecture.
+\newblock In: SC'2006 Conference CD, Tampa, FL, IEEE/ACM SIGARCH (November
+  2006)
+
+\bibitem{journals/concurrency/BadiaHLPQQ09}
+Badia, R.M., Herrero, J.R., Labarta, J., P{\'e}rez, J.M., Quintana-Ort{\'i},
+  E.S., Quintana-Ort{\'i}, G.:
+\newblock Parallelizing dense and banded linear algebra libraries using
+  {SMPS}s.
+\newblock Concurrency and Computation: Practice and Experience \textbf{21}(18)
+  (2009)  2438--2456
+
+\bibitem{Ayguade09}
+Ayguade, E., Badia, R.M., Igual, F.D., Labarta, J., Mayo, R., Quintana-Orti,
+  E.S.:
+\newblock An extension of the starss programming model for platforms with
+  multiple {GPU}s.
+\newblock In Sips, H.J., Epema, D.H.J., Lin, H.X., eds.: Euro-Par 2009 Parallel
+  Processing (15th Euro-Par'09). Volume 5704 of Lecture Notes in Computer
+  Science (LNCS).
+\newblock Springer-Verlag (New York), Delft, The Netherlands (August 2009)
+  851--862
+
+\bibitem{DoBiBo07}
+Dolbeau, R., Bihan, S., Bodin, F.:
+\newblock {HMPP: A} hybrid multi-core parallel programming environment.
+\newblock In: Proceedings of the Workshop on General Purpose Processing on
+  Graphics Processing Units (GPGPU'2007), Boston, Massachusetts, USA (October
+  2007)  1--5
+
+\bibitem{journals/concurrency/AugonnetTNW11}
+Augonnet, C., Thibault, S., Namyst, R., Wacrenier, P.A.:
+\newblock Star{PU}: a unified platform for task scheduling on heterogeneous
+  multicore architectures.
+\newblock Concurrency and Computation: Practice and Experience \textbf{23}(2)
+  (2011)  187--198
+
+\bibitem{Hig02}
+Higham, N.:
+\newblock Accuracy and Stability of Numerical Algorithms, Second Edition.
+\newblock SIAM (2002)
+
+\bibitem{conf/para/ButtariDKLLT06}
+Buttari, A., Dongarra, J., Kurzak, J., Langou, J., Luszczek, P., Tomov, S.:
+\newblock The impact of multicore on math software.
+\newblock In K{\aa}gstr{\"o}m, B., Elmroth, E., Dongarra, J., Wasniewski, J.,
+  eds.: PARA. Volume 4699 of Lecture Notes in Computer Science., Springer
+  (2006)  1--10
+
+\bibitem{ChanEtAl07b}
+Chan, Quintana-Orti, Quintana-Orti, van~de Geijn:
+\newblock Supermatrix out-of-order scheduling of matrix operations for {SMP}
+  and multi-core architectures.
+\newblock In: SPAA: Annual ACM Symposium on Parallel Algorithms and
+  Architectures. (2007)
+
+\bibitem{Buttari09}
+Buttari, A., Langou, J., Kurzk, J., Dongarra, J.J.:
+\newblock A class of parallel tiled linear algebra for multicore architectures.
+\newblock Parallel Computer Systems Appl. \textbf{35} (2009)  38--53
+
+\bibitem{Quintana-Orti:2009:ULF}
+Quintana-Ort{\'\i}, E.S., {Van De Geijn}, R.A.:
+\newblock Updating an {LU} factorization with pivoting.
+\newblock ACM Transactions on Mathematical Software \textbf{35}(2) (July 2009)
+  11:1--11:16
+
+\bibitem{journals/siammax/GrigoriDX11}
+Grigori, L., Demmel, J., Xiang, H.:
+\newblock {CALU}: {A} communication optimal {LU} factorization algorithm.
+\newblock SIAM J. Matrix Analysis Applications \textbf{32}(4) (2011)
+  1317--1350
+
+\bibitem{BruckEtAl97}
+Bruck, Ho, Kipnis, Upfal, Weathersby:
+\newblock Efficient algorithms for all-to-all communications in multiport
+  message-passing systems.
+\newblock IEEETPDS: IEEE Transactions on Parallel and Distributed Systems
+  \textbf{8} (1997)
+
+\bibitem{DGW:SHPCC92}
+Dongarra, J., van~de Geijn, R., Walker, D.:
+\newblock A look at scalable dense linear algebra libraries.
+\newblock In: Proceedings of the 1992 Scalable High Performance Computing
+  Conference, Williamsburg, VA (April 1992)  372--379
+
+\bibitem{Anderson:1990:LPL}
+Anderson, E., Bai, Z., Bischof, C., Demmel, J., Dongarra, J., {Du Croz}, J.,
+  Greenbaum, A., Hammarling, S., McKenney, A., Sorensen, D.:
+\newblock {LAPACK}: {A} portable linear algebra library for high-performance
+  computers.
+\newblock LAPACK Working Note~20, Department of Computer Science, University of
+  Tennessee, Knoxville, Knoxville, TN 37996, USA (May 1990) UT-CS-90-105, May
+  1990.
+
+\end{thebibliography}
