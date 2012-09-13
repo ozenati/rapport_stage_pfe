@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  12 SEP 2012 23:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  13 SEP 2012 08:47
 entering extended mode
  %&-line parsing enabled.
 **presentation.tex
@@ -1472,8 +1472,15 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 [16
 
  <./linpack.png>]
-File: linpack.png Graphic file (type png)
- <use linpack.png>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 108.
+
+(./presentation.toc)
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1487,9 +1494,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [17
 
-] <lapack.png, id=531, 229.60782pt x 229.60782pt>
-File: lapack.png Graphic file (type png)
- <use lapack.png>
+]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1503,10 +1508,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [18
 
- <./lapack.png>] <scalapack.png, id=561, 229.60782pt x 229.60782pt>
-File: scalapack.png Graphic file (type png)
-
-<use scalapack.png>
+]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1520,16 +1522,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [19
 
- <./scalapack.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 127.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 127.
-
-(./presentation.toc)
+]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1558,6 +1551,14 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 [21
 
 ]
+File: linpack.png Graphic file (type png)
+ <use linpack.png>
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 173.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 173.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 173.
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1571,7 +1572,9 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [22
 
-]
+] <lapack.png, id=685, 229.60782pt x 229.60782pt>
+File: lapack.png Graphic file (type png)
+ <use lapack.png>
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1585,7 +1588,10 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [23
 
-]
+ <./lapack.png>] <scalapack.png, id=715, 229.60782pt x 229.60782pt>
+File: scalapack.png Graphic file (type png)
+
+<use scalapack.png>
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1599,7 +1605,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [24
 
-])
+ <./scalapack.png>])
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 108.
@@ -1622,19 +1628,13 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [25
 
-] (./lu_algo.tex <free.pdf, id=780, 279.0425pt x 279.0425pt>
+] (./lu_algo.tex <free.pdf, id=781, 279.0425pt x 279.0425pt>
 File: free.pdf Graphic file (type pdf)
  <use free.pdf>
 Overfull \hbox (148.40144pt too wide) in paragraph at lines 34--34
 [][][]  
  []
 
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 34.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 34.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 34.
 
 Overfull \vbox (1.16724pt too high) detected at line 34
  []
@@ -2143,7 +2143,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [50
 
-] <natural_swap_tf_bw.pdf, id=1614, 1063.975pt x 389.455pt>
+] <natural_swap_tf_bw.pdf, id=1615, 1063.975pt x 389.455pt>
 File: natural_swap_tf_bw.pdf Graphic file (type pdf)
 
 <use natural_swap_tf_bw.pdf>
@@ -2212,7 +2212,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 
 [54
 
-] <distributed_update_tf_bw.pdf, id=1738, 1386.17876pt x 633.36626pt>
+] <distributed_update_tf_bw.pdf, id=1739, 1386.17876pt x 633.36626pt>
 File: distributed_update_tf_bw.pdf Graphic file (type pdf)
 
 <use distributed_update_tf_bw.pdf>
@@ -2230,7 +2230,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 [55
 
  <./distributed_update_tf_bw.pdf>]
-<update_tf_bw.pdf, id=1770, 1982.40625pt x 1722.435pt>
+<update_tf_bw.pdf, id=1771, 1982.40625pt x 1722.435pt>
 File: update_tf_bw.pdf Graphic file (type pdf)
  <use update_tf_bw.pdf>
 Overfull \vbox (10.03824pt too high) detected at line 178
@@ -2327,7 +2327,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
  <./pivots_step.pdf>]
 File: pivots_step.pdf Graphic file (type pdf)
  <use pivots_step.pdf>
-<permutations_step.pdf, id=1963, 572.1375pt x 360.34625pt>
+<permutations_step.pdf, id=1964, 572.1375pt x 360.34625pt>
 File: permutations_step.pdf Graphic file (type pdf)
 
 <use permutations_step.pdf>
@@ -2359,7 +2359,7 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 (\end occurred when \ifx on line 9 was incomplete) 
 Here is how much of TeX's memory you used:
  16549 strings out of 495061
- 302703 string characters out of 1182621
+ 302703 string characters out of 1182622
  372879 words of memory out of 3000000
  19034 multiletter control sequences out of 15000+50000
  79921 words of font info for 100 fonts, out of 3000000 for 9000
@@ -2378,7 +2378,7 @@ m/cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam1
 /usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-
 texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/typ
 e1/urw/helvetic/uhvro8a.pfb>
-Output written on presentation.pdf (62 pages, 1201136 bytes).
+Output written on presentation.pdf (62 pages, 1201486 bytes).
 PDF statistics:
  2069 PDF objects out of 2073 (max. 8388607)
  134 named destinations out of 1000 (max. 500000)

@@ -105,25 +105,6 @@ For \= $k$ from $1$ to $n$\\
 \end{columns}
 \end{frame}
 
-\begin{frame}{LU implementation}
-Software/Algorithms follow hardware evolution in time
-  \begin{columns}[c]
-    \begin{column}{0.60\textwidth}
-      \begin{itemize}
-      \item<1-> 70's - LinPACK, vector operations
-      \item<2-> 80's - LAPACK, block, cache-friendly
-      \item<3-> 90's - ScaLAPACK, distributed memory
-      \end{itemize}
-    \end{column}
-    \begin{column}{0.35\textwidth}
-      \only<1>{  \includegraphics[width=0.8\linewidth]{linpack}}
-      \only<2>{  \includegraphics[width=0.8\linewidth]{lapack}}
-      \only<3>{  \includegraphics[width=0.8\linewidth]{scalapack}}
-    \end{column}
-  \end{columns}
-
-\end{frame}
-
 \subsection{$PA=LU$}
 \begin{frame}{LU decomposition problem}
 \begin{columns}[c]
@@ -160,6 +141,9 @@ $\Rightarrow$ LU decomposition is not stable
 \begin{frame}{Partial Pivoting Algorithm}
 The partial pivoting consist to look for the element with the maximal absolute value on the $k^{th}$ column from $a_{k,k}$, then swap its row with the row consisting $a_{k,k}$.
 \begin{flushleft}
+The factorization amount to $PA=LU$
+\end{flushleft}
+\begin{flushleft}
 The partial pivoting is:
 \begin{itemize}
 \item Practically stable and accurate
@@ -168,6 +152,26 @@ The partial pivoting is:
 \end{itemize}
 \end{flushleft}
 \end{frame}
+
+\begin{frame}{LU implementation ($PA=LU$)}
+Software/Algorithms follow hardware evolution in time
+  \begin{columns}[c]
+    \begin{column}{0.60\textwidth}
+      \begin{itemize}
+      \item<1-> 70's - LinPACK, vector operations
+      \item<2-> 80's - LAPACK, block, cache-friendly
+      \item<3-> 90's - ScaLAPACK, distributed memory
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \only<1>{  \includegraphics[width=0.8\linewidth]{linpack}}
+      \only<2>{  \includegraphics[width=0.8\linewidth]{lapack}}
+      \only<3>{  \includegraphics[width=0.8\linewidth]{scalapack}}
+    \end{column}
+  \end{columns}
+
+\end{frame}
+
 %\begin{frame}{Runtime Family}
 %Runtime is a system which enable execution of a programme written in a specific language.
 %

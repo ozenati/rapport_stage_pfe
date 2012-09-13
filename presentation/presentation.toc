@@ -2,7 +2,7 @@
 \select@language {english}
 \beamer@sectionintoc {1}{Context and Motivations}{4}{0}{1}
 \beamer@subsectionintoc {1}{1}{$A=LU$}{14}{0}{1}
-\beamer@subsectionintoc {1}{2}{$PA=LU$}{20}{0}{1}
+\beamer@subsectionintoc {1}{2}{$PA=LU$}{17}{0}{1}
 \beamer@sectionintoc {2}{LU Decomposition Without Pivoting ($A=LU$)}{25}{0}{2}
 \beamer@sectionintoc {3}{LU Decomposition with Partial Pivoting ($PA=LU$)}{33}{0}{3}
 \beamer@subsectionintoc {3}{1}{Panel Factorization}{34}{0}{3}
