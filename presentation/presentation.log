@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.5.4)  13 SEP 2012 08:47
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.6.12)  19 SEP 2012 21:45
 entering extended mode
  %&-line parsing enabled.
 **presentation.tex
@@ -1216,10 +1216,10 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 84.
 
-<icl.png, id=43, 150.5625pt x 65.24374pt>
+<icl.png, id=27, 150.5625pt x 65.24374pt>
 File: icl.png Graphic file (type png)
  <use icl.png>
-<inria.png, id=44, 222.8325pt x 95.35625pt>
+<inria.png, id=28, 222.8325pt x 95.35625pt>
 File: inria.png Graphic file (type png)
  <use inria.png>
 Missing character: There is no 0 in font nullfont!
@@ -1252,10 +1252,10 @@ LaTeX Font Info:    Font shape `T1/phv/m/it' in size <5> not available
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10.95> not available
 (Font)              Font shape `T1/phv/m/sl' tried instead on input line 99.
 
-<icl-claxton.jpg, id=58, 501.875pt x 180.675pt>
+<icl-claxton.jpg, id=42, 501.875pt x 180.675pt>
 File: icl-claxton.jpg Graphic file (type jpg)
  <use icl-claxton.jpg>
-<bandeau-home-bordeaux.jpg, id=59, 983.675pt x 451.6875pt>
+<bandeau-home-bordeaux.jpg, id=43, 983.675pt x 451.6875pt>
 File: bandeau-home-bordeaux.jpg Graphic file (type jpg)
 
 <use bandeau-home-bordeaux.jpg>
@@ -1287,7 +1287,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [4
@@ -1301,7 +1301,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [5
@@ -1315,7 +1315,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [6
@@ -1329,7 +1329,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [7
@@ -1343,12 +1343,18 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [8
 
 ]
+
+pdfTeX warning: pdflatex (file ./getrf.pdf): PDF inclusion: found PDF version <
+1.5>, but at most version <1.4> allowed
+<getrf.pdf, id=128, 625.33624pt x 658.46pt>
+File: getrf.pdf Graphic file (type pdf)
+ <use getrf.pdf>
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1357,12 +1363,15 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [9
 
-]
+ <./getrf.pdf>]
+Overfull \vbox (9.7225pt too high) detected at line 79
+ []
+
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1371,12 +1380,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [10
 
-]
+] (./presentation.toc)
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1385,7 +1394,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [11
@@ -1399,12 +1408,14 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [12
 
-]
+] <linpack.png, id=186, 229.60782pt x 229.60782pt>
+File: linpack.png Graphic file (type png)
+ <use linpack.png>
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1413,21 +1424,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [13
 
-]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 66.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 66.
-
-(./presentation.toc)
+ <./linpack.png>]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1436,7 +1438,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [14
@@ -1450,14 +1452,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [15
 
-] <linpack.png, id=471, 229.60782pt x 229.60782pt>
-File: linpack.png Graphic file (type png)
- <use linpack.png>
+]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1466,21 +1466,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [16
 
- <./linpack.png>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 108.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 108.
-
-(./presentation.toc)
+]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1489,12 +1480,20 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [17
 
 ]
+File: linpack.png Graphic file (type png)
+ <use linpack.png>
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 189.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 189.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 189.
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1503,76 +1502,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
 [18
 
-]
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[19
-
-]
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[20
-
-]
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[21
-
-]
-File: linpack.png Graphic file (type png)
- <use linpack.png>
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 173.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 173.
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 173.
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[22
-
-] <lapack.png, id=685, 229.60782pt x 229.60782pt>
+] <lapack.png, id=259, 229.60782pt x 229.60782pt>
 File: lapack.png Graphic file (type png)
  <use lapack.png>
 Missing character: There is no 0 in font nullfont!
@@ -1583,12 +1518,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[23
+[19
 
- <./lapack.png>] <scalapack.png, id=715, 229.60782pt x 229.60782pt>
+ <./lapack.png>] <scalapack.png, id=272, 229.60782pt x 229.60782pt>
 File: scalapack.png Graphic file (type png)
 
 <use scalapack.png>
@@ -1600,21 +1535,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[24
+[20
 
- <./scalapack.png>])
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 108.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 108.
-
-(./presentation.toc)
+ <./scalapack.png>]) (./presentation.toc)
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -1623,12 +1549,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[25
+[21
 
-] (./lu_algo.tex <free.pdf, id=781, 279.0425pt x 279.0425pt>
+] (./lu_algo.tex <free.pdf, id=298, 279.0425pt x 279.0425pt>
 File: free.pdf Graphic file (type pdf)
  <use free.pdf>
 Overfull \hbox (148.40144pt too wide) in paragraph at lines 34--34
@@ -1647,12 +1573,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[26
+[22
 
- <./free.pdf>] <free_tiled.pdf, id=813, 313.17pt x 313.17pt>
+ <./free.pdf>] <free_tiled.pdf, id=312, 313.17pt x 313.17pt>
 File: free_tiled.pdf Graphic file (type pdf)
 
 <use free_tiled.pdf>
@@ -1668,12 +1594,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[27
+[23
 
- <./free_tiled.pdf>] <task_getrf.pdf, id=845, 313.17pt x 313.17pt>
+ <./free_tiled.pdf>] <task_getrf.pdf, id=326, 313.17pt x 313.17pt>
 File: task_getrf.pdf Graphic file (type pdf)
 
 <use task_getrf.pdf>
@@ -1685,7 +1611,7 @@ Overfull \hbox (131.91379pt too wide) in paragraph at lines 34--34
 
 pdfTeX warning: pdflatex (file ./getrf_getrf.pdf): PDF inclusion: found PDF ver
 sion <1.5>, but at most version <1.4> allowed
-<getrf_getrf.pdf, id=846, 600.2425pt x 550.055pt>
+<getrf_getrf.pdf, id=327, 600.2425pt x 550.055pt>
 File: getrf_getrf.pdf Graphic file (type pdf)
  <use getrf_getrf.pdf>
 Overfull \hbox (118.7216pt too wide) in paragraph at lines 34--34
@@ -1700,45 +1626,13 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[28
+[24
 
  <./task_getrf.pdf> <./getrf_getrf.pdf>]
-<task_trsm_l.pdf, id=887, 313.17pt x 313.17pt>
-File: task_trsm_l.pdf Graphic file (type pdf)
- <use task_trsm_l.pdf>
-Overfull \hbox (131.91379pt too wide) in paragraph at lines 34--34
-[][][]  
- []
-
-
-
-pdfTeX warning: pdflatex (file ./getrf_trsm_l.pdf): PDF inclusion: found PDF ve
-rsion <1.5>, but at most version <1.4> allowed
-<getrf_trsm_l.pdf, id=888, 600.2425pt x 578.16pt>
-File: getrf_trsm_l.pdf Graphic file (type pdf)
- <use getrf_trsm_l.pdf>
-Overfull \hbox (118.7216pt too wide) in paragraph at lines 34--34
-[][][]  
- []
-
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[29
-
- <./task_trsm_l.pdf> <./getrf_trsm_l.pdf>]
-<task_trsm_u.pdf, id=929, 313.17pt x 313.17pt>
+<task_trsm_u.pdf, id=350, 313.17pt x 313.17pt>
 File: task_trsm_u.pdf Graphic file (type pdf)
  <use task_trsm_u.pdf>
 Overfull \hbox (131.91379pt too wide) in paragraph at lines 34--34
@@ -1749,11 +1643,15 @@ Overfull \hbox (131.91379pt too wide) in paragraph at lines 34--34
 
 pdfTeX warning: pdflatex (file ./getrf_trsm_u.pdf): PDF inclusion: found PDF ve
 rsion <1.5>, but at most version <1.4> allowed
-<getrf_trsm_u.pdf, id=930, 600.2425pt x 578.16pt>
+<getrf_trsm_u.pdf, id=351, 600.2425pt x 578.16pt>
 File: getrf_trsm_u.pdf Graphic file (type pdf)
  <use getrf_trsm_u.pdf>
 Overfull \hbox (118.7216pt too wide) in paragraph at lines 34--34
 [][][]  
+ []
+
+
+Overfull \vbox (7.64542pt too high) detected at line 34
  []
 
 Missing character: There is no 0 in font nullfont!
@@ -1764,13 +1662,13 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[30
+[25
 
  <./task_trsm_u.pdf> <./getrf_trsm_u.pdf>]
-<task_gemm.pdf, id=971, 313.17pt x 313.17pt>
+<task_gemm.pdf, id=375, 313.17pt x 313.17pt>
 File: task_gemm.pdf Graphic file (type pdf)
  <use task_gemm.pdf>
 Overfull \hbox (131.91379pt too wide) in paragraph at lines 34--34
@@ -1781,7 +1679,7 @@ Overfull \hbox (131.91379pt too wide) in paragraph at lines 34--34
 
 pdfTeX warning: pdflatex (file ./getrf_gemm.pdf): PDF inclusion: found PDF vers
 ion <1.5>, but at most version <1.4> allowed
-<getrf_gemm.pdf, id=972, 625.33624pt x 594.22pt>
+<getrf_gemm.pdf, id=376, 625.33624pt x 594.22pt>
 File: getrf_gemm.pdf Graphic file (type pdf)
  <use getrf_gemm.pdf>
 Overfull \hbox (118.7216pt too wide) in paragraph at lines 34--34
@@ -1796,26 +1694,21 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[31
+[26
 
  <./task_gemm.pdf> <./getrf_gemm.pdf>]
-<dag_getrf_sp.pdf, id=1014, 1450.41875pt x 591.20876pt>
-File: dag_getrf_sp.pdf Graphic file (type pdf)
- <use dag_getrf_sp.pdf>
-Overfull \hbox (164.89162pt too wide) in paragraph at lines 34--34
+<step_lu.pdf, id=399, 158.5925pt x 373.395pt>
+File: step_lu.pdf Graphic file (type pdf)
+ <use step_lu.pdf>
+Overfull \hbox (47.57811pt too wide) in paragraph at lines 34--34
 [][][]  
  []
 
-
-
-pdfTeX warning: pdflatex (file ./getrf.pdf): PDF inclusion: found PDF version <
-1.5>, but at most version <1.4> allowed
-<getrf.pdf, id=1015, 625.33624pt x 658.46pt>
 File: getrf.pdf Graphic file (type pdf)
- <use getrf.pdf>
+<use getrf.pdf>
 Overfull \hbox (118.7216pt too wide) in paragraph at lines 34--34
 [][][]  
  []
@@ -1828,49 +1721,13 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[32
+[27
 
- <./dag_getrf_sp.pdf> <./getrf.pdf>])
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 111.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 111.
-
-(./presentation.toc)
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[33
-
-] (./gepp.tex (./presentation.toc)
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[34
-
-] <panel_operation.pdf, id=1128, 505.89pt x 374.39874pt>
+ <./step_lu.pdf>]) (./gepp.tex
+<panel_operation.pdf, id=413, 505.89pt x 374.39874pt>
 File: panel_operation.pdf Graphic file (type pdf)
 
 <use panel_operation.pdf>
@@ -1888,10 +1745,10 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[35
+[28
 
  <./panel_operation.pdf>]
 File: panel_operation.pdf Graphic file (type pdf)
@@ -1907,12 +1764,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[36
+[29
 
-] <merge.pdf, id=1188, 1191.45125pt x 459.7175pt>
+] <merge.pdf, id=438, 1191.45125pt x 510.90875pt>
 File: merge.pdf Graphic file (type pdf)
  <use merge.pdf>
 Missing character: There is no 0 in font nullfont!
@@ -1923,12 +1780,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[37
+[30
 
- <./merge.pdf>] <natural_tf_bw.pdf, id=1220, 993.7125pt x 479.7925pt>
+ <./merge.pdf>] <natural_tf_bw.pdf, id=452, 993.7125pt x 490.83376pt>
 File: natural_tf_bw.pdf Graphic file (type pdf)
 
 <use natural_tf_bw.pdf>
@@ -1940,10 +1797,10 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[38
+[31
 
  <./natural_tf_bw.pdf>]
 File: natural_tf_bw.pdf Graphic file (type pdf)
@@ -1956,10 +1813,10 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[39
+[32
 
 ]
 File: natural_tf_bw.pdf Graphic file (type pdf)
@@ -1972,12 +1829,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[40
+[33
 
-] <distributed_tf_bw.pdf, id=1309, 912.40875pt x 464.73625pt>
+] <distributed_tf_bw.pdf, id=489, 912.40875pt x 476.78125pt>
 File: distributed_tf_bw.pdf Graphic file (type pdf)
 
 <use distributed_tf_bw.pdf>
@@ -1989,13 +1846,13 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[41
+[34
 
  <./distributed_tf_bw.pdf>]
-<hybrid_tf_bw.pdf, id=1340, 1602.98875pt x 1650.165pt>
+<hybrid_tf_bw.pdf, id=503, 1602.98875pt x 1650.165pt>
 File: hybrid_tf_bw.pdf Graphic file (type pdf)
  <use hybrid_tf_bw.pdf>
 Overfull \vbox (10.5082pt too high) detected at line 101
@@ -2009,31 +1866,19 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[42
+[35
 
- <./hybrid_tf_bw.pdf>] (./presentation.toc)
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[43
-
-] <update_swap.pdf, id=1408, 364.36125pt x 374.39874pt>
+ <./hybrid_tf_bw.pdf>] <update_swap.pdf, id=517, 364.36125pt x 374.39874pt>
 File: update_swap.pdf Graphic file (type pdf)
 
 <use update_swap.pdf>
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 131.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 136.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 131.
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -2042,10 +1887,10 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[44
+[36
 
  <./update_swap.pdf>]
 File: update_swap.pdf Graphic file (type pdf)
@@ -2058,26 +1903,10 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[45
-
-]
-File: update_swap.pdf Graphic file (type pdf)
- <use update_swap.pdf>
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[46
+[37
 
 ]
 File: update_swap.pdf Graphic file (type pdf)
@@ -2090,14 +1919,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[47
+[38
 
-]
-File: update_swap.pdf Graphic file (type pdf)
- <use update_swap.pdf>
+]) (./presentation.toc)
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -2106,14 +1933,14 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[48
+[39
 
-]
-File: update_swap.pdf Graphic file (type pdf)
- <use update_swap.pdf>
+] <gepp.pdf, id=569, 361.35pt x 252.945pt>
+File: gepp.pdf Graphic file (type pdf)
+ <use gepp.pdf>
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -2122,14 +1949,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[49
+[40
 
-]
-File: update_swap.pdf Graphic file (type pdf)
- <use update_swap.pdf>
+ <./gepp.pdf>]
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
@@ -2138,12 +1963,64 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[50
+[41
 
-] <natural_swap_tf_bw.pdf, id=1615, 1063.975pt x 389.455pt>
+]
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
+
+
+[42
+
+] (./annexe.tex <pivots_step.pdf, id=608, 523.9575pt x 360.34625pt>
+File: pivots_step.pdf Graphic file (type pdf)
+
+<use pivots_step.pdf>
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
+
+
+[43
+
+ <./pivots_step.pdf>]
+File: pivots_step.pdf Graphic file (type pdf)
+ <use pivots_step.pdf>
+<permutations_step.pdf, id=623, 572.1375pt x 360.34625pt>
+File: permutations_step.pdf Graphic file (type pdf)
+
+<use permutations_step.pdf>
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no m in font nullfont!
+
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
+
+
+[44
+
+ <./permutations_step.pdf>]
+<natural_swap_tf_bw.pdf, id=637, 1063.975pt x 389.455pt>
 File: natural_swap_tf_bw.pdf Graphic file (type pdf)
 
 <use natural_swap_tf_bw.pdf>
@@ -2155,13 +2032,13 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[51
+[45
 
  <./natural_swap_tf_bw.pdf>]
-<swap_from.pdf, id=1646, 493.845pt x 543.02875pt>
+<swap_from.pdf, id=651, 493.845pt x 543.02875pt>
 File: swap_from.pdf Graphic file (type pdf)
  <use swap_from.pdf>
 Missing character: There is no 0 in font nullfont!
@@ -2172,12 +2049,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[52
+[46
 
- <./swap_from.pdf>] <swap_into.pdf, id=1678, 753.81625pt x 595.22375pt>
+ <./swap_from.pdf>] <swap_into.pdf, id=665, 753.81625pt x 529.98pt>
 File: swap_into.pdf Graphic file (type pdf)
 
 <use swap_into.pdf>
@@ -2189,10 +2066,10 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[53
+[47
 
  <./swap_into.pdf>]
 File: swap_from.pdf Graphic file (type pdf)
@@ -2207,12 +2084,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[54
+[48
 
-] <distributed_update_tf_bw.pdf, id=1739, 1386.17876pt x 633.36626pt>
+] <distributed_update_tf_bw.pdf, id=690, 1386.17876pt x 633.36626pt>
 File: distributed_update_tf_bw.pdf Graphic file (type pdf)
 
 <use distributed_update_tf_bw.pdf>
@@ -2224,16 +2101,16 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[55
+[49
 
  <./distributed_update_tf_bw.pdf>]
-<update_tf_bw.pdf, id=1771, 1982.40625pt x 1722.435pt>
+<update_tf_bw.pdf, id=705, 1982.40625pt x 1722.435pt>
 File: update_tf_bw.pdf Graphic file (type pdf)
  <use update_tf_bw.pdf>
-Overfull \vbox (10.03824pt too high) detected at line 178
+Overfull \vbox (10.03824pt too high) detected at line 63
  []
 
 Missing character: There is no 0 in font nullfont!
@@ -2244,107 +2121,12 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no m in font nullfont!
 
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
+Overfull \vbox (10.2372pt too high) has occurred while \output is active []
 
 
-[56
+[50
 
- <./update_tf_bw.pdf>]) (./presentation.toc)
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[57
-
-] <gepp.pdf, id=1838, 361.35pt x 252.945pt>
-File: gepp.pdf Graphic file (type pdf)
- <use gepp.pdf>
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[58
-
- <./gepp.pdf>]
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[59
-
-]
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[60
-
-] (./annexe.tex <pivots_step.pdf, id=1931, 523.9575pt x 360.34625pt>
-File: pivots_step.pdf Graphic file (type pdf)
-
-<use pivots_step.pdf>
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[61
-
- <./pivots_step.pdf>]
-File: pivots_step.pdf Graphic file (type pdf)
- <use pivots_step.pdf>
-<permutations_step.pdf, id=1964, 572.1375pt x 360.34625pt>
-File: permutations_step.pdf Graphic file (type pdf)
-
-<use permutations_step.pdf>
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no 0 in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-
-Overfull \vbox (18.98026pt too high) has occurred while \output is active []
-
-
-[62
-
- <./permutations_step.pdf>])
+ <./update_tf_bw.pdf>])
 \tf@nav=\write6
 \openout6 = `presentation.nav'.
 
@@ -2358,13 +2140,13 @@ Overfull \vbox (18.98026pt too high) has occurred while \output is active []
 (\end occurred when \ifx on line 9 was incomplete)
 (\end occurred when \ifx on line 9 was incomplete) 
 Here is how much of TeX's memory you used:
- 16549 strings out of 495061
- 302703 string characters out of 1182622
- 372879 words of memory out of 3000000
- 19034 multiletter control sequences out of 15000+50000
- 79921 words of font info for 100 fonts, out of 3000000 for 9000
+ 16459 strings out of 495061
+ 301000 string characters out of 1182621
+ 367879 words of memory out of 3000000
+ 18982 multiletter control sequences out of 15000+50000
+ 83274 words of font info for 107 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 64i,20n,68p,420b,735s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 64i,16n,68p,420b,643s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fon
 ts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts/type1/public/amsfonts/
 cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pf
@@ -2378,9 +2160,9 @@ m/cmsy9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam1
 /usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texmf-
 texlive/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/texmf-texlive/fonts/typ
 e1/urw/helvetic/uhvro8a.pfb>
-Output written on presentation.pdf (62 pages, 1201486 bytes).
+Output written on presentation.pdf (50 pages, 904507 bytes).
 PDF statistics:
- 2069 PDF objects out of 2073 (max. 8388607)
- 134 named destinations out of 1000 (max. 500000)
- 262 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 786 PDF objects out of 1000 (max. 8388607)
+ 106 named destinations out of 1000 (max. 500000)
+ 220 words of extra memory for PDF output out of 10000 (max. 10000000)
 

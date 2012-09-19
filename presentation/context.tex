@@ -11,12 +11,20 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Programming Paradigm}
+%\begin{frame}{Contributions}
+%\begin{itemize}
+%\item Computing platforms are more and more complex
+%\item Comment programming paradigm are difficult to cope with these architectures
+%\item 
+%\end{itemize}
+%\end{frame}
+
+\begin{frame}{Programming Paradigms}
 Historically, we use:
 \begin{itemize}
 \item Message passing (MPI) for distributed memory architectures
 \item Threads library (OMP) for shared memory architectures
-\item Accelerator library (OpenCL) for accelerator of heterogeneous architectures
+\item Accelerator library (Cuda, OpenCL) for accelerator of heterogeneous architectures
 \end{itemize}
 \pause
 $\Rightarrow$ Several programs for the same algorithm\\
@@ -24,23 +32,30 @@ $\Rightarrow$ Weak portability\\
 $\Rightarrow$ Weak scalability\\
 \pause
 \begin{exampleblock}{Solution:}
-Recent paradigm of programming which separate algorithm from architectures used: \textbf{Task Flow Model}
+Other paradigm of programming which separate algorithm from architectures used: \textbf{Task Flow Model}
 \end{exampleblock}
 \end{frame}
 
 \begin{frame}{Task Flow Model}
 Programs can be represented by a Direct Acyclic Graph (DAG) where:
+\begin{columns}
+\begin{column}{0.02\textwidth}
+\end{column}
+\begin{column}{0.45\textwidth}
 \begin{itemize}
 \item Vertices are tasks
 \item Edges are data dependencies between tasks
 \end{itemize}
-\pause
-\begin{flushleft}
-$\Rightarrow$ One single implementation of the DAG in a specific language
-\end{flushleft}
-\pause
+\end{column}
+\begin{column}{0.45\textwidth}
+\includegraphics[width=0.7\linewidth]{getrf}
+\end{column}
+\end{columns}
 \begin{flushleft}
 Execution of tasks and data movement between them assured by the \textbf{Runtime}
+\end{flushleft}
+\begin{flushleft}
+$\Rightarrow$ One single implementation of the DAG in a specific language
 \end{flushleft}
 \end{frame}
 
@@ -50,12 +65,12 @@ Execution of tasks and data movement between them assured by the \textbf{Runtime
 \item Abstraction of architectures
 \item Portability of performance
 \item Good reactivity for load imbalance
-\item Natural look ahead
 \end{itemize}
 \end{exampleblock}{}
-\pause
+\begin{exampleblock}{Question:}
+How to cope with parallel program consisting fine grain tasks?
+\end{exampleblock}{}
 \begin{exampleblock}{Challenge:}
-At the moment, runtimes are efficient for model of architectures
 \begin{itemize}
 \item DAGuE for large hierarchical architectures
 \item StarPU for heterogeneous architectures
@@ -63,14 +78,14 @@ At the moment, runtimes are efficient for model of architectures
 \end{exampleblock}{}
 \end{frame}
 
-\subsection{$A=LU$}
+\section{LU Decomposition Algorithms}
 
 \begin{frame}{Why LU decomposition}
 In order to solve square systems of linear equations:
 \begin{center}
 $Ax=b$
 \end{center}
-Use LU decomposition (Gaussian elimination):
+Use LU decomposition:
 \begin{center}
 $A=LU$
 \end{center}
@@ -86,10 +101,11 @@ $Ly=b$ then $Ux=y$
 \begin{columns}[c]
 \begin{column}{0.02\textwidth}
 \end{column}
-\begin{column}{0.60\textwidth}
+\begin{column}{0.45\textwidth}
 \begin{tabbing}
 Let be $A$ a $n*n$ square matrix\\
 For \= $k$ from $1$ to $n$\\
+\>\invisible{\alert{Search for pivot then swap}}\\
 \> For \=$i$ from $k+1$ to $n$\\
 \>\> \textcolor{red}{$a_{i,k} = a_{i,k}/a_{k,k}$}\\
 \> For \=$i$ from $k+1$ to $n$\\
@@ -99,13 +115,13 @@ For \= $k$ from $1$ to $n$\\
 \end{column}
 \begin{column}{0.02\textwidth}
 \end{column}
-\begin{column}{0.35\textwidth}
+\begin{column}{0.45\textwidth}
 \includegraphics[width=0.8\linewidth]{linpack}
 \end{column}
 \end{columns}
 \end{frame}
 
-\subsection{$PA=LU$}
+%\subsection{$PA=LU$}
 \begin{frame}{LU decomposition problem}
 \begin{columns}[c]
 \begin{column}{0.02\textwidth}

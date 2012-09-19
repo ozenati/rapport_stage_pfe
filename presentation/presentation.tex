@@ -105,10 +105,12 @@
 \section[Context]{Context and Motivations}
 \input{context.tex}
 
-\section[Without Pivoting]{LU Decomposition Without Pivoting ($A=LU$)}
+\section[Task Flow LU]{LU Decomposition over Task Flow Model}
+%\section[Without Pivoting]{LU Decomposition Without Pivoting ($A=LU$)}
 \input{lu_algo.tex}
 
-\section[Partial Pivoting]{LU Decomposition with Partial Pivoting ($PA=LU$)}
+
+%\section[Partial Pivoting]{LU Decomposition with Partial Pivoting ($PA=LU$)}
 \input{gepp.tex}
 
 \section{Performance}
@@ -120,15 +122,18 @@
 
 \section*{Conclusion}
 \begin{frame}{Conclusion and future work}
-Conclusion :
+Software contribution:
 \begin{itemize}
-\item Implemented static pivoting ($A=LU$) on DAGuE and StarPU
-\item Implemented partial pivoting ($PA=LU$) on DAGuE and StarPU
-\item Exhibited the feasibility of partial pivoting on task flow model
-\item Obtained encouraging performances with partial pivoting over DAGuE
-\item Performances of partial pivoting over StarPU still not exploitable
+\item Implemented and validated $A=LU$ on DAGuE and StarPU
+\item Implemented and validated $PA=LU$ on DAGuE and StarPU
 \end{itemize}
-Future work :
+Conclusion:
+\begin{itemize}
+\item Exhibited the feasibility of partial pivoting on task flow model
+\item Obtained encouraging performance with partial pivoting over DAGuE
+%\item Performances of partial pivoting over StarPU still not exploitable
+\end{itemize}
+Future work:
 \begin{itemize}
 \item Integrate GPU pivoting operations to DAGuE and StarPU
 \item Try other startegies of panel factorizations on several methods

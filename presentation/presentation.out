@@ -1,8 +1,4 @@
 \BOOKMARK [2][]{Outline0.1}{Context and Motivations}{}
-\BOOKMARK [3][]{Outline0.1.1.14}{A=LU}{Outline0.1}
-\BOOKMARK [3][]{Outline0.1.2.17}{PA=LU}{Outline0.1}
-\BOOKMARK [2][]{Outline0.2}{LU Decomposition Without Pivoting \(A=LU\)}{}
-\BOOKMARK [2][]{Outline0.3}{LU Decomposition with Partial Pivoting \(PA=LU\)}{}
-\BOOKMARK [3][]{Outline0.3.1.34}{Panel Factorization}{Outline0.3}
-\BOOKMARK [3][]{Outline0.3.2.43}{Update of Trailing Sub-matrix}{Outline0.3}
+\BOOKMARK [2][]{Outline0.2}{LU Decomposition Algorithms}{}
+\BOOKMARK [2][]{Outline0.3}{LU Decomposition over Task Flow Model}{}
 \BOOKMARK [2][]{Outline0.4}{Performance}{}
